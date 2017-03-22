@@ -1,17 +1,17 @@
 # Plan and Process
 > Author: 李大祥
 StartTime : 2017-2-25-22：40
-ModifyTime :  2017-3-9
+ModifyTime :  2017-3-22
 
 ## 1. Preparation Phrase Plan
 + [x] 1. Test how to use git server software.
-+ [ ] 2. Make sure that whether it can to use python to control linux commands.
-+ [ ] 3. Search for maximum user number by logging via SSH.
-+ [ ] 4. Learn python and django framework. 
-+ [ ] 5. Design the system.
-+ [ ] 6. Write the ideas and design textbook, named **'ideas-and-design.md'**.
-+ [ ] 7. Create a github repository.(It is named **''WeArt'**' meaning that our arts and we create arts together.)
-+ [ ] 8. Write the plan and process textbook.
++ [x] 2. Make sure that whether it can to use python to control linux commands.
++ [x] 3. Search for maximum user number by logging via SSH.
++ [x] 4. Learn python and django framework. 
++ [x] 5. Design the system.
++ [x] 6. Write the ideas and design textbook, named **'ideas-and-design.md'**.
++ [x] 7. Create a github repository.(It is named **''WeArt'**' meaning that our arts and we create arts together.)
++ [x] 8. Write the plan and process textbook.
 + [ ] 9. Organize the all commands and test excuted by python.
 + [ ] 10. Write a demo that it can show control novel's version.
 + [ ] 11. Build the two Server using virtual computer.
@@ -29,7 +29,7 @@ ModifyTime :  2017-3-9
 + [ ] 9. Admin manages these different versions.
 + [ ] 10. Admin register and managed.
 + [ ] 11. Admin login And admin manage users(Register, login, refuse, lock user accounts).
-+ [ ] 12. Modify the design book of system.
++ [ ] 12. Modify the design of system.
 
 
 ## 3. Test Phrase Plan
