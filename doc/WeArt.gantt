@@ -1,0 +1,30 @@
+gantt
+dateFormat  YYYY-MM-DD
+title WeArt 专题
+
+section 设计阶段
+专题申报                    :done,  p1, 2017-01-04, 1d
+初步构想，讨论可行度          :done,  p2, after p1, 8d
+环境安装与调试、建立github    :done,  p3, 2017-02-01, 8d
+具体设计model和机制          :done,  p4, 2017-02-13, 5d
+整理progress、ideas 等文档   :done,  p5, 2017-02-24, 19d
+页面设计                    :done,  p6, 2017-03-17, 16d
+专题计划与甘特图              :done,  p7, 2017-05-01, 4d
+网页前端设计电子化            :active,  p8, 2017-05-05, 11d
+
+section 开发阶段
+完成基本功能的简单范例          :active,    p10, 2017-06-26, 4d
+database设计与建立            :active,    p9, 2017-05-31, 26d
+作者系统                      :           p11, 2017-07-04, 13d
+普通注册用户系统               :           p12, 2017-07-17, 13d
+非注册随机用户                 :           p13, 2017-08-01, 11d
+其它的展示页面或功能            :            p14, 2017-08-16, 23d
+
+section 测试阶段
+test以及修复bug              :       p15, after p14, 15d
+系统优化                     :       p16, after p15, 21d
+文档资料整理                  :       p17, after p15, 22d
+整理github                   :       p18, after p17, 22d
+
+%%这里是注释，
+%%请把上面的非注释内容粘贴到 http://knsv.github.io/mermaid/live_editor/ 网站上，即可获得甘特图，之后就可以截图或也可以下载 SVG 格式或者选择 VIEW 模式。另外一种办法是自己安装 mermaid 库进行编译这些代码。
