@@ -1,7 +1,7 @@
 # Plan and Process
 > Author: 李大祥
-StartTime : 2017-2-25-22：40
-ModifyTime :  2017-3-22
+StartTime : 2017-02-25
+ModifyTime :  2017-06-30
 
 ![project gantt chart](./project-gantt.png)
 > gantt chart的源代码在 WeArt.gantt 里面，把gantt chart 源代码粘贴到 [在线编辑器](http://knsv.github.io/mermaid/live_editor/) 上，即可获得上面的甘特图，之后就可以截图或也可以下载 SVG 格式或者选择 VIEW 模式。另外一种办法是自己安装 mermaid 库进行编译这些代码。
@@ -15,10 +15,9 @@ ModifyTime :  2017-3-22
 + [x] 6. Write the ideas and design textbook, named **'ideas-and-design.md'**.
 + [x] 7. Create a github repository.(It is named **''WeArt'**' meaning that our arts and we create arts together.)
 + [x] 8. Write the plan and process textbook.
-+ [ ] 9. Organize the all commands and test excuted by python.
-+ [ ] 10. Write a demo that it can show control novel's version.
-+ [ ] 11. Build the two Server using virtual computer.
-+ [ ] 12. ...
++ [x] 9. Organize the all commands and test excuted by python.
++ [x] 10. Write a demo that it can show control novel's version.
++ [x] 11. Build the two Server using virtual computer.
 
 ## 2. Development Phrase Plan
 + [ ] 1. Build Database.

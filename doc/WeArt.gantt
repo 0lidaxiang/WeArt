@@ -8,23 +8,34 @@ section 设计阶段
 环境安装与调试、建立github    :done,  p3, 2017-02-01, 8d
 具体设计model和机制          :done,  p4, 2017-02-13, 5d
 整理progress、ideas 等文档   :done,  p5, 2017-02-24, 19d
-页面设计                    :done,  p6, 2017-03-17, 16d
-专题计划与甘特图              :done,  p7, 2017-05-01, 4d
-网页前端设计电子化            :active,  p8, 2017-05-05, 11d
+网页设计                    :done,  p6, 2017-03-17, 16d
+专题计划与甘特图              :done,  p7, 2017-05-11, 4d
+网页设计电子稿                :active,  p8, 2017-06-26, 20d
 
 section 开发阶段
-完成基本功能的简单范例          :active,    p10, 2017-06-26, 4d
-database设计与建立            :active,    p9, 2017-05-31, 26d
-作者系统                      :           p11, 2017-07-04, 13d
-普通注册用户系统               :           p12, 2017-07-17, 13d
-非注册随机用户                 :           p13, 2017-08-01, 11d
-其它的展示页面或功能            :            p14, 2017-08-16, 23d
+基本功能的DEMO               :done,    p9, 2017-06-26, 15d
+database设计与建立           :active,  p10, after p9, 2d
+作者登录                     :         p11, after p10, 7d
+创建书籍和章节                :         p12, after p11, 7d
+更新内容                     :         p13, after p12, 7d
+读者登录                     :         p14, after p13, 7d
+书籍阅读                     :         p15, after p14, 7d
+多版本阅读                   :         p16, after p15, 3d
+读者登录                     :         p17, after p16, 3d
+读者参与写作                  :         p18, after p17, 5d
+读者收藏                     :         p19, after p18, 3d
+管理员登录                   :         p20, after p19, 2d
+作者管理                     :         p21, after p20, 7d
+读者管理                     :         p22, after p21, 4d
+书籍管理                     :         p23, after p22, 4d
+首页等功能                   :         p24, after p23, 7d
+test以及fix bug             :         p25, after p24, 14d
 
-section 测试阶段
-test以及修复bug              :       p15, after p14, 15d
-系统优化                     :       p16, after p15, 21d
-文档资料整理                  :       p17, after p15, 22d
-整理github                   :       p18, after p17, 22d
+
+section 收尾阶段
+服务器建设                   :         p26, 2017-10-15, 7d
+系统优化                     :         p27, after p25, 14d
+资料整理                     :         p28, after p25, 14d
 
 %%这里是注释，
 %%请把上面的非注释内容粘贴到 http://knsv.github.io/mermaid/live_editor/ 网站上，即可获得甘特图，之后就可以截图或也可以下载 SVG 格式或者选择 VIEW 模式。另外一种办法是自己安装 mermaid 库进行编译这些代码。
