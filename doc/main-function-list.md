@@ -4,7 +4,7 @@ StartTime :   2017-3-28
 ModifyTime :  2017-4-2
 
 ## 1. Reader (From Reader View)
-1. Reader can see different kinds of novels collections from main website page.
+- Reader can see different kinds of novels collections from main website page.
 - Reader can search novels by keywords.
 - Show the outline of novel for readers.
 - In every chapter page, we will first show the version most people liked. And this page must include author information
@@ -16,7 +16,7 @@ ModifyTime :  2017-4-2
 -  Visitors can see and search books and see different versions.
 
 ## 2. Author (From Author View)
-1. Create a novel, including title(tens words), outline(Thousands words,maybe tens thousand), writing plan(delay time, task, is_finish).
+- Create a novel, including title(tens words), outline(Thousands words,maybe tens thousand), writing plan(delay time, task, is_finish).
 - Claim one task and update this task to claimed at the same time.
 - Commit the chapter and update this task to claimed at the same time.
 - Close his/her novel created by him/her.
@@ -29,7 +29,7 @@ that the number of people like every chapter, the number of people dislike every
 -  Author and contributors can delete their novel's chapter but also can submit to recover. Submitter can complaint about them to administrator but needing reasonable reasons.
 
 ## 3. Administrator (From Administrator View)
-1. Manage novels.These info includes but not limiting that the number of likes, the number of views, the author,the number of contributors, the number of words, the branches, the name, the creating time, the chapter finished, the finished percentage, the status(finished or interrupted or writing or other) and so on. **Administors can ban or delete novels and chapters.**
+- Manage novels.These info includes but not limiting that the number of likes, the number of views, the author,the number of contributors, the number of words, the branches, the name, the creating time, the chapter finished, the finished percentage, the status(finished or interrupted or writing or other) and so on. **Administors can ban or delete novels and chapters.**
 - Manage authors and users. These info includes but not limiting that people's primary email and spare email for accounts, nickname, contribution, his/her arts links and so on. **Administors can caveat or ban or delete authors and users.**
 - Manage temporary accounts.**Administors can ban or delete temporary accounts.**
 - An button for sending some info to some users by emails.

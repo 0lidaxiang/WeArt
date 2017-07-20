@@ -20,20 +20,21 @@ ModifyTime :  2017-06-30
 + [x] ~~11. Build the Server using two computer in teacher's lab.(2017-0714)~~
 
 ## 2. Development Phrase Plan
-+ [x] 1. ~~Build Database.(2017-07-20)~~
-+ [ ] 2. Author can login and register.
-+ [ ] 3. Author can create a novel and chapters.
-+ [ ] 4. Author can update the novel content.
-+ [ ] 5. Reader can login and register.
-+ [ ] 6. Reader can read books and chapters.
-+ [ ] 7. Reader can read different version content.
-+ [ ] 8. Differnt Readers can write one chapter and send different version for the same story.
-+ [ ] 9. Visitors can collect their favorite books.
-+ [ ] 10. Administrator registers and logins.
-+ [ ] 11. Administrator manages authors(register, login, refuse, lock account,delete account).
-+ [ ] 12. Administrator manages readers(register, login, refuse, lock account,delete account).
-+ [ ] 13. Administrator manages books.
-+ [ ] 14. The home pages and other functions.
++ [x] 1. ~~Design and Build Database.(2017-07-20)~~
++ [ ] 2. Design Use case diagram and Class diagram.(2017-07-22)
++ [ ] 3. Author can login and register.(2017-07-26)
++ [ ] 4. Author can create a novel and chapters.(2017-07-26)
++ [ ] 5. Author can update the novel content.(2017-08-02)
++ [ ] 6. Reader can login and register.(2017-08-09)
++ [ ] 7. Reader can read books and chapters.(2017-08-09)
++ [ ] 8. Reader can read different version content.(2017-08-09)
++ [ ] 9. Differnt Readers can write one chapter and send different version for the same story.(2017-08-09)
++ [ ] 10. Reader can collect their favorite books.
++ [ ] 11. Administrator registers and logins.
++ [ ] 12. Administrator manages authors(register, login, refuse, lock account,delete account).
++ [ ] 13. Administrator manages readers(register, login, refuse, lock account,delete account).
++ [ ] 14. Administrator manages books.
++ [ ] 15. The home pages and other functions.
 
 
 ## 3. Test Phrase Plan
