@@ -15,26 +15,27 @@ section 设计阶段
 section 开发阶段
 基本功能的DEMO               :done,    p9, 2017-06-26, 15d
 database设计与建立           :done,    p10, after p9, 10d
-作者注册登录                  :active   p11, after p10, 7d
-创建书籍和章节                :active   p12, after p11, 7d
-更新内容                     :active   p13, after p12, 7d
-读者注册登录                  :         p14, after p13, 7d
-书籍阅读                     :         p15, after p14, 7d
-多版本阅读                   :         p16, after p15, 3d
-读者参与写作                  :         p17, after p16, 5d
-读者收藏                     :         p18, after p17, 3d
-管理员注册登录                :         p19, after p18, 2d
-作者管理                     :         p20, after p19, 7d
-读者管理                     :         p21, after p20, 4d
-书籍管理                     :         p22, after p21, 4d
-首页等功能                   :         p23, after p22, 7d
-test以及fix bug             :         p24, after p23, 14d
+Design two Diagrams         :active,  p11, after p10, 10d
+作者注册登录                  :active,  p12, after p11, 7d
+创建书籍和章节                :active,  p13, after p12, 7d
+更新内容                     :active,  p14, after p13, 7d
+读者注册登录                  :         p15, after p14, 7d
+书籍阅读                     :         p16, after p15, 7d
+多版本阅读                   :          p17, after p16, 3d
+读者参与写作                  :         p18, after p17, 5d
+读者收藏                     :         p19, after p18, 3d
+管理员注册登录                :         p20, after p19, 2d
+作者管理                     :         p21, after p20, 7d
+读者管理                     :         p22, after p21, 4d
+书籍管理                     :         p23, after p22, 4d
+首页等功能                   :         p24, after p23, 7d
+test以及fix bug             :         p25, after p24, 14d
 
 
 section 收尾阶段
-服务器建设                   :         p25, 2017-10-15, 7d
-系统优化                     :         p26, after p25, 14d
-资料整理                     :         p27, after p25, 14d
+服务器优化                   :         p26, 2017-10-15, 7d
+系统优化                     :         p27, after p25, 14d
+资料整理                     :         p28, after p25, 14d
 
 %%这里是注释，
 %%请把上面的非注释内容粘贴到 http://knsv.github.io/mermaid/live_editor/ 网站上，即可获得甘特图，之后就可以截图或也可以下载 SVG 格式或者选择 VIEW 模式。另外一种办法是自己安装 mermaid 库进行编译这些代码。

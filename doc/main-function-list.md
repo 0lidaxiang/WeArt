@@ -1,7 +1,7 @@
 # Main-function List
 > Author: 李大祥
 StartTime :   2017-3-28
-ModifyTime :  2017-4-2
+ModifyTime :  2017-07-20
 
 ## 1. Reader (From Reader View)
 - Reader can see different kinds of novels collections from main website page.

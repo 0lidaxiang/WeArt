@@ -1,7 +1,7 @@
 # Plan and Process
 > Author: 李大祥
 StartTime : 2017-02-25
-ModifyTime :  2017-06-30
+ModifyTime :  2017-07-20
 
 ![project gantt chart](./project-gantt.png)
 > gantt chart的源代码在 WeArt.gantt 里面，把gantt chart 源代码粘贴到 [在线编辑器](http://knsv.github.io/mermaid/live_editor/) 上，即可获得上面的甘特图，之后就可以截图或也可以下载 SVG 格式或者选择 VIEW 模式。另外一种办法是自己安装 mermaid 库进行编译这些代码。
