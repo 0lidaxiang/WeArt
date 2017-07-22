@@ -13,7 +13,13 @@ The doc folder has Database Design(EER Model), function list,progress(include ga
 ### [Front Pages Design Picture](./doc/front_end_design)  
 
 ### Architecture Model
-![Architecture Model](./doc/architecture.png)
+![Architecture Model](./doc/architecture/architecture.png)
+
+### Use Case Diagram(From function view)
+![Use Case Diagram](./doc/architecture/use-case-diagram.png)
+
+### Class Diagram(From behavior view)
+![Class Diagram](./doc/architecture/view-class-diagram.png)
 
 ### EER Model Design
 ![EER Model Design Picture](./doc/database/eer-model.png)
