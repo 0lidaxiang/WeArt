@@ -10,7 +10,8 @@ The doc folder has Database Design(EER Model), function list,progress(include ga
 
 ### [Progress](./doc/progress.md)  
 ### [Main Function List](./doc/main-function-list.md)  
-### [Front Pages Design Picture](./doc/front_end_design)  
+### [Ideas](./doc/ideas-and-design.md)  
+### [Pictures Designed for Front-End](./doc/front_end_design)  
 
 ### Architecture Model
 ![Architecture Model](./doc/architecture/architecture.png)

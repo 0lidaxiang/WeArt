@@ -1,7 +1,7 @@
-# 专题技术构想与设计(Updating)
+# 专题初步构想与设计
 > Author: 李大祥
 StartTime : 2017-2-25-22：40
-ModifyTime :  2017-3-22
+ModifyTime :  2017-07-23
 
 ## 1. System Model
 **User  -  WebServer   -  GitServer**
@@ -18,15 +18,15 @@ Develop Enviroment : Fedora  25
 Database : Mariadb 10.1.21
 
 ## 3. Limition of Users 'Number on Linux
-Maximum user number by logging via SSH  IS NOT 
+Maximum user number by logging via SSH  IS NOT
 Maximum number of users on Linux.
 
 (In these case below , but maybe these **user's data will over Hundreds GB** and maybe use too much memory . So it needs tests.)
-How to know it : 
+How to know it :
 ```
 $ cat /proc/sys/kernel/pty/max
 ```
-How to modify it : 
+How to modify it :
 ```
 vi /etc/sysctl.conf
 kernel.pty.max = 5120
@@ -35,17 +35,17 @@ sysctl -p
 [资料来源1 - maximum user number by logging via SSH](http://unix.stackexchange.com/questions/73033/how-many-users-does-linux-support-being-logged-in-at-the-same-time-via-ssh)  
 [资料来源2 - Solution to modify](https://www.cyberciti.biz/tips/howto-linux-increase-pty-session.html)
 
-Maximum number of users on Linux : 
+Maximum number of users on Linux :
 **65.000 for 2.4 kernels, and 4 billion for 2.6 kernels.**
-[资料来源1](http://www.linuxquestions.org/questions/linux-newbie-8/what%27s-the-maximum-number-of-users-on-linux-258198/) 
-[资料来源2](http://serverfault.com/questions/201136/maximum-number-of-users-on-linux) 
+[资料来源1](http://www.linuxquestions.org/questions/linux-newbie-8/what%27s-the-maximum-number-of-users-on-linux-258198/)
+[资料来源2](http://serverfault.com/questions/201136/maximum-number-of-users-on-linux)
 
 Maximum number of  groups on Linux : 2.6 kernels ,  65000
 
 ## 4.How much hard disk space NEED
-Maybe people here have other own things like working, and playing computer games or dating . So it will write about 5000 chars during 10 days . 
+Maybe people here have other own things like working, and playing computer games or dating . So it will write about 5000 chars during 10 days .
 
-The result is that if we assume that a novel has 5.2 million chinese words(maybe some of these words are different version of same chapters) , we need about **100 days**  to finish a novel by  **one hundred** people. Assuming that there will be 10000 people joing this web site and writing something sometimes, it will be **create 300 novels in a year**. 
+The result is that if we assume that a novel has 5.2 million chinese words(maybe some of these words are different version of same chapters) , we need about **100 days**  to finish a novel by  **one hundred** people. Assuming that there will be 10000 people joing this web site and writing something sometimes, it will be **create 300 novels in a year**.
 
 10 Megabytes have about 5.2 million chinese words. In a year,it needs 3000 Megabytes, meaning 3GB.
 
@@ -59,7 +59,7 @@ On git server, we can put repository under this user's home folder , named ' sys
 Crete repository : Every time Need to modify   repository name in commands  ,according by user gave.
 Crete repository & Other operations : need verify user's identity and permisstion before logging in git server.
 
-Git Server Commands : 
+Git Server Commands :
 ```
 su
 yum install git-core
@@ -83,8 +83,3 @@ cat ~/.ssh/id_rsa.pub | ssh git@remote-server "mkdir -p ~/.ssh && cat >>  ~/.ssh
 ```
 
 Other Commands:
-
-
-
-
-
