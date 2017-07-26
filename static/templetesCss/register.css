@@ -1,0 +1,20 @@
+#login_form {
+  display: none;
+}
+
+#register_form {
+  display: block;
+}
+
+.fa {
+  display: inline-block;
+  top: 27 px;
+  left: 6 px;
+  position: relative;
+  color: #ccc;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding-left: 26 px;
+}

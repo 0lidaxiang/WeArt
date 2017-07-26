@@ -1,5 +1,7 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
+from django.http import HttpResponse
+from django.shortcuts import render
 
 class Reader:
 	def __init__(self):
@@ -33,4 +35,3 @@ class Reader:
 
 	def listInfo(self, pageNum):
 		pass
-

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Login </title>
+	<link href="/static/css/bootstrap.css" rel="stylesheet" />
+	<link href="/static/css/bootstrap-theme.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/static/templetesCss/indexBg.css" />
+	<link rel="stylesheet" type="text/css" href="/static/templetesCss/login.css" />
+</head>
+
+<body>
+	 {% include 'nav.html' %}
+
+	<div class="container">
+		<div class="row col-md-7 col-md-offset-2 col-sm-12">
+			<form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="login_form" action="/reader/loginReader/" method="post">
+				{% csrf_token %}
+				<h3 class="form-title">Login to your account</h3>
+				<div class="col-sm-9 col-md-9">
+					<div class="form-group">
+						<i class="fa fa-user fa-lg"></i>
+						<div class="input-group">
+							<span class="glyphicon glyphicon-user input-group-addon"></span>
+							<input class="form-control required" type="text" placeholder="Your registered Email" name="email" autofocus="autofocus" style="border-style:none" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<i class="fa fa-lock fa-lg"></i>
+						<div class="input-group">
+							<span class="glyphicon glyphicon-lock input-group-addon"></span>
+							<input class="form-control required" type="password" placeholder="Password" id="register_passwd" name="password" style="border-style:none" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="checkbox">
+                             <input type="checkbox" name="remember" value="1"/> Remember me
+                         </label>
+						<hr />
+						<a href="/register" id="register_btn" class="">Create an account</a>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-success pull-right" value="Login " />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

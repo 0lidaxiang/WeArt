@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title> Register </title>
+		<link href="/static/css/bootstrap.css" rel="stylesheet" />
+		<link href="/static/css/bootstrap-theme.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="/static/templetesCss/indexBg.css" />
+		<link rel="stylesheet" type="text/css" href="/static/templetesCss/register.css" />
+	</head>
+
+	<body>
+		{% include 'nav.html' %}
+
+		<div class="container">
+			<div class="row col-md-7 col-md-offset-2 col-sm-12">
+				<form class="form-horizontal col-sm-12 col-md-offset-3" id="register_form" action="/reader/registerReader/" method="post">
+					{% csrf_token %}
+					<h3 class="form-title">Sign up your account</h3>
+					<div class="col-sm-9 col-md-9">
+						<div class="form-group">
+							<i class="fa fa-user fa-lg"></i>
+							<div class="input-group">
+								<span class="glyphicon glyphicon-user input-group-addon"></span>
+          			<input class="form-control required" type="text" placeholder="Username" name="userName" autofocus="autofocus" style="border-style:none"/>
+        			</div>
+						</div>
+
+						<div class="form-group">
+							<i class="fa fa-lock fa-lg"></i>
+							<div class="input-group">
+								<span class="glyphicon glyphicon-lock input-group-addon"></span>
+          			<input class="form-control required" type="password" placeholder="Password" id="register_passwd" name="password" style="border-style:none"/>
+        			</div>
+						</div>
+
+						<div class="form-group">
+							<i class="fa fa-check fa-lg"></i>
+
+							<div class="input-group">
+								<span class="glyphicon glyphicon-ok input-group-addon"></span>
+          			<input class="form-control required" type="password" placeholder="Re-type Your Password" name="rpassword" style="border-style:none"/>
+        			</div>
+						</div>
+						<div class="form-group">
+							<i class="fa fa-envelope fa-lg"></i>
+
+							<div class="input-group">
+								<span class="glyphicon glyphicon-envelope input-group-addon"></span>
+          			<input class="form-control email" type="email" placeholder="Email" name="email" style="border-style:none"/>
+        			</div>
+						</div>
+						<div class="form-group">
+							<input type="submit" class="btn btn-success pull-right" value="Sign Up " />
+							<input type="button" class="btn btn-info pull-left" id="back_btn" value="Back" onclick="go_back()"/>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	function go_back() {
+		window.history.back();
+	}
+</script>

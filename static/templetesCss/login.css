@@ -1,0 +1,24 @@
+#login_form {
+  display: block;
+}
+
+#register_form {
+  display: none;
+}
+
+.fa {
+  display: inline-block;
+  top: 27 px;
+  left: 6 px;
+  position: relative;
+  color: #ccc;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding-left: 26 px;
+}
+
+.checkbox {
+  padding-left: 21 px;
+}

@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tool',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,9 +76,17 @@ WSGI_APPLICATION = 'WeArt.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',  # or use ' mysql.connector.django ''
+        'NAME': 'weArt',
+        'USER': 'root',
+        'PASSWORD': 'lidaxiang',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
 
@@ -104,3 +113,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'weartRegister@gmail.com'
+EMAIL_HOST_PASSWORD = 'weArt2017'  #not email's password ,this is Authentication code.
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DOMAIN = "127.0.0.1:8000"

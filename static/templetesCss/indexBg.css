@@ -1,0 +1,9 @@
+body {
+  background: url(/static/img/register-1200.jpg) no-repeat center center fixed;
+  background-size: cover;
+  font-size: 16 px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
