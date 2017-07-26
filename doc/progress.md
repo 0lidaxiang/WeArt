@@ -17,15 +17,15 @@ ModifyTime :  2017-07-20
 + [x] ~~8. Write the plan and process textbook.~~
 + [x] ~~9. Organize the all commands and test excuted by python.(2017-0701)~~
 + [x] ~~10. Write a demo that it can show control novel's version.(2017-0706)~~
-+ [x] ~~11. Build the Server using two computer in teacher's lab.(2017-0714)~~
++ [x] ~~11. Deploy server using two computer in teacher's lab.(2017-0714)~~
 
 ## 2. Development Phrase Plan
 + [x] 1. ~~Design and Build Database.(2017-07-20)~~
-+ [ ] 2. Design Use case diagram and Class diagram.(2017-07-22)
-+ [ ] 3. Author can login and register.(2017-07-26)
-+ [ ] 4. Author can create a novel and chapters.(2017-07-26)
-+ [ ] 5. Author can update the novel content.(2017-08-02)
-+ [ ] 6. Reader can login and register.(2017-08-09)
++ [x] 2. ~~Design Use case diagram and Class diagram.(2017-07-22)~~
++ [x] 3. ~~Reader can login and register.(2017-07-26)~~
++ [ ] 4. Author can be enabled.(2017-07-29)
++ [ ] 5. Author can create a novel and chapters.(2017-08-02)
++ [ ] 6. Author can update the novel content.(2017-08-05)
 + [ ] 7. Reader can read books and chapters.(2017-08-09)
 + [ ] 8. Reader can read different version content.(2017-08-09)
 + [ ] 9. Differnt Readers can write one chapter and send different version for the same story.(2017-08-09)
@@ -38,11 +38,10 @@ ModifyTime :  2017-07-20
 
 
 ## 3. Test Phrase Plan
-+ [ ] 1. Function Test & Unit Test
-+ [ ] 2. Pressure Test
-+ [ ] 3. Load Test
-+ [ ] 4. All Test results books.
++ [ ] 1. Unit test & Fix bugs
++ [ ] 2. Pressure test & Optimize server
++ [ ] 3. Load test & Optimize server
 
 ## 4. Others
-+ [ ] 1. Write the Readme file in github and other files.
++ [ ] 1. Write the documents in github and others needed by this study.Maybe need to rewrite some documents by traditional characters.
 + [ ] 2. Modify all texts about this project.ex: sql files, process file, server enviroment building shell...

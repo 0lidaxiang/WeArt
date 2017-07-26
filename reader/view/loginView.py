@@ -16,7 +16,7 @@ def loginReader(request):
         readerObj = reader.objects.get(email=email)
         if readerObj.status == "allowed":
             if passwd == readerObj.passwd:
-                return HttpResponse(readerObj.name)
+                return render(request, 'reader/readerManage.html')
             else:
                 return render(request, 'reader/loginFail.html', {'message': u'密码错误！请重新登录！'})
         elif readerObj.status == "abuse":

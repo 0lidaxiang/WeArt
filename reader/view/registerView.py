@@ -34,7 +34,7 @@ def registerReader(request):
             'WeArt注册身份验证',
             message,
             'weartregister@gmail.com',
-            ['0lidaxiang@gmail.com'],
+            [email],
             fail_silently=False,
         )
 

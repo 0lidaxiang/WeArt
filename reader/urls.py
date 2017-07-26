@@ -5,6 +5,7 @@ from django.contrib import admin
 from reader.view.baseView import  *
 from reader.view.loginView import  *
 from reader.view.registerView import  *
+from reader.view.readerManageView import  *
 
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
@@ -12,5 +13,6 @@ urlpatterns = [
     url('^register/$', register),
     url('^loginReader/$', loginReader),
     url('^registerReader/', registerReader),
+    url('^index/', readerManageIndex),
     url('^activate/(.+)/$', activeReader),
 ]

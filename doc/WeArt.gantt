@@ -13,29 +13,30 @@ Project Gantt Chart                             :done,    p7, 2017-05-11, 4d
 Make front-end design to pictures               :active,  p8, 2017-06-26, 20d
 
 section 开发阶段
-DEMO                                            :done,    p9, 2017-06-26, 15d
+DEMO & Deploy server                            :done,    p9, 2017-06-26, 15d
 Design database                                 :done,    p10, after p9, 9d
 Design two Diagrams                             :done,    p11, after p10, 3d
-Author Login                                    :active,  p12, after p11, 4d
-Create books and chaptes                        :active,  p13, after p12, 7d
-Update contents                                 :active,  p14, after p13, 7d
-读者注册登录                 :         p15, after p14, 7d
-书籍阅读                     :         p16, after p15, 7d
-多版本阅读                   :          p17, after p16, 3d
-读者参与写作                  :         p18, after p17, 5d
-读者收藏                     :         p19, after p18, 3d
-管理员注册登录                :         p20, after p19, 2d
-作者管理                     :         p21, after p20, 7d
-读者管理                     :         p22, after p21, 4d
-书籍管理                     :         p23, after p22, 4d
-首页等功能                   :         p24, after p23, 7d
-test以及fix bug             :         p25, after p24, 14d
+Reader register and login                       :done,    p12, after p11, 4d
+Author function enabled                         :active,  p13, after p12, 3d
+Create books and chaptes                        :active,  p14, after p13, 7d
+Update contents                                 :active,  p15, after p14, 7d
+Reading content                                 :active,  p16, after p15, 7d
+Differnt Readers write one chapter              :         p17, after p16, 5d
+Read different version content                  :         p18, after p17, 3d
+Readers collect favorite books                  :         p19, after p18, 3d
+Administrator registers and logins              :         p20, after p19, 2d
+Administrator manages authors                   :         p21, after p20, 7d
+Administrator manages readers                   :         p22, after p21, 4d
+Administrator manages books                     :         p23, after p22, 4d
+The home pages and other functions.             :         p24, after p23, 7d
+Unit test & Fix bugs                            :         p25, after p24, 14d
 
 
 section 收尾阶段
-服务器优化                   :         p26, 2017-10-15, 7d
-系统优化                     :         p27, after p25, 14d
-资料整理                     :         p28, after p25, 14d
+Pressure test & Optimize server                 :         p26, 2017-10-15, 7d
+Load Test                                       :         p27, after p25, 14d
+Load test & Optimize server                     :         p28, after p25, 14d
+Write the needed documents                      :         p29, after p28, 7d
 
 %%这里是注释，
 %%请把上面的非注释内容粘贴到 http://knsv.github.io/mermaid/live_editor/ 网站上，即可获得甘特图，之后就可以截图或也可以下载 SVG 格式或者选择 VIEW 模式。另外一种办法是自己安装 mermaid 库进行编译这些代码。
