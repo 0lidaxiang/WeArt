@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ReaderIndex</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="/static/datatables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="/static/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/static/dist/css/skins/skin-blue.min.css">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <!-- Main Header -->
+    {% include 'reader/readerManageHeader.html' %}
+    <!-- Left side column. contains the logo and sidebar -->
+    {% include 'reader/readerManageLeftSidebar.html' %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+        我的收藏
+        <small>我收藏的好書</small>
+      </h1>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-body"  id="box">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Rendering engine</th>
+                      <th>Browser</th>
+                      <th>Platform(s)</th>
+                      <th>Engine version</th>
+                      <th>CSS grade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Trident</td>
+                      <td>Internet Explorer 4.0
+                      </td>
+                      <td>Win 95+</td>
+                      <td> 4</td>
+                      <td>X</td>
+                    </tr>
+                    <tr>
+                      <td>Trident</td>
+                      <td>Internet Explorer 5.0
+                      </td>
+                      <td>Win 95+</td>
+                      <td>5</td>
+                      <td>C</td>
+                    </tr>
+                    <tr>
+                      <td>Gecko</td>
+                      <td>Mozilla 1.4</td>
+                      <td>Win 95+ / OSX.1+</td>
+                      <td>1.4</td>
+                      <td>A</td>
+                    </tr>
+                    <tr>
+                      <td>Gecko</td>
+                      <td>Mozilla 1.5</td>
+                      <td>Win 95+ / OSX.1+</td>
+                      <td>1.5</td>
+                      <td>A</td>
+                    </tr>
+                    <tr>
+                      <td>Gecko</td>
+                      <td>Mozilla 1.6</td>
+                      <td>Win 95+ / OSX.1+</td>
+                      <td>1.6</td>
+                      <td>A</td>
+                    </tr>
+                    <tr>
+                      <td>Gecko</td>
+                      <td>Mozilla 1.7</td>
+                      <td>Win 98+ / OSX.1+</td>
+                      <td>1.7</td>
+                      <td>A</td>
+                    </tr>
+                    <tr>
+                      <td>Gecko</td>
+                      <td>Mozilla 1.8</td>
+                      <td>Win 98+ / OSX.1+</td>
+                      <td>1.8</td>
+                      <td>A</td>
+                    </tr>
+                    <tr>
+                      <td>Gecko</td>
+                      <td>Seamonkey 1.1</td>
+                      <td>Win 98+ / OSX.2+</td>
+                      <td>1.8</td>
+                      <td>A</td>
+                    </tr>
+                    <tr>
+                      <td>KHTML</td>
+                      <td>Konqureror 3.5</td>
+                      <td>KDE 3.5</td>
+                      <td>3.5</td>
+                      <td>A</td>
+                    </tr>
+                    <tr>
+                      <td>Tasman</td>
+                      <td>Internet Explorer 4.5</td>
+                      <td>Mac OS 8-9</td>
+                      <td>-</td>
+                      <td>X</td>
+                    </tr>
+                    <tr>
+                      <td>Misc</td>
+                      <td>PSP browser</td>
+                      <td>PSP</td>
+                      <td>-</td>
+                      <td>C</td>
+                    </tr>
+                    <tr>
+                      <td>Other browsers</td>
+                      <td>All others</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>U</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Rendering engine</th>
+                      <th>Browser</th>
+                      <th>Platform(s)</th>
+                      <th>Engine version</th>
+                      <th>CSS grade</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+  </div>
+  <!-- ./wrapper -->
+</body>
+
+</html>
+
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/dist/js/app.min.js"></script>
+<script src="/static/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/static/templatesJs/readerManage.js"></script>
+
+<script>
+  jQuery(document).ready(function($) {
+    $('#myRecordLi').addClass('active');
+  });
+  $(function() {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+
+  function enableAuthor() {
+    var obj = "<h1>启用作者账号功能</h1>";
+    $("#box").replaceWith(obj);
+  }
+</script>

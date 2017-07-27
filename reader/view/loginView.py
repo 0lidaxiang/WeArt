@@ -16,10 +16,10 @@ def loginReader(request):
         readerObj = reader.objects.get(email=email)
         if readerObj.status == "allowed":
             if passwd == readerObj.passwd:
-                return render(request, 'reader/readerManage.html')
+                return render(request, 'reader/readerIndex.html')
             else:
-                return render(request, 'reader/loginFail.html', {'message': u'密码错误！请重新登录！'})
+                return render(request, 'reader/loginFail.html', {'message': u'密碼錯誤！請重新登錄！'})
         elif readerObj.status == "abuse":
-            return render(request, 'reader/loginFail.html', {'message': u'您尚未验证邮箱！请前往注册邮箱验证身份！'})
+            return render(request, 'reader/loginFail.html', {'message': u'您尚未驗證郵箱！請前往注冊郵箱驗證身份！'})
     except reader.DoesNotExist:
-        return render(request, 'reader/loginFail.html', {'message': u'用户不存在！请重新登录！'})
+        return render(request, 'reader/loginFail.html', {'message': u'用戶不存在！請重新登錄！'})
