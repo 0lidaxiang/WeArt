@@ -36,7 +36,7 @@ class author(models.Model):
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
             readObj = reader.objects.get(id=idReaderArg)
-            authorObj = self(id=createId(15, idReaderArg), status = "active", idReader_id = "66a66ccc05778a84f0e6", createTime=nowTime)
+            authorObj = self(id=createId(15, idReaderArg), status = "active", idReader_id = idReaderArg, createTime=nowTime)
             authorObj.save()
             return True
         except self.DoesNotExist:
