@@ -10,8 +10,9 @@ urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
 
     # The following two urls are not required to be verifing login status.
-    url('^login/$', TemplateView.as_view(template_name="reader/login.html")),
     url('^register/$', TemplateView.as_view(template_name="reader/register.html")),
+    url('^login/$', login),
+    url('^logout/$', logout),
     url('^loginReader/$', loginReader),
     url('^registerReader/', registerReader),
     url('^activate/(.+)/$', activeReader),
@@ -20,4 +21,6 @@ urlpatterns = [
     url('^booksRecorded/$', booksRecorded),
     url('^readingHistory/$', readingHistory),
     url('^readerSetting/$', readerSetting),
+    url('^getEnableAuthorStatus/$', getEnableAuthorStatus),
+    url('^modifyAuthorStatus/$', modifyAuthorStatus),
 ]

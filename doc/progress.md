@@ -23,7 +23,7 @@ ModifyTime :  2017-07-20
 + [x] 1. ~~Design and Build Database.(2017-07-20)~~
 + [x] 2. ~~Design Use case diagram and Class diagram.(2017-07-22)~~
 + [x] 3. ~~Reader can login and register.(2017-07-26)~~
-+ [ ] 4. Author can be enabled.(2017-07-29)
++ [x] 4. ~~Author can be enabled.(2017-07-30)~~
 + [ ] 5. Author can create a novel and chapters.(2017-08-02)
 + [ ] 6. Author can update the novel content.(2017-08-05)
 + [ ] 7. Reader can read books and chapters.(2017-08-09)

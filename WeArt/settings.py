@@ -113,6 +113,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+
+# session settings
+SESSION_COOKIE_AGE = 600
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+# SESSION_FILE_PATH = "/home/lidaxiang/WeArtSession"
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'weartRegister@gmail.com'
 EMAIL_HOST_PASSWORD = 'weArt2017'  #not email's password ,this is Authentication code.

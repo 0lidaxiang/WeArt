@@ -17,7 +17,7 @@ DEMO & Deploy server                            :done,    p9, 2017-06-26, 15d
 Design database                                 :done,    p10, after p9, 9d
 Design two Diagrams                             :done,    p11, after p10, 3d
 Reader register and login                       :done,    p12, after p11, 4d
-Author function enabled                         :active,  p13, after p12, 3d
+Author function enabled                         :done,    p13, after p12, 4d
 Create books and chaptes                        :active,  p14, after p13, 7d
 Update contents                                 :active,  p15, after p14, 7d
 Reading content                                 :active,  p16, after p15, 7d
