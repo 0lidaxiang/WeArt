@@ -1,4 +1,7 @@
 function getEnableAuthorStatus() {
+  $('#authorFunctionTreeLi').addClass('active');
+  $('#authorFunctionTreeUl').addClass('menu-open');
+
   $.ajax({
       url: '/reader/getEnableAuthorStatus/',
       type: 'POST',
@@ -23,7 +26,7 @@ function getEnableAuthorStatus() {
           $("#mainContent").replaceWith(obj);
         }
       } else {
-        var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-3 col-sm-12'><h4>Server 錯誤，請重新登錄後嘗試</h4></div></div></div>";
+        var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-12 col-sm-12'><h4>Server 錯誤，請重新登錄後嘗試</h4></div></div></div>";
         $("#mainContent").replaceWith(obj);
       }
     })
@@ -35,7 +38,6 @@ function getEnableAuthorStatus() {
 
 function modifyAuthorStatus() {
   var nextAuthorStatus = $('#nextAuthorStatus').val();
-  console.log(nextAuthorStatus);
   $.ajax({
       url: '/reader/modifyAuthorStatus/',
       type: 'POST',

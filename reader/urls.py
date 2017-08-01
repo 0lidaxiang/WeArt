@@ -1,10 +1,12 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
+
 from reader.view.baseView import  *
 from reader.view.loginView import  *
 from reader.view.registerView import  *
 from reader.view.readerManageView import  *
-from django.views.generic import TemplateView
+from author.view.artsManageView import  *
 
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
@@ -23,4 +25,8 @@ urlpatterns = [
     url('^readerSetting/$', readerSetting),
     url('^getEnableAuthorStatus/$', getEnableAuthorStatus),
     url('^modifyAuthorStatus/$', modifyAuthorStatus),
+
+    url('^artsManage/$', artsManage),
+    url('^createNewBook/$', createNewBook),
+    url('^createNewChapter/$', createNewChapter),
 ]
