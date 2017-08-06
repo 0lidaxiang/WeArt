@@ -42,9 +42,9 @@ def sendVerifyEmail(userName, email):
         token_confirm = Token(django_settings.SECRET_KEY)
         token = token_confirm.generate_validate_token(email)
 
-        # port 8000
+        # port 80
         ipAddress = socket.gethostbyname(socket.gethostname())
-        message = "\n".join([u'{0} , 歡迎加入 WeArt !'.format(userName), u'\n\n請訪問以下鏈接，完成用戶驗證:', '/'.join([ipAddress+":8000",'reader/activate',token]), u'\n\n如果您沒有注冊 WeArt，請忽略該郵件！',])
+        message = "\n".join([u'{0} , 歡迎加入 WeArt !'.format(userName), u'\n\n請訪問以下鏈接，完成用戶驗證:', '/'.join([ipAddress + ":80",'reader/activate',token]), u'\n\n如果您沒有注冊 WeArt，請忽略該郵件！',])
 
         send_mail(
             'WeArt注冊身份驗證',

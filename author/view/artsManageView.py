@@ -5,26 +5,31 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from author.models import author
 
-def artsManage(request):
+def authorStatus(request):
     if "readerId" in request.session:
-        return render(request, 'author/artsManage.html')
+        return render(request, 'author/authorStatus.html')
     else:
         return render(request, 'reader/login.html')
+
+def gotoAuthorPages(request, pageName):
+    if "readerId" in request.session:
+        if request.session["authorStatus"] == "active":
+            return 'author/' + pageName + '.html'
+        elif request.session["authorStatus"] == "inactive":
+            return 'author/authorStatus.html'
+        else:
+            return 'reader/login.html'
+    else:
+        return 'reader/login.html'
+
+def artsManage(request):
+    return render(request,  gotoAuthorPages(request, "artsManage"))
 
 def createNewBook(request):
-    if "readerId" in request.session:
-        return render(request, 'author/createNewBook.html')
-    else:
-        return render(request, 'reader/login.html')
+    return render(request,  gotoAuthorPages(request, "createNewBook"))
 
 def createNewChapter(request):
-    if "readerId" in request.session:
-        return render(request, 'author/createNewChapter.html')
-    else:
-        return render(request, 'reader/login.html')
+    return render(request,  gotoAuthorPages(request, "createNewChapter"))
 
 def createNewContent(request):
-    if "readerId" in request.session:
-        return render(request, 'author/createNewContent.html')
-    else:
-        return render(request, 'reader/login.html')
+    return render(request,  gotoAuthorPages(request, "createNewContent"))

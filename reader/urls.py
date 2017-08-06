@@ -26,7 +26,7 @@ urlpatterns = [
     url('^getEnableAuthorStatus/$', getEnableAuthorStatus),
     url('^modifyAuthorStatus/$', modifyAuthorStatus),
 
-    url('^artsManage/$', artsManage),
-    url('^createNewBook/$', createNewBook),
-    url('^createNewChapter/$', createNewChapter),
+    # url('^artsManage/$', artsManage),
+    # url('^createNewBook/$', createNewBook),
+    # url('^createNewChapter/$', createNewChapter),
 ]
