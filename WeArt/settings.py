@@ -25,7 +25,7 @@ SECRET_KEY = '0(5p$h=5c3fve1n$b9j!#fuhif7a4-2jn#^ze(=jt%bz^(+q%r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.122.248']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.122.248', '192.168.122.43']
 
 
 # Application definition
@@ -125,3 +125,6 @@ EMAIL_HOST_PASSWORD = 'weArt2017'  #not email's password ,this is Authentication
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DOMAIN = "127.0.0.1:8000"
+
+# This is remote GIT server ip address.And it needs to be changed when changing git-server.
+GIT_SERVER_IP = "192.168.122.149"

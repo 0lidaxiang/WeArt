@@ -56,6 +56,7 @@ DROP TABLE IF EXISTS `weArt`.`author` ;
 
 CREATE TABLE IF NOT EXISTS `weArt`.`author` (
   `id` VARCHAR(15) NOT NULL,
+  `passwd` VARCHAR(100) NULL,
   `status` VARCHAR(20) NULL,
   `createTime` DATETIME NULL,
   `idReader_id` VARCHAR(20) NULL,

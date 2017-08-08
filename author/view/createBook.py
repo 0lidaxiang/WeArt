@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
+from django.conf import settings
 import subprocess
 import paramiko
 import sys
@@ -21,12 +23,13 @@ def createABook(request):
         # get new book name and create respository in remote server
         request.encoding='utf-8'
         bookname = ""
-        if 'newbookname' in request.GET:
-            bookname = request.GET['newbookname']
+        if 'newBookName' in request.GET:
+            bookname = request.GET['newBookName']
         else:
             bookname = ""
 
-        gitserver_ip = "192.168.122.149"
+        gitserver_ip = settings.GIT_SERVER_IP
+        print gitserver_ip
         username = "git"
         git_server_passwd = "git"
         ssh = paramiko.SSHClient()
@@ -37,7 +40,8 @@ def createABook(request):
             ssh.connect(gitserver_ip,22,username, git_server_passwd,timeout=5)
             if bookname == "":
                 context['mes_success'] = 'failed'
-                return render(request, 'result.html', context)
+                # return render(request, 'result.html', context)
+                return JsonResponse(context)
             else:
                 cmd = "cd ~;mkdir " + bookname + ".git"
                 ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(cmd)
@@ -52,7 +56,8 @@ def createABook(request):
 
                 if erroutput.find("does not exist") > -1:
                     context['mes_success'] = 'does not exist user named ' + loginId + "."
-                    return render(request, 'result.html', context)
+                    # return render(request, 'result.html', context)
+                    return JsonResponse(context)
                 else:
                     context['mes_success'] = 'Your new book 《' + bookname + "》 is created success." + " " + stdoutput
                     myhome_path = "/home/" + loginId
@@ -65,14 +70,18 @@ def createABook(request):
                         # repo = Repo.init('/home/lidaxiang/' + bookname)
                         # repo.clone(clone_path)
 
-                    return render(request, 'author/createNewBook.html', context)
+                    # return render(request, 'author/createNewBook.html', context)
+                    return JsonResponse(context)
         except Exception as e:
             context['mes_success'] = e
             # data['status'] = 'fail'
             # return render(request, 'reader/login.html')
-            return render(request, 'author/createNewBook.html', context)
+            # return render(request, 'author/createNewBook.html', context)
+            return JsonResponse(context)
+
 
         # return render(request, 'result.html', context)
         # return render(request, 'author/createNewBook.html')
     else:
-        return render(request, 'reader/login.html')
+        # return render(request, 'reader/login.html')
+        return JsonResponse(context)

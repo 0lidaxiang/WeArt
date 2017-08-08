@@ -10,6 +10,7 @@ class author(models.Model):
         db_table = 'author'
 
     id = models.CharField(max_length=15,primary_key=True)
+    passwd = models.CharField(max_length=100)
     status = models.CharField(max_length=20)
     # idReader = models.CharField(max_length=20)
     createTime = models.DateTimeField(max_length=50)
