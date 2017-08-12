@@ -5,29 +5,24 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from author.models import author
 
-def readerIndex(request):
+def gotoReaderPages(request, pageName):
+    # when login, it will check reader's status after readerId
     if "readerId" in request.session:
-        return render(request, 'reader/readerIndex.html')
+        return 'reader/' + pageName + '.html'
     else:
-        return render(request, 'reader/login.html')
+        return 'reader/login.html'
+
+def readerIndex(request):
+    return render(request,  gotoReaderPages(request, "readerIndex"))
 
 def booksRecorded(request):
-    if "readerId" in request.session:
-        return render(request, 'reader/booksRecorded.html')
-    else:
-        return render(request, 'reader/login.html')
+    return render(request,  gotoReaderPages(request, "booksRecorded"))
 
 def readingHistory(request):
-    if "readerId" in request.session:
-        return render(request, 'reader/readingHistory.html')
-    else:
-        return render(request, 'reader/login.html')
+    return render(request,  gotoReaderPages(request, "readingHistory"))
 
 def readerSetting(request):
-    if "readerId" in request.session:
-        return render(request, 'reader/readerSetting.html')
-    else:
-        return render(request, 'reader/login.html')
+    return render(request,  gotoReaderPages(request, "readerSetting"))
 
 def getEnableAuthorStatus(request):
     try:

@@ -29,7 +29,7 @@ def registerReader(request):
         else:
             return render(request, 'reader/registerFail.html', {'message': u"您填寫的郵箱已經被注冊！請更換郵箱地址重新注冊！"})
     except reader.DoesNotExist:
-        test1 = reader(id = createId(20, userName),name = userName,passwd = createId(96,password),email = email,status = "abuse",createTime = nowTime)
+        test1 = reader(id = createId(20, userName),name = userName,passwd = createId(96,password),email = email,status = "allowed",createTime = nowTime)
         test1.save()
 
         if sendVerifyEmail(userName, email):

@@ -115,8 +115,9 @@ STATICFILES_DIRS = (
 
 
 # session settings
-SESSION_COOKIE_AGE = 600
+SESSION_COOKIE_AGE = 60*60*24
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # SESSION_FILE_PATH = "/home/lidaxiang/WeArtSession"
 
 EMAIL_HOST = 'smtp.gmail.com'

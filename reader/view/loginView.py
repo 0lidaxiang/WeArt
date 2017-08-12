@@ -41,6 +41,9 @@ def loginReader(request):
                         return render(request, 'reader/loginFail.html', {'message': u'密碼錯誤！請重新登錄！'})
                 elif readerObj.status == "abuse":
                     return render(request, 'reader/loginFail.html', {'message': u'您尚未驗證郵箱！請前往注冊郵箱驗證身份！'})
+                else :
+                    mes = '您的帳號狀態異常，無法登錄，目前狀態爲：' + str(readerObj.status) + '請聯繫管理員或重新註冊。'
+                    return render(request, 'reader/loginFail.html', {'message': mes})
             except reader.DoesNotExist:
                 return render(request, 'reader/loginFail.html', {'message': u'用戶不存在！請重新登錄！'})
         else:
