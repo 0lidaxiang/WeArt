@@ -129,3 +129,8 @@ DOMAIN = "127.0.0.1:8000"
 
 # This is remote GIT server ip address.And it needs to be changed when changing git-server.
 GIT_SERVER_IP = "192.168.122.149"
+GIT_SERVER_USER = "lidaxiang"
+GIT_SERVER_USERPASSWD = "lidaxiang"
+
+# script file name
+SCRIPT_MKDIR = " mkdir_from_web_server.py"

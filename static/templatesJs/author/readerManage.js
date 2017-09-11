@@ -11,11 +11,13 @@ function  updateHtml(resp){
       } else if (resp.authorStatus == "inactive") {
         obj = obj + "class='btn btn-success pull-left' value='啟用' onclick='modifyAuthorStatus()' /><input type='hidden' id='nextAuthorStatus' value='active'/></div><div class='col-md-6 col-sm-12'><h4>您已經關閉作者賬號功能,啓用後才可以查看作者專區</h4></div></div></div>";
       } else {
+        console.log(resp.authorStatus)
         obj = obj + "class='btn btn-success pull-left' value='啟用' onclick='modifyAuthorStatus()' /><input type='hidden' id='nextAuthorStatus' value='active'/></div><div class='col-md-3 col-sm-12'><h4>您的作者賬號功能處於 " + resp.authorStatus + "狀態，請聯繫客服</h4></div></div></div>";
       }
       $("#mainContent").replaceWith(obj);
     }
   } else {
+    console.log(resp.message);
     var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-3 col-sm-12'><h4>Server 錯誤，請重新登錄後嘗試</h4></div></div></div>";
     $("#mainContent").replaceWith(obj);
   }
