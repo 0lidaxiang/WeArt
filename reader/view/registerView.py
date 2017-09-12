@@ -4,8 +4,9 @@ import socket
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from time import gmtime, strftime
+from time import localtime, strftime
 from django.conf import settings as django_settings
+# from django.conf import settings
 from django.core.mail import send_mail
 from tool.Token import *
 from tool.tools import *
@@ -16,7 +17,9 @@ def registerReader(request):
     userName =  unicode(request.POST['userName'])
     password = request.POST['password']
     email = unicode(request.POST['email'])
-    nowTime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
+    print nowTime
+    print nowTime
 
     userName = userName.encode('utf8')
     try:
@@ -29,7 +32,7 @@ def registerReader(request):
         else:
             return render(request, 'reader/registerFail.html', {'message': u"您填寫的郵箱已經被注冊！請更換郵箱地址重新注冊！"})
     except reader.DoesNotExist:
-        test1 = reader(id = createId(20, userName),name = userName,passwd = createId(96,password),email = email,status = "allowed",createTime = nowTime)
+        test1 = reader(id = createId(20, userName),name = userName,passwd = createId(96,password),email = email,status = "abuse",createTime = nowTime)
         test1.save()
 
         if sendVerifyEmail(userName, email):
@@ -43,8 +46,8 @@ def sendVerifyEmail(userName, email):
         token = token_confirm.generate_validate_token(email)
 
         # port 80
-        ipAddress = socket.gethostbyname(socket.gethostname())
-        message = "\n".join([u'{0} , 歡迎加入 WeArt !'.format(userName), u'\n\n請訪問以下鏈接，完成用戶驗證:', '/'.join([ipAddress + ":80",'reader/activate',token]), u'\n\n如果您沒有注冊 WeArt，請忽略該郵件！',])
+        ipAddress = django_settings.REGISTER_SERVER_DOMAIN
+        message = "\n".join([u'{0} , 歡迎加入 WeArt !'.format(userName), u'\n\n請訪問以下鏈接，完成用戶驗證:', '/'.join([ipAddress,'reader/activate',token]), u'\n\n如果您沒有注冊 WeArt，請忽略該郵件！',])
 
         send_mail(
             'WeArt注冊身份驗證',

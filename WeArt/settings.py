@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import socket
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -101,7 +102,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -134,3 +135,6 @@ GIT_SERVER_USERPASSWD = "lidaxiang"
 
 # script file name
 SCRIPT_MKDIR = " mkdir_from_web_server.py"
+
+# the port when user register to become reader
+REGISTER_SERVER_DOMAIN = socket.gethostbyname(socket.gethostname()) + ":8000"

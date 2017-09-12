@@ -17,7 +17,7 @@
 		<div class="row">
 				<div class="center-block text-center">
 					<h3>{{message}}</h3>
-					<h3><span id="leftTime">3</span>秒後跳轉到注冊頁面。</h3>
+					<h3><span id="leftTime">5</span>秒後跳轉到注冊頁面。</h3>
 					<p>如果沒有跳轉，請點擊 <a href="/reader/register">这里</a> 進入注冊頁面</p>
 				</div>
 		</div>
@@ -36,7 +36,7 @@
 
 	function count() {
 		obj = document.getElementById('leftTime');
-		s = 3;
+		s = 5;
 		setInterval(function() {
 			obj.innerHTML = s--;
 			if (s == 0) {
