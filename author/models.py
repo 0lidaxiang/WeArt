@@ -57,32 +57,33 @@ class author(models.Model):
             passwdVal = createId(15, idVal)
             authorObj = self(id=idVal,passwd=passwdVal, status = "active", idReader_id = idReaderArg, createTime=nowTime)
             authorObj.save()
-
-            # create a account in git-server
-            if createGitServerAccount(idVal , passwdVal):
-                return True
-            else:
-                result = self.objects.deleteRecord(idReaderArg)
-                return False
-        except self.DoesNotExist:
-            return False
-
-    def createGitServerAccount(idAuthorArg, passwdArg):
-        try:
-            git_server_passwd = authorPasswd
-            ssh = paramiko.SSHClient()
-            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            ssh.connect(gitserver_ip,22,username, git_server_passwd,timeout=5)
-
-            cmd = "sudo useradd " + idAuthorArg
-            ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(cmd)
-            ssh_stdin.write(passwdArg)
-            ssh.close()
-
             return True
+            # create a account in git-server
+            # if createGitServerAccount(idVal , passwdVal):
+                # return True
+            # else:
+                # result = self.objects.deleteRecord(idReaderArg)
+                # return False
         except Exception as e:
             print e
             return False
+
+    # def createGitServerAccount(idAuthorArg, passwdArg):
+    #     try:
+    #         git_server_passwd = authorPasswd
+    #         ssh = paramiko.SSHClient()
+    #         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    #         ssh.connect(gitserver_ip,22,username, git_server_passwd,timeout=5)
+    #
+    #         cmd = "sudo useradd " + idAuthorArg
+    #         ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(cmd)
+    #         ssh_stdin.write(passwdArg)
+    #         ssh.close()
+    #
+    #         return True
+    #     except Exception as e:
+    #         print e
+    #         return False
 
     @classmethod
     def deleteRecord(self, idReaderArg):

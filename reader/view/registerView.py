@@ -18,8 +18,6 @@ def registerReader(request):
     password = request.POST['password']
     email = unicode(request.POST['email'])
     nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
-    print nowTime
-    print nowTime
 
     userName = userName.encode('utf8')
     try:
