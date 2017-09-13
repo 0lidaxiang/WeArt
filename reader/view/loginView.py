@@ -32,6 +32,7 @@ def loginReader(request):
                         if isAuthor:
                             if authorStatus == "active":
                                 request.session["authorStatus"] = "active"
+                                request.session["authorId"] = author.getId(readerObj.id)
                             else:
                                 request.session["authorStatus"] = authorStatus
                         else:
