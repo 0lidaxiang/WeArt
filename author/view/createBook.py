@@ -6,13 +6,11 @@ from django.conf import settings
 from git import Repo
 from author.models import author
 
-# import time
-# import subprocess
 import paramiko
 import sys
 import json
 import os
-import shutil
+# import shutil
 import datetime
 import subprocess
 
@@ -29,6 +27,8 @@ def createABook(request):
             loginId = "lidaxiang"
             loginpasswd = "lidaxiang"
 
+            webServerHomeDir = "/home/" + loginId
+
             # get new book name and create respository in remote server
             request.encoding='utf-8'
             bookName = ""
@@ -42,13 +42,13 @@ def createABook(request):
                         context['message'] = "The bookName is null."
                     else:
                         # gitserver_ip needs changes when changing git server
-                        gitserver_ip = settings.GIT_SERVER_IP_1
+                        gitserver_ip = settings.GIT_SERVER_IP
                         gitserver_user = settings.GIT_SERVER_USER
                         gitserver_userPasswd = settings.GIT_SERVER_USERPASSWD
 
                         now = datetime.datetime.now()
                         monthClassedDirName = "/home/" + gitserver_user + "/" + str(now.year) + "/" + str(now.month)
-                        localMonthClassedDir= "/home/" + "lidaxiang" + "/" + str(now.year) + "/" + str(now.month)
+                        localMonthClassedDir= webServerHomeDir + "/" + str(now.year) + "/" + str(now.month)
 
                         ssh = paramiko.SSHClient()
                         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -60,7 +60,7 @@ def createABook(request):
                             res,mes = gitInitInGitServer(gitserver_ip,gitserver_user,gitserver_userPasswd,monthClassedDirName,bookName)
                             if res:
                                 # make directory webServer
-                                res,mes = mkClassedDirInWebServer()
+                                res,mes = mkClassedDirInWebServer(webServerHomeDir)
                                 if res:
                                     # git clone from gitServer
                                     clone_path = gitserver_user + "@" + gitserver_ip + ":" + monthClassedDirName + "/" + bookName + ".git"
@@ -100,14 +100,11 @@ def createABook(request):
     else:
         return render(request, 'reader/login.html')
 
-def mkClassedDirInWebServer():
-    # loginName = "lidaxiang"
+def mkClassedDirInWebServer(operateDir):
     script_mkdir = settings.SCRIPT_MKDIR
-    loginId = "lidaxiang"
-
     try:
         # cmd = "git config --global user.email user1@gmail.com; git config --global user.name user1"
-        cmd = "cd /home/" + loginId + ";python " + script_mkdir
+        cmd = "cd " + operateDir + ";python " + script_mkdir
         p = subprocess.Popen(cmd, shell=True)
         (stdoutput,erroutput) = p.communicate()
         return True,""
@@ -115,7 +112,6 @@ def mkClassedDirInWebServer():
         return False,str(e)
 
 def mkClassedDirInGitServer(gitserver_ip, gitserver_user, gitserver_userPasswd,monthClassedDirName,bookName):
-    # loginName = "lidaxiang"
     script_mkdir = settings.SCRIPT_MKDIR
 
     try:
@@ -137,10 +133,6 @@ def mkClassedDirInGitServer(gitserver_ip, gitserver_user, gitserver_userPasswd,m
         return False,str(e)
 
 def gitInitInGitServer(gitserver_ip, gitserver_user, gitserver_userPasswd,monthClassedDirName,bookName):
-    # loginName = "lidaxiang"
-    script_mkdir = settings.SCRIPT_MKDIR
-    print monthClassedDirName
-
     try:
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())

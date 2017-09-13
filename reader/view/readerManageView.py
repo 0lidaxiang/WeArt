@@ -40,7 +40,7 @@ def getEnableAuthorStatus(request):
             data['status'] = 'success'
             isAuthor = False
             authorStatus = ""
-            if author.isExistIdReader(readerId):
+            if author.isExist(readerId):
                 isAuthor = True
                 request.session["isAuthor"] = True
 
@@ -73,7 +73,7 @@ def modifyAuthorStatus(request):
             readerId = request.session["readerId"]
             data['status'] = 'success'
             # check thatreader is or is not a author
-            if author.isExistIdReader(readerId):
+            if author.isExist(readerId):
                 # when reader is a author
                 request.session["isAuthor"] = True
                 data['isAuthor'] = True
@@ -105,14 +105,26 @@ def modifyAuthorStatus(request):
                     data['message'] = "讀取作者狀態異常!"
                     request.session["authorStatus"] = authorStatus
             else:
-                # when reader is not a reader
-                data['status'] = "fail"
-                data['authorStatus'] = "inactive"
-                data['message'] = "您的請求是非法的！不存在該讀者！"
-                data['isAuthor'] = False
+                # when reader is not a author
+                # step1: add data to table "author" in database
+                if  author.addAuthor(readerId):
+                    data['status'] = "success"
+                    data['isAuthor'] = True
+                    data['authorStatus'] = "active"
+                    data['message'] = ""
 
-                request.session["isAuthor"] = False
-                request.session["authorStatus"] = "inactive"
+                    request.session["isAuthor"] = True
+                    request.session["authorStatus"] = "active"
+                else:
+                    # This needs to check and delete error data in database.
+
+                    data['status'] = "fail"
+                    data['isAuthor'] = False
+                    data['authorStatus'] = "inactive"
+                    data['message'] = "啓用作者功能失敗！添加資料到數據庫中失敗！請刷新後重新嘗試或聯繫網站管理員！"
+
+                    request.session["isAuthor"] = False
+                    request.session["authorStatus"] = "inactive"
 
         except Exception as e:
             data['status'] = 'fail'

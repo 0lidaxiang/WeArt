@@ -26,7 +26,7 @@ def loginReader(request):
                         request.session["readerId"] = readerObj.id
 
                         # check user is or not author and author's status
-                        isAuthor = author.isExistIdReader(readerObj.id)
+                        isAuthor = author.isExist(readerObj.id)
                         request.session["isAuthor"] = isAuthor
                         authorStatus = author.getStatus(readerObj.id)
                         if isAuthor:

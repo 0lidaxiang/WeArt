@@ -17,7 +17,7 @@ class author(models.Model):
     idReader = models.ForeignKey(reader)
 
     @classmethod
-    def isExistIdReader(self, idReaderArg):
+    def isExist(self, idReaderArg):
         try:
             result = self.objects.get(idReader_id=idReaderArg)
             return True
