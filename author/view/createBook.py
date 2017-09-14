@@ -5,12 +5,12 @@ from django.shortcuts import render
 from django.conf import settings
 from git import Repo
 from author.models import author
+from book.models import book
 
 import paramiko
 import sys
 import json
 import os
-# import shutil
 import datetime
 import subprocess
 
@@ -34,7 +34,8 @@ def createABook(request):
             bookName = ""
             if 'newBookName' in request.GET:
                 userInputBookName = request.GET['newBookName']
-                bookName = request.session['authorId'] + "_" + userInputBookName
+                authorId = request.session['authorId']
+                bookName = authorId + "_" + userInputBookName
 
                 try:
                     if bookName == "":
@@ -67,8 +68,18 @@ def createABook(request):
                                     clone_cmd = " git clone " + clone_path
                                     os.chdir(localMonthClassedDir)
                                     os.system("sshpass -p " + gitserver_userPasswd + clone_cmd)
-                                    context['status'] = "success"
-                                    context['message'] = '您已經成功創建 《' + userInputBookName + "》。請點選左側菜單功能來創建您的章節。"
+
+                                    # write data into database
+                                    res,mes = book.add(bookName, gitserver_ip ,authorId)
+                                    if res:
+                                        context['status'] = "success"
+                                        context['message'] = '您已經成功創建 《' + userInputBookName + "》。請點選左側菜單功能來創建您的章節。"
+                                    else:
+                                        # This needs to delete the all folder
+                                        # This needs to delete the data in database if exists.
+
+                                        context['status'] = "fail"
+                                        context['message'] = '創建 《' + userInputBookName + "》失敗。" + mes + "。請刷新後重試！"
                                 else:
                                     # This needs to delete the all folder
 

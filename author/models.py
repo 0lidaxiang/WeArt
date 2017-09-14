@@ -12,7 +12,6 @@ class author(models.Model):
     id = models.CharField(max_length=15,primary_key=True)
     passwd = models.CharField(max_length=100)
     status = models.CharField(max_length=20)
-    # idReader = models.CharField(max_length=20)
     createTime = models.DateTimeField(max_length=50)
     idReader = models.ForeignKey(reader)
 
@@ -52,38 +51,15 @@ class author(models.Model):
     def addAuthor(self, idReaderArg):
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-            readObj = reader.objects.get(id=idReaderArg)
+            # readObj = reader.objects.get(id=idReaderArg)
             idVal = createId(15, idReaderArg)
             passwdVal = createId(15, idVal)
             authorObj = self(id=idVal,passwd=passwdVal, status = "active", idReader_id = idReaderArg, createTime=nowTime)
             authorObj.save()
             return True
-            # create a account in git-server
-            # if createGitServerAccount(idVal , passwdVal):
-                # return True
-            # else:
-                # result = self.objects.deleteRecord(idReaderArg)
-                # return False
         except Exception as e:
             print e
             return False
-
-    # def createGitServerAccount(idAuthorArg, passwdArg):
-    #     try:
-    #         git_server_passwd = authorPasswd
-    #         ssh = paramiko.SSHClient()
-    #         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    #         ssh.connect(gitserver_ip,22,username, git_server_passwd,timeout=5)
-    #
-    #         cmd = "sudo useradd " + idAuthorArg
-    #         ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(cmd)
-    #         ssh_stdin.write(passwdArg)
-    #         ssh.close()
-    #
-    #         return True
-    #     except Exception as e:
-    #         print e
-    #         return False
 
     @classmethod
     def deleteRecord(self, idReaderArg):
