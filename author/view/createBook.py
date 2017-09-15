@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 from django.http import JsonResponse
@@ -34,14 +35,15 @@ def createABook(request):
             bookName = ""
             if 'newBookName' in request.GET:
                 userInputBookName = request.GET['newBookName']
-                authorId = request.session['authorId']
-                bookName = authorId + "_" + userInputBookName
 
                 try:
-                    if bookName == "":
+                    if userInputBookName == "":
                         context['status'] = "fail"
                         context['message'] = "The bookName is null."
                     else:
+                        authorId = request.session['authorId']
+                        bookName = authorId + "_" + userInputBookName
+                        
                         # gitserver_ip needs changes when changing git server
                         gitserver_ip = settings.GIT_SERVER_IP
                         gitserver_user = settings.GIT_SERVER_USER
