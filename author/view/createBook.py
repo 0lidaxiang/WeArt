@@ -25,10 +25,12 @@ def createABook(request):
             readerId = request.session["readerId"]
             # get this user's account
             # authorStatus = author.getStatus(readerId)
-            loginId = "lidaxiang"
-            loginpasswd = "lidaxiang"
 
-            webServerHomeDir = "/home/" + loginId
+            # loginId = "lidaxiang"
+            # loginpasswd = "lidaxiang"
+
+            # serverHomeDir = "/home/" + loginId
+            serverHomeDir = "/home"
 
             # get new book name and create respository in remote server
             request.encoding='utf-8'
@@ -43,15 +45,15 @@ def createABook(request):
                     else:
                         authorId = request.session['authorId']
                         bookName = authorId + "_" + userInputBookName
-                        
+
                         # gitserver_ip needs changes when changing git server
                         gitserver_ip = settings.GIT_SERVER_IP
                         gitserver_user = settings.GIT_SERVER_USER
                         gitserver_userPasswd = settings.GIT_SERVER_USERPASSWD
 
                         now = datetime.datetime.now()
-                        monthClassedDirName = "/home/" + gitserver_user + "/" + str(now.year) + "/" + str(now.month)
-                        localMonthClassedDir= webServerHomeDir + "/" + str(now.year) + "/" + str(now.month)
+                        monthClassedDirName = serverHomeDir + "/" + str(now.year) + "/" + str(now.month)
+                        # localMonthClassedDir= serverHomeDir + "/" + str(now.year) + "/" + str(now.month)
 
                         ssh = paramiko.SSHClient()
                         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -63,16 +65,16 @@ def createABook(request):
                             res,mes = gitInitInGitServer(gitserver_ip,gitserver_user,gitserver_userPasswd,monthClassedDirName,bookName)
                             if res:
                                 # make directory webServer
-                                res,mes = mkClassedDirInWebServer(webServerHomeDir)
+                                res,mes = mkClassedDirInWebServer(serverHomeDir)
                                 if res:
                                     # git clone from gitServer
                                     clone_path = gitserver_user + "@" + gitserver_ip + ":" + monthClassedDirName + "/" + bookName + ".git"
                                     clone_cmd = " git clone " + clone_path
-                                    os.chdir(localMonthClassedDir)
+                                    os.chdir(monthClassedDirName)
                                     os.system("sshpass -p " + gitserver_userPasswd + clone_cmd)
 
                                     # write data into database
-                                    res,mes = book.add(bookName, gitserver_ip ,authorId)
+                                    res,mes = book.add(bookName, gitserver_ip, monthClassedDirName, authorId)
                                     if res:
                                         context['status'] = "success"
                                         context['message'] = '您已經成功創建 《' + userInputBookName + "》。請點選左側菜單功能來創建您的章節。"

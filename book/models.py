@@ -4,7 +4,7 @@
 from django.db import models
 from tool.tools import createId
 from time import gmtime,strftime
-from author.models import author
+from book.models import book
 
 # Create your models here.
 class book(models.Model):
@@ -17,7 +17,7 @@ class book(models.Model):
     remoteIP = models.CharField(max_length=20)
     status = models.CharField(max_length=20)
     createTime = models.DateTimeField(max_length=50)
-    idAuthor = models.ForeignKey(author)
+    idBook = models.ForeignKey(book)  # in database,this variable is named "idBook_id"
 
     @classmethod
     def getValue(self, bookIdArg, returnArg):
@@ -26,27 +26,27 @@ class book(models.Model):
             if returnArg == "id":
                 return obj.id
             elif returnArg == "name":
-                return obj.id
+                return obj.name
             elif returnArg == "remoteIP":
-                return obj.id
+                return obj.remoteIP
             elif returnArg == "status":
-                return obj.id
+                return obj.status
             elif returnArg == "createTime":
-                return obj.id
+                return obj.createTime
             elif returnArg == "idAuthor_id":
-                return obj.id
+                return obj.idAuthor_id
             else:
                 return "fail", "錯誤1001: book表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:
                 return "fail", "錯誤1002: 讀取book表錯誤。"
 
     @classmethod
-    def add(self, name, remoteIP ,idAuthor_id):
+    def add(self, name, remoteIP, location, idAuthor_id):
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
             idVal = createId(20, name)
 
-            obj = self(id=idVal, name=name, remoteIP = remoteIP, status = "active", createTime=nowTime, idAuthor_id=idAuthor_id)
+            obj = self(id=idVal, name=name, remoteIP = remoteIP, location=location, status = "active", createTime=nowTime, idAuthor_id=idAuthor_id)
             obj.save()
             return True, ""
         except Exception as e:

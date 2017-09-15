@@ -7,6 +7,7 @@ jQuery(document).ready(function($) {
 function createChapter() {
   var bookName = $('[name="bookname"]').val();
   var chapterName = $('[name="chapterName"]').val();
+  var chapterOrder = $('[name="chapterOrder"]').val();
 
   $.ajax({
       url: '/chapter/createChapter/',
@@ -15,6 +16,7 @@ function createChapter() {
       data: {
         "bookName" : bookName,
         "chapterName" : chapterName,
+        "chapterOrder" : chapterOrder,
       }
     })
     .done(function(resp) {

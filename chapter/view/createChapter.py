@@ -23,9 +23,10 @@ def createChapter(request):
             sys.setdefaultencoding('utf8')
 
             readerId = request.session["readerId"]
-            loginId = "lidaxiang"
+            # loginId = "lidaxiang"
 
-            webServerHomeDir = "/home/" + loginId
+            # webServerHomeDir = "/home/" + loginId
+            webServerHomeDir = "/home"
 
             # get new book name and create respository in remote server
             request.encoding='utf-8'
@@ -46,22 +47,38 @@ def createChapter(request):
                                 context['status'] = "fail"
                                 context['message'] = "The chapter name is null."
                             else:
-                                authorId = request.session['authorId']
-                                bookName = authorId + "_" + userInputBookName
+                                if 'chapterOrder' in request.GET:
+                                    userInputChapterNumber = request.GET['chapterOrder']
 
-                                # step1: struct the chapter file name
-                                # bookName_number_chapterName
-                                # now = datetime.datetime.now()
-                                # monthClassedDirName = "/home/" + gitserver_user + "/" + str(now.year) + "/" + str(now.month)
-                                # localMonthClassedDir= webServerHomeDir + "/" + str(now.year) + "/" + str(now.month)
-                                #
-                                # res,mes = touchChapterFile(webServerHomeDir)
-                                # if res:
-                                #     pass
-                                # else:
-                                #     context['status'] = "fail"
-                                #     context['message'] = mes
-                                return JsonResponse(context)
+                                    if userInputChapterNumber == "":
+                                        context['status'] = "fail"
+                                        context['message'] = "The chapter number is null."
+                                    else:
+
+                                        authorId = request.session['authorId']
+                                        bookName = authorId + "_" + userInputBookName
+
+                                        # step1: get operateDir and struct the chapter file name
+                                        operateDir = book.getValue(bookName, "location")
+                                        chapterFileName = bookName + "_" + userInputChapterNumber
+                                        # step2: create a chapter file in webServer
+`                                       res, mes = touchChapterFile(operateDir, chapterFileName)
+                                        if res:
+                                            # step3: git commit this chapter file to gitServer
+                                            res, mes = gitCommitChapter(operateDir, chapterFileName, commitContent)
+                                            if res:
+                                                # step 4: write relative data into database
+
+                                                # bookName_number_chapterName
+                                                # now = datetime.datetime.now()
+                                                # monthClassedDirName = "/home/" + gitserver_user + "/" + str(now.year) + "/" + str(now.month)
+                                                # localMonthClassedDir= webServerHomeDir + "/" + str(now.year) + "/" + str(now.month)
+                                            else:
+                                                context['status'] = "fail"
+                                                context['message'] = mes
+                                        else:
+                                            context['status'] = "fail"
+                                            context['message'] = mes
                         else:
                             context['status'] = "fail"
                             context['message'] = "The chapterName variable is not in request.GET."
@@ -77,13 +94,33 @@ def createChapter(request):
     else:
         return render(request, 'reader/login.html')
 
-def touchChapterFile(operateDir):
-    script_mkdir = settings.SCRIPT_MKDIR
+def touchChapterFile(operateDir, fileName):
     try:
         # cmd = "git config --global user.email user1@gmail.com; git config --global user.name user1"
-        cmd = "cd " + operateDir + ";python " + script_mkdir
+        cmd = "cd " + operateDir + ";touch " + fileName
         p = subprocess.Popen(cmd, shell=True)
         (stdoutput,erroutput) = p.communicate()
+        return True,""
+    except Exception as e:
+        return False,str(e)
+
+def gitCommitChapter(operateDir, fileName, userName, userEmail, commitContent):
+    try:
+        cmd1 = "cd " + operateDir
+        cmd2 = "; git config --local user.email " + userEmail + "; git config --local user.name " + userName
+        cmd = cmd1 + cmd2
+        p = subprocess.Popen(cmd, shell=True)
+        (stdoutput,erroutput) = p.communicate()
+
+        # if gi config success
+            # repo = Repo(operateDir)
+            # # 获取版本库暂存区
+            # index = repo.index
+            # # 添加修改文件
+            # index.add([fileName])
+            # # 提交修改到本地仓库
+            # index.commit(commitContent)
+
         return True,""
     except Exception as e:
         return False,str(e)
