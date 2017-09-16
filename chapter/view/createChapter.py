@@ -5,8 +5,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.conf import settings
 from git import Repo
-from author.models import author
 from book.models import book
+from chapter.models import chapter
 
 import paramiko
 import sys
@@ -15,7 +15,7 @@ import os
 import datetime
 import subprocess
 
-def createChapter(request):
+def createAChapter(request):
     context = {}
     if "readerId" in request.session:
         if request.session["authorStatus"] == "active":
@@ -54,31 +54,64 @@ def createChapter(request):
                                         context['status'] = "fail"
                                         context['message'] = "The chapter number is null."
                                     else:
-
                                         authorId = request.session['authorId']
-                                        bookName = authorId + "_" + userInputBookName
 
-                                        # step1: get operateDir and struct the chapter file name
-                                        operateDir = book.getValue(bookName, "location")
-                                        chapterFileName = bookName + "_" + userInputChapterNumber
-                                        # step2: create a chapter file in webServer
-`                                       res, mes = touchChapterFile(operateDir, chapterFileName)
+                                        # get the book id and check whether it exists by bookname and idAuthor_id
+                                        res, statusNumber, idBook = book.getIdByNameAndAuthor(userInputBookName, authorId)
                                         if res:
-                                            # step3: git commit this chapter file to gitServer
-                                            res, mes = gitCommitChapter(operateDir, chapterFileName, commitContent)
+                                            # bookName = authorId + "_" + userInputBookName
+                                            # step0: check the book is or not has this chapter
+                                            res,statusNumber,mes = chapter.getValue(idBook, "chapterOrder")
                                             if res:
-                                                # step 4: write relative data into database
-
-                                                # bookName_number_chapterName
-                                                # now = datetime.datetime.now()
-                                                # monthClassedDirName = "/home/" + gitserver_user + "/" + str(now.year) + "/" + str(now.month)
-                                                # localMonthClassedDir= webServerHomeDir + "/" + str(now.year) + "/" + str(now.month)
-                                            else:
                                                 context['status'] = "fail"
-                                                context['message'] = mes
+                                                context['message'] = "本書已創建該章節！請檢查章節列表後輸入後續章節序號"
+                                            else:
+                                                if statusNumber == 140003:
+                                                    context['status'] = "fail"
+                                                    context['message'] = "查詢錯誤，所要查詢的內容不存在！"
+                                                elif statusNumber == 140004:
+                                                    context['status'] = "success"
+                                                    # context['message'] = "本書不存在該章節！"
+
+                                                    # step1: get operateDir and struct the chapter file name
+                                                    res,mes = book.getValue(idBook, "location")
+                                                    if res:
+                                                        operateDir = mes
+                                                        chapterFileName = bookName + "_" + userInputChapterNumber
+                                                        # step2: create a chapter file in webServer
+                                                        res,mes = touchChapterFile(operateDir,chapterFileName)
+                                                        if res:
+                                                            # step3: git commit this chapter file to gitServer
+                                                            res, mes = gitCommitChapter(operateDir, chapterFileName, commitContent)
+                                                            if res:
+                                                                # step 4: write relative data into database
+
+                                                                # bookName_number_chapterName
+                                                                # now = datetime.datetime.now()
+                                                                # monthClassedDirName = "/home/" + gitserver_user + "/" + str(now.year) + "/" + str(now.month)
+                                                                # localMonthClassedDir= webServerHomeDir + "/" + str(now.year) + "/" + str(now.month)
+                                                                pass
+                                                            else:
+                                                                context['status'] = "fail"
+                                                                context['message'] = mes
+                                                        else:
+                                                            context['status'] = "fail"
+                                                            context['message'] = mes
+                                                    else:
+                                                        context['status'] = "fail"
+                                                        context['message'] = mes
+                                                else:
+                                                    context['status'] = "fail"
+                                                    context['message'] = "服務器錯誤：" + statusNumber + mes
                                         else:
                                             context['status'] = "fail"
-                                            context['message'] = mes
+
+                                            if statusNumber == 130004:
+                                                context['message'] = "不存在該本書！請重新確定您輸入的書名和賬號"
+                                            elif statusNumber == 130005:
+                                                context['message'] = "服務器錯誤：" + statusNumber + mes
+                                            else:
+                                                context['message'] = "服務器錯誤：" + statusNumber + mes
                         else:
                             context['status'] = "fail"
                             context['message'] = "The chapterName variable is not in request.GET."

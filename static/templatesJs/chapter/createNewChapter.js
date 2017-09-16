@@ -4,13 +4,13 @@ jQuery(document).ready(function($) {
   $('#createChaptersLi').addClass('active');
 });
 
-function createChapter() {
+function createAChapter() {
   var bookName = $('[name="bookname"]').val();
   var chapterName = $('[name="chapterName"]').val();
   var chapterOrder = $('[name="chapterOrder"]').val();
 
   $.ajax({
-      url: '/chapter/createChapter/',
+      url: '/chapter/createAChapter/',
       type: 'GET',
       dataType: 'json',
       data: {

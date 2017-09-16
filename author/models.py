@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from reader.models import reader
 from tool.tools import createId
-from time import gmtime, strftime
+from time import localtime, strftime
 
 # Create your models here.
 class author(models.Model):
@@ -10,7 +13,6 @@ class author(models.Model):
         db_table = 'author'
 
     id = models.CharField(max_length=15,primary_key=True)
-    passwd = models.CharField(max_length=100)
     status = models.CharField(max_length=20)
     createTime = models.DateTimeField(max_length=50)
     idReader = models.ForeignKey(reader)
@@ -31,13 +33,13 @@ class author(models.Model):
         except self.DoesNotExist:
             return ""
 
-    @classmethod
-    def getPasswd(self, idArg):
-        try:
-            authorObj = self.objects.get(id=idArg)
-            return authorObj.passwd
-        except self.DoesNotExist:
-            return ""
+    # @classmethod
+    # def getPasswd(self, idArg):
+    #     try:
+    #         authorObj = self.objects.get(id=idArg)
+    #         return authorObj.passwd
+    #     except self.DoesNotExist:
+    #         return ""
 
     @classmethod
     def getStatus(self, idReaderArg):
@@ -50,11 +52,12 @@ class author(models.Model):
     @classmethod
     def addAuthor(self, idReaderArg):
         try:
-            nowTime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+            nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
             # readObj = reader.objects.get(id=idReaderArg)
             idVal = createId(15, idReaderArg)
-            passwdVal = createId(15, idVal)
-            authorObj = self(id=idVal,passwd=passwdVal, status = "active", idReader_id = idReaderArg, createTime=nowTime)
+            # passwdVal = createId(15, idVal)
+            authorObj = self(id=idVal, status = "active", idReader_id = idReaderArg, createTime=nowTime)
+            # authorObj = self(id=idVal,passwd=passwdVal, status = "active", idReader_id = idReaderArg, createTime=nowTime)
             authorObj.save()
             return True
         except Exception as e:

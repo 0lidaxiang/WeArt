@@ -3,49 +3,51 @@
 
 from django.db import models
 from tool.tools import createId
-from time import gmtime,strftime
-from author.models import author
+from time import localtime,strftime
+# from author.models import author
+from book.models import book
 
 # Create your models here.
-class book(models.Model):
+class chapter(models.Model):
     class Meta:
-        app_label = "book"
-        db_table = 'book'
+        app_label = "chapter"
+        db_table = 'chapter'
 
     id = models.CharField(max_length=20,primary_key=True)
     name = models.CharField(max_length=100)
-    remoteIP = models.CharField(max_length=20)
+    fileName = models.CharField(max_length=20)
+    chapterOrder = models.CharField(max_length=20)
     status = models.CharField(max_length=20)
     createTime = models.DateTimeField(max_length=50)
-    idAuthor = models.ForeignKey(author)
+    idBook = models.ForeignKey(book)  # in database,this variable is named "idBook_id"
 
     @classmethod
     def getValue(self, bookIdArg, returnArg):
         try:
             obj = self.objects.get(id=bookIdArg)
             if returnArg == "id":
-                return obj.id
+                return True, obj.id
             elif returnArg == "name":
-                return obj.name
+                return True, obj.name
             elif returnArg == "fileName":
-                return obj.fileName
+                return True, obj.fileName
             elif returnArg == "chapterOrder":
-                return obj.chapterOrder
+                return True, obj.chapterOrder
             elif returnArg == "status":
-                return obj.status
+                return True, obj.status
             elif returnArg == "createTime":
-                return obj.createTime
+                return True, obj.createTime
             elif returnArg == "idAuthor_id":
-                return obj.idAuthor_id
+                return True, obj.idAuthor_id
             else:
-                return "fail", "錯誤1001: book表中不存在該屬性，returnArg錯誤。"
+                return False, 140003, "錯誤 : book表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:
-                return "fail", "錯誤1002: 讀取book表錯誤。"
+                return False, 140004, "錯誤 : 讀取book表錯誤。"
 
     @classmethod
     def add(self, name, remoteIP, location, idAuthor_id):
         try:
-            nowTime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+            nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
             idVal = createId(20, name)
 
             obj = self(id=idVal, name=name, remoteIP = remoteIP, location=location, status = "active", createTime=nowTime, idAuthor_id=idAuthor_id)

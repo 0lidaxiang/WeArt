@@ -95,6 +95,7 @@ def modifyAuthorStatus(request):
                         data['authorStatus'] = "active"
                         data['message'] = ""
                         request.session["authorStatus"] = "active"
+                        request.session["authorId"] = str(author.getId(readerId))
                     else:
                         data['status'] = "fail"
                         data['authorStatus'] = "inactive"
