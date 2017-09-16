@@ -60,7 +60,10 @@ def logout(request):
         # delete session
         del request.session["readerId"] # if not exists, report error
         del request.session["isAuthor"] # if not exists, report error
-        del request.session["authorId"] # if not exists, report error
+
+        if 'authorId' in request.session:
+            del request.session["authorId"] # if not exists, report error
+
         del request.session["authorStatus"] # if not exists, report error
         request.session.flush()
         return render(request, 'reader/login.html')

@@ -76,30 +76,59 @@ def createAChapter(request):
                                                     # step1: get operateDir and struct the chapter file name
                                                     res,mes = book.getValue(idBook, "location")
                                                     if res:
-                                                        operateDir = mes
-                                                        chapterFileName = bookName + "_" + userInputChapterNumber
-                                                        # step2: create a chapter file in webServer
-                                                        res,mes = touchChapterFile(operateDir,chapterFileName)
-                                                        if res:
-                                                            # step3: git commit this chapter file to gitServer
-                                                            res, mes = gitCommitChapter(operateDir, chapterFileName, commitContent)
-                                                            if res:
-                                                                # step 4: write relative data into database
+                                                        operateDir = mes + "/" + idBook
 
-                                                                # bookName_number_chapterName
-                                                                # now = datetime.datetime.now()
-                                                                # monthClassedDirName = "/home/" + gitserver_user + "/" + str(now.year) + "/" + str(now.month)
-                                                                # localMonthClassedDir= webServerHomeDir + "/" + str(now.year) + "/" + str(now.month)
-                                                                pass
+                                                        # check the chapterCount
+                                                        chapterCount = 10000
+                                                        res,mes = book.getValue(idBook, "chapterCount")
+                                                        if res:
+                                                            if int(userInputChapterNumber) == (mes+1):
+                                                                chapterCount = mes
                                                             else:
                                                                 context['status'] = "fail"
-                                                                context['message'] = mes
+                                                                context['message'] = "章節序號不正確！請確認後重新填寫章節序號"
+                                                                return JsonResponse(context)
                                                         else:
                                                             context['status'] = "fail"
-                                                            context['message'] = mes
+                                                            context['message'] = "查詢章節序號失敗！請刷新後重試"
+                                                            return JsonResponse(context)
+
+                                                        chapterNowNumber = chapterCount+1
+                                                        chapterFileName = idBook + "_" + str(chapterNowNumber) + ".txt"
+
+                                                        # step2: create a chapter file in webServer
+                                                        res,mes = touchChapterFile(operateDir, chapterFileName)
+                                                        if res:
+                                                            # step3: git commit this chapter file to gitServer
+                                                            commitContent = "add the chapter " + str(chapterNowNumber)
+                                                            res, mes = gitCommitChapter(operateDir, chapterFileName, "userName", "userName@gmail.com", commitContent)
+                                                            if res:
+                                                                # step 4: write relative data into database
+                                                                # chapter table and book.chapterCount
+                                                                res, mes = book.modify(idBook, "chapterCount", chapterNowNumber)
+                                                                if res:
+                                                                    pass
+                                                                else:
+                                                                    context['status'] = "fail"
+                                                                    context['message'] = "0 : " + mes
+                                                                    return JsonResponse(context)
+
+                                                                res, mes = chapter.add(userInputChapterName, chapterFileName, chapterNowNumber, idBook)
+                                                                if res:
+                                                                    context['status'] = "success"
+                                                                    context['message'] = "您已經成功新增章節 : " + "第" + str(chapterNowNumber) + "章，" + userInputChapterName
+                                                                else:
+                                                                    context['status'] = "fail"
+                                                                    context['message'] = "1 : " + mes
+                                                            else:
+                                                                context['status'] = "fail"
+                                                                context['message'] = "2 : commit failed. " + mes
+                                                        else:
+                                                            context['status'] = "fail"
+                                                            context['message'] = "3 : Touching chapter file fails." + mes
                                                     else:
                                                         context['status'] = "fail"
-                                                        context['message'] = mes
+                                                        context['message'] = "4 : Getting book's location fails. " + mes
                                                 else:
                                                     context['status'] = "fail"
                                                     context['message'] = "服務器錯誤：" + statusNumber + mes
@@ -146,13 +175,13 @@ def gitCommitChapter(operateDir, fileName, userName, userEmail, commitContent):
         (stdoutput,erroutput) = p.communicate()
 
         # if gi config success
-            # repo = Repo(operateDir)
-            # # 获取版本库暂存区
-            # index = repo.index
-            # # 添加修改文件
-            # index.add([fileName])
-            # # 提交修改到本地仓库
-            # index.commit(commitContent)
+        repo = Repo(operateDir)
+        # 获取版本库暂存区
+        index = repo.index
+        # 添加修改文件
+        index.add([fileName])
+        # 提交修改到本地仓库
+        index.commit(commitContent)
 
         return True,""
     except Exception as e:

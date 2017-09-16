@@ -45,17 +45,28 @@ class chapter(models.Model):
                 return False, 140004, "錯誤 : 讀取book表錯誤。"
 
     @classmethod
-    def add(self, name, remoteIP, location, idAuthor_id):
+    def add(self, name, fileName, chapterOrder, idBook_id):
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
             idVal = createId(20, name)
 
-            obj = self(id=idVal, name=name, remoteIP = remoteIP, location=location, status = "active", createTime=nowTime, idAuthor_id=idAuthor_id)
+            obj = self(id=idVal, name=name, fileName = fileName, chapterOrder=chapterOrder, status = "active", createTime=nowTime, idBook_id=idBook_id)
             obj.save()
             return True, ""
         except Exception as e:
             return False, str(e)
 
+    # @classmethod
+    # def modify(self, name, remoteIP, location, idAuthor_id):
+    #     try:
+    #         nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
+    #         idVal = createId(20, name)
+    #
+    #         obj = self(id=idVal, name=name, remoteIP = remoteIP, location=location, status = "active", createTime=nowTime, idAuthor_id=idAuthor_id)
+    #         obj.save()
+    #         return True, ""
+    #     except Exception as e:
+    #         return False, str(e)
 
     @classmethod
     def delete(self, bookIdArg):
