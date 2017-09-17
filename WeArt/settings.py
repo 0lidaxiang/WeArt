@@ -129,7 +129,7 @@ EMAIL_USE_TLS = True
 DOMAIN = "127.0.0.1:8000"
 
 # This is remote GIT server ip address.And it needs to be changed when changing git-server.
-GIT_SERVER_IP = "192.168.122.171"
+GIT_SERVER_IP = "192.168.122.171"   # gitserver_ip needs changes when changing git server
 GIT_SERVER_USER = "lidaxiang"
 GIT_SERVER_USERPASSWD = "lidaxiang"
 
