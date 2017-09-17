@@ -44,7 +44,11 @@ The book module number is <font color=#DAA520 size=4> 13 </font>.
 |---|---|---|---|---|---|---|
 | 1 | model.py | getIdByNameAndAuthor | 0003 | | |
 | 2 | model.py | getIdByNameAndAuthor | 0004 | | |
-| 2 | model.py | getIdByNameAndAuthor | 0005 | | |
+| 3 | model.py | getIdByNameAndAuthor | 0005 | | |
+| 4 | model.py | getValue | 0000 | |
+| 5 | model.py | getValue | 0001 | |
+| 6 | model.py | getValue | 0002 | |
+| 8 | | | | | |
 
 ## Function Number In chapter module
 The chapter module number is <font color=#DAA520 size=4> 14 </font>.  
@@ -53,7 +57,9 @@ The chapter module number is <font color=#DAA520 size=4> 14 </font>.
 |---|---|---|---|---|---|---|  
 | 1 | model.py | getValue | 0003 | |
 | 2 | model.py | getValue | 0004 | |
-| 3 | | | | | |
+| 3 | model.py | getValue | 0005 | |
+| 3 | model.py | getValue | 0000 | |
+| 4 | | | | | |
 
 ## Function Number In tool module
 The tool module number is <font color=#DAA520 size=4>15</font>.

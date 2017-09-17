@@ -17,144 +17,154 @@ import subprocess
 
 def createAChapter(request):
     context = {}
-    if "readerId" in request.session:
-        if request.session["authorStatus"] == "active":
-            reload(sys)
-            sys.setdefaultencoding('utf8')
 
-            readerId = request.session["readerId"]
-            # loginId = "lidaxiang"
-
-            # webServerHomeDir = "/home/" + loginId
-            webServerHomeDir = "/home"
-
-            # get new book name and create respository in remote server
-            request.encoding='utf-8'
-            bookName = ""
-
-            try:
-                if 'bookName' in request.GET:
-                    userInputBookName = request.GET['bookName']
-
-                    if userInputBookName == "":
-                        context['status'] = "fail"
-                        context['message'] = "您還沒有填寫新書名稱。請重載後重新嘗試。"
-                    else:
-                        if 'chapterName' in request.GET:
-                            userInputChapterName = request.GET['chapterName']
-
-                            if userInputChapterName == "":
-                                context['status'] = "fail"
-                                context['message'] = "The chapter name is null."
-                            else:
-                                if 'chapterOrder' in request.GET:
-                                    userInputChapterNumber = request.GET['chapterOrder']
-
-                                    if userInputChapterNumber == "":
-                                        context['status'] = "fail"
-                                        context['message'] = "The chapter number is null."
-                                    else:
-                                        authorId = request.session['authorId']
-
-                                        # get the book id and check whether it exists by bookname and idAuthor_id
-                                        res, statusNumber, idBook = book.getIdByNameAndAuthor(userInputBookName, authorId)
-                                        if res:
-                                            # bookName = authorId + "_" + userInputBookName
-                                            # step0: check the book is or not has this chapter
-                                            res,statusNumber,mes = chapter.getValue(idBook, "chapterOrder")
-                                            if res:
-                                                context['status'] = "fail"
-                                                context['message'] = "本書已創建該章節！請檢查章節列表後輸入後續章節序號"
-                                            else:
-                                                if statusNumber == 140003:
-                                                    context['status'] = "fail"
-                                                    context['message'] = "查詢錯誤，所要查詢的內容不存在！"
-                                                elif statusNumber == 140004:
-                                                    context['status'] = "success"
-                                                    # context['message'] = "本書不存在該章節！"
-
-                                                    # step1: get operateDir and struct the chapter file name
-                                                    res,mes = book.getValue(idBook, "location")
-                                                    if res:
-                                                        operateDir = mes + "/" + idBook
-
-                                                        # check the chapterCount
-                                                        chapterCount = 10000
-                                                        res,mes = book.getValue(idBook, "chapterCount")
-                                                        if res:
-                                                            if int(userInputChapterNumber) == (mes+1):
-                                                                chapterCount = mes
-                                                            else:
-                                                                context['status'] = "fail"
-                                                                context['message'] = "章節序號不正確！請確認後重新填寫章節序號"
-                                                                return JsonResponse(context)
-                                                        else:
-                                                            context['status'] = "fail"
-                                                            context['message'] = "查詢章節序號失敗！請刷新後重試"
-                                                            return JsonResponse(context)
-
-                                                        chapterNowNumber = chapterCount+1
-                                                        chapterFileName = idBook + "_" + str(chapterNowNumber) + ".txt"
-
-                                                        # step2: create a chapter file in webServer
-                                                        res,mes = touchChapterFile(operateDir, chapterFileName)
-                                                        if res:
-                                                            # step3: git commit this chapter file to gitServer
-                                                            commitContent = "add the chapter " + str(chapterNowNumber)
-                                                            res, mes = gitCommitChapter(operateDir, chapterFileName, "userName", "userName@gmail.com", commitContent)
-                                                            if res:
-                                                                # step 4: write relative data into database
-                                                                # chapter table and book.chapterCount
-                                                                res, mes = book.modify(idBook, "chapterCount", chapterNowNumber)
-                                                                if res:
-                                                                    pass
-                                                                else:
-                                                                    context['status'] = "fail"
-                                                                    context['message'] = "0 : " + mes
-                                                                    return JsonResponse(context)
-
-                                                                res, mes = chapter.add(userInputChapterName, chapterFileName, chapterNowNumber, idBook)
-                                                                if res:
-                                                                    context['status'] = "success"
-                                                                    context['message'] = "您已經成功新增章節 : " + "第" + str(chapterNowNumber) + "章，" + userInputChapterName
-                                                                else:
-                                                                    context['status'] = "fail"
-                                                                    context['message'] = "1 : " + mes
-                                                            else:
-                                                                context['status'] = "fail"
-                                                                context['message'] = "2 : commit failed. " + mes
-                                                        else:
-                                                            context['status'] = "fail"
-                                                            context['message'] = "3 : Touching chapter file fails." + mes
-                                                    else:
-                                                        context['status'] = "fail"
-                                                        context['message'] = "4 : Getting book's location fails. " + mes
-                                                else:
-                                                    context['status'] = "fail"
-                                                    context['message'] = "服務器錯誤：" + statusNumber + mes
-                                        else:
-                                            context['status'] = "fail"
-
-                                            if statusNumber == 130004:
-                                                context['message'] = "不存在該本書！請重新確定您輸入的書名和賬號"
-                                            elif statusNumber == 130005:
-                                                context['message'] = "服務器錯誤：" + statusNumber + mes
-                                            else:
-                                                context['message'] = "服務器錯誤：" + statusNumber + mes
-                        else:
-                            context['status'] = "fail"
-                            context['message'] = "The chapterName variable is not in request.GET."
-                else:
-                    context['status'] = "fail"
-                    context['message'] = "The bookName variable is not in request.GET."
-            except Exception as e:
-                        context['status'] = "fail"
-                        context['message'] = str(e)
-            return JsonResponse(context)
-        else:
-            return render(request, 'author/authorStatus/')
-    else:
+    # check this request's account status
+    if "readerId" not in request.session:
         return render(request, 'reader/login.html')
+
+    if request.session["authorStatus"] != "active":
+        return render(request, 'author/authorStatus/')
+
+    # dealing with Chinese questions
+    reload(sys)
+    sys.setdefaultencoding('utf8')
+
+    try:
+        # get new book name of user input and check whether it is null
+        if 'bookName' not in request.GET:
+            context['status'] = "fail"
+            context['message'] = "The bookName variable is not in request.GET."
+            return JsonResponse(context)
+        userInputBookName = request.GET['bookName']
+
+        if userInputBookName == "":
+            context['status'] = "fail"
+            context['message'] = "您還沒有填寫新書名稱。請重載後重新嘗試。"
+            return JsonResponse(context)
+
+        # get the idBook and check whether it exists by bookname and idAuthor_id
+        authorId = request.session['authorId']
+        res, statusNumber, idBook = book.getIdByNameAndAuthor(userInputBookName, authorId)
+        if not res:
+            context['status'] = "fail"
+            if statusNumber == 130004:
+                context['message'] = "不存在該本書！請重新確定您輸入的書名和賬號"
+            elif statusNumber == 130005:
+                context['message'] = "服務器錯誤：" + str(statusNumber) + mes
+            else:
+                context['message'] = "未知服務器錯誤：" + str(statusNumber) + mes
+            return JsonResponse(context)
+
+        # get new chapter number of user input and check whether it is null
+        if 'chapterOrder' not in request.GET:
+            context['status'] = "fail"
+            context['message'] = "The chapterOrder variable is not in request.GET."
+            return JsonResponse(context)
+        userInputChapterNumber = request.GET['chapterOrder']
+
+        if userInputChapterNumber == "":
+            context['status'] = "fail"
+            context['message'] = "您還沒有填寫章節序號！"
+            return JsonResponse(context)
+
+        # get new chapter name of user input and check whether it is null
+        if 'chapterName' not in request.GET:
+            context['status'] = "fail"
+            context['message'] = "The chapterName variable is not in request.GET."
+            return JsonResponse(context)
+        userInputChapterName = request.GET['chapterName']
+
+        if userInputChapterName == "":
+            context['status'] = "fail"
+            context['message'] = "您還沒有填寫章節名！"
+            return JsonResponse(context)
+
+        # database and file operation start
+        # step1: check whether the chapterCount is right.this means whether we can create this chapter
+        chapterCount = 10000
+        res,statusNumber,mes = book.getValue(idBook, "chapterCount")
+        if not res:
+            if statusNumber == 130001:
+                context['status'] = "fail"
+                context['message'] = "查詢條件輸入錯誤！"
+            elif statusNumber == 130002:
+                # the book is not existing searching according by idBook
+                context['status'] = "fail"
+                context['message'] = "不存在這本書！請確認輸入後重試！"
+            elif statusNumber == 130003:
+                context['status'] = "fail"
+                context['message'] = "異常錯誤: "+ str(statusNumber) + str(mes)
+            else:
+                context['status'] = "fail"
+                context['message'] = "未知服務器錯誤：" + str(statusNumber) + str(mes)
+            return JsonResponse(context)
+
+        # the chapterCount of userInput can not be smaller or larger than (this book's chapter number + 1)
+        if int(userInputChapterNumber) != (mes+1):
+            context['status'] = "fail"
+            context['message'] = "章節序號不正確！請確認後重新填寫章節序號！本書下一章節序號為 " + str(mes+1)
+            return JsonResponse(context)
+
+        # step2: struct the chapter file name
+        chapterCount = mes
+        chapterNowNumber = chapterCount+1
+        chapterFileName = idBook + "_" + str(chapterNowNumber) + ".txt"
+
+        # step3: get book's location
+        res, statusNumber, mes = book.getValue(idBook, "location")
+        if not res:
+            if statusNumber == 130001:
+                context['status'] = "fail"
+                context['message'] = "查詢條件輸入錯誤！"
+            elif statusNumber == 130002:
+                # the book is not existing searching according by idBook
+                context['status'] = "fail"
+                context['message'] = "不存在這本書！請確認輸入後重試！"
+            elif statusNumber == 130003:
+                context['status'] = "fail"
+                context['message'] = "異常錯誤: "+ str(statusNumber) + mes
+            else:
+                context['status'] = "fail"
+                context['message'] = "未知服務器錯誤：" + str(statusNumber) + mes
+            return JsonResponse(context)
+        operateDir = mes + "/" + idBook
+
+        # step4: create a chapter file in webServer
+        res,mes = touchChapterFile(operateDir, chapterFileName)
+        if not res:
+            context['status'] = "fail"
+            context['message'] = "3 : Touching chapter file fails." + mes
+            return JsonResponse(context)
+
+        # step5: git commit this chapter file to gitServer
+        commitContent = "add the chapter " + str(chapterNowNumber)
+        res, mes = gitCommitChapter(operateDir, chapterFileName, authorId , authorId + "@weart.com", commitContent)
+        if not res:
+            context['status'] = "fail"
+            context['message'] = "2 : commit failed. " + mes
+            return JsonResponse(context)
+
+        # step 7: write data into table book
+        res, mes = book.modify(idBook, "chapterCount", chapterNowNumber)
+        if not res:
+            context['status'] = "fail"
+            context['message'] = "0 : " + mes
+            return JsonResponse(context)
+
+        # step 8: write data into table chapter
+        res, mes = chapter.add(userInputChapterName, chapterFileName, chapterNowNumber, idBook)
+        if res:
+            context['status'] = "success"
+            context['message'] = "您已經成功新增章節 : " + "第" + str(chapterNowNumber) + "章，" + userInputChapterName
+        else:
+            context['status'] = "fail"
+            context['message'] = "1 : " + mes
+        # database and file operation end
+
+    except Exception as e:
+                context['status'] = "fail"
+                context['message'] = "異常錯誤 : " + str(e)
+    return JsonResponse(context)
 
 def touchChapterFile(operateDir, fileName):
     try:

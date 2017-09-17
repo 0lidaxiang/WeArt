@@ -22,15 +22,15 @@ function createAChapter() {
     .done(function(resp) {
       // console.log(resp);
       if (resp.status == "success") {
-        var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-6 col-sm-12'><h4>" + resp.message + "</h4></div></div></div>";
+        var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-12 col-sm-12'><h4>" + resp.message + "</h4></div></div></div>";
         $("#mainContent").replaceWith(obj);
       }
       else if (resp.status == "fail") {
-        var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-6 col-sm-12'><h4>" + resp.message + "</h4></div></div></div>";
+        var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-12 col-sm-12'><h4>" + resp.message + "</h4></div></div></div>";
         $("#mainContent").replaceWith(obj);
       }
       else{
-        var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-6 col-sm-12'><h4>" + resp.message + "</h4></div></div></div>";
+        var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-12 col-sm-12'><h4>" + resp.message + "</h4></div></div></div>";
         $("#mainContent").replaceWith(obj);
       }
     })

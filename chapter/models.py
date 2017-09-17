@@ -26,23 +26,25 @@ class chapter(models.Model):
         try:
             obj = self.objects.get(id=bookIdArg)
             if returnArg == "id":
-                return True, obj.id
+                return True, 140000, obj.id
             elif returnArg == "name":
-                return True, obj.name
+                return True, 140000, obj.name
             elif returnArg == "fileName":
-                return True, obj.fileName
+                return True, 140000, obj.fileName
             elif returnArg == "chapterOrder":
-                return True, obj.chapterOrder
+                return True, 140000, obj.chapterOrder
             elif returnArg == "status":
-                return True, obj.status
+                return True, 140000, obj.status
             elif returnArg == "createTime":
-                return True, obj.createTime
+                return True, 140000, obj.createTime
             elif returnArg == "idAuthor_id":
-                return True, obj.idAuthor_id
+                return True, 140000, obj.idAuthor_id
             else:
-                return False, 140003, "錯誤 : book表中不存在該屬性，returnArg錯誤。"
+                return False, 140003, "錯誤 : chapter 表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:
-                return False, 140004, "錯誤 : 讀取book表錯誤。"
+                return False, 140004, "錯誤 : chapter 表不存在該數據。"
+        except Exception as e:
+                return False, 140005, str(e)
 
     @classmethod
     def add(self, name, fileName, chapterOrder, idBook_id):

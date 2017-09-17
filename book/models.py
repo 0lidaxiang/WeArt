@@ -25,9 +25,9 @@ class book(models.Model):
     def getIdByNameAndAuthor(self, nameArg, idAuthorArg):
         try:
             obj = self.objects.get(name = nameArg, idAuthor_id = idAuthorArg)
-            return True, 130003, obj.id
+            return True, 130000, obj.id
         except self.DoesNotExist:
-            return False, 130004, "錯誤: getIdByNameAndAuthor 讀取book表錯誤。"
+            return False, 130004, "錯誤: getIdByNameAndAuthor 讀取 book 表錯誤。"
         except Exception as e:
             return False, 130005, str(e)
     @classmethod
@@ -35,25 +35,27 @@ class book(models.Model):
         try:
             obj = self.objects.get(id=idBookArg)
             if returnArg == "id":
-                return True, obj.id
+                return True, 130000, obj.id
             elif returnArg == "name":
-                return True, obj.name
+                return True, 130000, obj.name
             elif returnArg == "remoteIP":
-                return True, obj.remoteIP
+                return True, 130000, obj.remoteIP
             elif returnArg == "location":
-                return True, obj.location
+                return True, 130000, obj.location
             elif returnArg == "status":
-                return True, obj.status
+                return True, 130000, obj.status
             elif returnArg == "chapterCount":
-                return True, obj.chapterCount
+                return True, 130000, obj.chapterCount
             elif returnArg == "createTime":
-                return True, obj.createTime
+                return True, 130000, obj.createTime
             elif returnArg == "idAuthor_id":
-                return True, obj.idAuthor_id
+                return True, 130000, obj.idAuthor_id
             else:
-                return False, "錯誤1001: book表中不存在該屬性，returnArg錯誤。"
+                return False, 130001, "錯誤: book 表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:
-                return False, "錯誤1002: 讀取book表錯誤。"
+                return False, 130002, "錯誤: book 表不存在該數據。"
+        except Exception as e:
+                return False, 130003, str(e)
 
     @classmethod
     def add(self, bookName, remoteIP, location, idAuthor_id):
