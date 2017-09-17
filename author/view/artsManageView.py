@@ -6,13 +6,12 @@ from django.http import JsonResponse
 from author.models import author
 
 def gotoAuthorPages(request, pageName):
-    if "readerId" in request.session:
-        if request.session["authorStatus"] == "active":
-            return 'author/' + pageName + '.html'
-        else:
-            return 'author/authorStatus.html'
-    else:
+    if "readerId" not in request.session:
         return 'reader/login.html'
+    if request.session["authorStatus"] == "active":
+        return 'author/' + pageName + '.html'
+    else:
+        return 'author/authorStatus.html'
 
 def authorStatus(request):
     return render(request,  gotoAuthorPages(request, "authorStatus"))
