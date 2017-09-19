@@ -1,9 +1,11 @@
-body {
-  background: url(/static/img/register-1200.jpg) no-repeat center center fixed;
-  background-size: cover;
-  font-size: 16 px;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+body, html {
+    height: 100%;
+    margin: 0;
+    /* The image used */
+    background-image: url(/static/img/register-1200.jpg);
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
