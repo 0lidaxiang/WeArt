@@ -1,3 +1,11 @@
+jQuery(document).ready(function($) {
+
+  $('#authorFunctionTreeLi').addClass('active');
+  $('#authorFunctionTreeUl').addClass('menu-open');
+  $('#enableAuthorLi').addClass('active');
+  getEnableAuthorStatus();
+});
+
 function  updateHtml(resp){
   if (resp.status == "success") {
     if (!resp.isAuthor) {
