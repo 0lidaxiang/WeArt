@@ -59,14 +59,13 @@ function getContent() {
     for (var i = 0; i < resp.length; i++) {
       tempstr = tempstr + resp[i];
     }
-    console.log(tempstr);
     $("#content").val(tempstr);
   })
-  .fail(function() {
-    console.log("error");
+  .fail(function(resp) {
+    console.log("error: " + resp);
   })
-  .always(function() {
-    console.log("complete");
+  .always(function(resp) {
+    console.log("complete: " + resp);
   });
 
 }
