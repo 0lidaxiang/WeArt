@@ -24,17 +24,17 @@ ModifyTime :  2017-07-20
 + [x] 2. ~~Design Use case diagram and Class diagram.(2017-07-22)~~
 + [x] 3. ~~Reader can login and register.(2017-07-26)~~
 + [x] 4. ~~Author can be enabled.(2017-07-30)~~
-+ [ ] 5. Author can create a novel and chapters.(2017-08-02)
-+ [ ] 6. Author can update the novel content.(2017-08-05)
-+ [ ] 7. Reader can read books and chapters.(2017-08-09)
-+ [ ] 8. Reader can read different version content.(2017-08-09)
-+ [ ] 9. Differnt Readers can write one chapter and send different version for the same story.(2017-08-09)
-+ [ ] 10. Reader can collect their favorite books.
-+ [ ] 11. Administrator registers and logins.
-+ [ ] 12. Administrator manages authors(register, login, refuse, lock account,delete account).
-+ [ ] 13. Administrator manages readers(register, login, refuse, lock account,delete account).
-+ [ ] 14. Administrator manages books.
-+ [ ] 15. The home pages and other functions.
++ [x] 5. Author can create a novel and chapters.(2017-09-16)
++ [x] 6. Author can update the novel content.(2017-09-17)
++ [ ] 7. Reader can read books and chapters.(2017-09-24)
++ [ ] 8. Differnt Readers can write one chapter and send different version for the same story.(2017-09-30)
++ [ ] 9. Reader can read different version content.(2017-10-05)
++ [ ] 10. Reader can collect their favorite books.(2017-10-15)
++ [ ] 11. Administrator registers and logins.(2017-10-25)
++ [ ] 12. Administrator manages authors(register, login, refuse, lock account,delete account).(2017-10-25)
++ [ ] 13. Administrator manages readers(register, login, refuse, lock account,delete account).(2017-10-25)
++ [ ] 14. Administrator manages books.(2017-10-31)
++ [ ] 15. The home pages and other functions.(2017-10-31)
 
 
 ## 3. Test Phrase Plan
