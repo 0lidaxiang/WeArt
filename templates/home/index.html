@@ -23,43 +23,31 @@
 </head>
 
 <body>
-  {% include 'nav.html' %}
+  {% include 'home/nav.html' %}
 
+  <!-- Main Content -->
   <div id= "content" class="container">
-    <div class="row">
       <div class="col-md-12 bg123">
         <h1>這裡是首頁</h1>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        聯繫我們：
-        <a href="mailto:0lidaxiang@gmail.com?subject=[Question]">0lidaxiang # gmail.com</a>
-        (Please replace # with @.)
+      <div class="col-md-12 alert alert-info">
+          <h3>聯繫我們：</h3>
+          <p><a href="mailto:0lidaxiang@gmail.com?subject=[Question]">0lidaxiang # gmail.com</a></p>
+          (Please replace # with @.)
       </div>
-    </div>
 
-  </div>
-
-  <div id= "content" class="container">
-    <div class="row">
-      <div class="col-md-12 bg123">
+      <div class="col-md-12">
         <h1>作品列表</h1>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <a href="#">0lidaxiang # gmail.com</a>
+      <div id="bookAll" class="col-md-12 alert alert-success">
+
       </div>
-    </div>
-
   </div>
 
   <!-- Main Footer -->
   <footer class="footer text-center">
-    <!-- Default to the left -->
     <strong>Copyright &copy;
       <script type="text/javascript">document.write(new Date().getFullYear());</script>
       <a href="#">WeArt</a>.
@@ -75,3 +63,4 @@
 <script src="/static/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/static/templatesJs/reader/backgroundImg.js" type="text/javascript"></script>
+<script src="/static/templatesJs/home/index.js" type="text/javascript"></script>

@@ -68,6 +68,7 @@ class book(models.Model):
             return True, idVal
         except Exception as e:
             return False, str(e)
+
     @classmethod
     def modify(self, idBookArg, property, value):
         try:
@@ -125,3 +126,14 @@ class book(models.Model):
             return True, ""
         except Exception as e:
             return False, str(e)
+
+    @classmethod
+    def getAll(self, amount):
+        # obj = self.objects.all().filter(pub_date__year=2006)[:10]
+        try:
+            obj = self.objects.all()[:10]
+            return True, 130006, obj
+        except self.DoesNotExist:
+            return False, 130007, "錯誤: getIdByNameAndAuthor 讀取 book 表錯誤。"
+        except Exception as e:
+            return False, 130008, str(e)
