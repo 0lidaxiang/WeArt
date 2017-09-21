@@ -24,10 +24,10 @@ ModifyTime :  2017-07-20
 + [x] 2. ~~Design Use case diagram and Class diagram.(2017-07-22)~~
 + [x] 3. ~~Reader can login and register.(2017-07-26)~~
 + [x] 4. ~~Author can be enabled.(2017-07-30)~~
-+ [x] 5. Author can create a novel and chapters.(2017-09-16)
-+ [x] 6. Author can update the novel content.(2017-09-17)
-+ [ ] 7. Reader can read books and chapters.(2017-09-24)
-+ [ ] 8. Differnt Readers can write one chapter and send different version for the same story.(2017-09-30)
++ [x] 5. ~~Author can create a novel and chapters.(2017-09-16)~~
++ [x] 6. ~~Author can update the novel content.(2017-09-17)~~
++ [x] 7. ~~Reader can read book,chapters list and content.(2017-09-21)~~
++ [ ] 8. Differnt Readers can write one chapter and send different version for the same story.(2017-09-26)
 + [ ] 9. Reader can read different version content.(2017-10-05)
 + [ ] 10. Reader can collect their favorite books.(2017-10-15)
 + [ ] 11. Administrator registers and logins.(2017-10-25)

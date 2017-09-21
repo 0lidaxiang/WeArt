@@ -20,7 +20,7 @@ Reader register and login                       :done,    p12, after p11, 4d
 Author function enabled                         :done,    p13, after p12, 4d
 Create books and chaptes                        :done,    p14, after p13, 32d
 Update contents                                 :done,    p15, after p14, 2d
-Reading content                                 :active,  p16, 2017-09-20, 7d
+Reading book,chapters list and content          :done,    p16, 2017-09-20, 2d
 Differnt Readers write one chapter              :active,  p17, after p16, 5d
 Read different version content                  :active,  p18, after p17, 3d
 Readers collect favorite books                  :active,  p19, after p18, 3d
