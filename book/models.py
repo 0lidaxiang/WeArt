@@ -134,6 +134,6 @@ class book(models.Model):
             obj = self.objects.all()[:10]
             return True, 130006, obj
         except self.DoesNotExist:
-            return False, 130007, "錯誤: getIdByNameAndAuthor 讀取 book 表錯誤。"
+            return False, 130007, "錯誤: getAll 讀取 book 表錯誤。"
         except Exception as e:
             return False, 130008, str(e)

@@ -4,5 +4,4 @@ from home.view.indexView import  *
 
 urlpatterns = [
     url('^index/$', index),
-    url('^getRecommendArts/$', getRecommendArts),
 ]

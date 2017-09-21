@@ -78,3 +78,14 @@ class chapter(models.Model):
             return True, ""
         except Exception as e:
             return False, str(e)
+
+    @classmethod
+    def getAll(self, idBookArg):
+        try:
+            # obj = self.objects.all()[:10]
+            obj = self.objects.all().filter(idBook_id=idBookArg)[:10]
+            return True, 140006, obj
+        except self.DoesNotExist:
+            return False, 140007, "錯誤: getAll 讀取 chapter 表錯誤。"
+        except Exception as e:
+            return False, 140008, str(e)
