@@ -16,7 +16,7 @@ import os
 import datetime
 import subprocess
 
-def getContentFromWebServer(request):
+def authorGetContent(request):
     userInputBookName = request.POST['bookName'];
     chapterOrder = request.POST['chapterOrder'];
 

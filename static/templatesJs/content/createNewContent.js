@@ -46,7 +46,7 @@ function getContent() {
   var chapterOrder = $("#chapterOrder").val();
 
   $.ajax({
-    url: '/content/getContent/',
+    url: '/content/authorGetContent/',
     type: 'POST',
     dataType: 'json',
     data: {

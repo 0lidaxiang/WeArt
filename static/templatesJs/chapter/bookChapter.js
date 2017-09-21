@@ -4,6 +4,8 @@ $(document).ready(function() {
 
 function getChapterData() {
   var idBook = $("#idBook").val();
+  var bookName = $("#bookName").val();
+
   $.ajax({
     url: '/chapter/getChapter/',
     type: 'GET',
@@ -21,7 +23,7 @@ function getChapterData() {
       obj = obj + tableObj + thObj;
 
       for (var i in allChapter) {
-        obj = obj + "<tr><td>" + (i+1) + "</td><td><a href='/chapter/bookChapter/?idBook= " + allChapter[i].id + "'>" + allChapter[i].id + "</a></td><td>" + allChapter[i].name + "</td><td>" + allChapter[i].chapterOrder + "</td><td>" + allChapter[i].idBook_id + "</td></tr>";
+        obj = obj + "<tr><td>" + (i+1) + "</td><td><a href='/content/chapterContent/?idBook=" + idBook + "&chapterOrder=" + allChapter[i].chapterOrder + "&chapterName=" + allChapter[i].name + "&bookName=" + bookName + "'>" + allChapter[i].id + "</a></td><td>" + allChapter[i].name + "</td><td>" + allChapter[i].chapterOrder + "</td><td>" + allChapter[i].idBook_id + "</td></tr>";
       }
       obj = obj + "</table></div></div>";
 
