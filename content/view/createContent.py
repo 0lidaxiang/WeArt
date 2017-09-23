@@ -98,8 +98,8 @@ def createAContent(request):
 
         # step3: modify the git config info to this author
         cmd1 = "cd " + myhome_path
-        cmd2 = "; git config --global user.name " + authorId
-        cmd3 = "; git config --global user.email " + authorId + "@gmail.com; "
+        cmd2 = "; git config --local user.name " + authorId
+        cmd3 = "; git config --local user.email " + authorId + "@gmail.com; "
 
         cmd = cmd1 + cmd2
         p = subprocess.Popen(cmd, shell=True)

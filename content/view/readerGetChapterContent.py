@@ -16,21 +16,13 @@ import os
 import datetime
 import subprocess
 
-def authorGetContent(request):
+def readerGetChapterContent(request):
     userInputBookName = request.POST['bookName'];
     chapterOrder = request.POST['chapterOrder'];
+    idBook = request.POST["idBook"]
+
     if "readerId" not in request.session:
         return render(request, 'reader/login.html')
-
-    if request.session["authorStatus"] != "active":
-        return 'author/authorStatus.html'
-
-    authorId = request.session['authorId']
-
-    idBook = ""
-    res, statusNumber, mes = book.getIdByNameAndAuthor(userInputBookName, authorId)
-    if res:
-        idBook = mes
 
     locationBook = ""
     res, statusNumber, mes = book.getValue(idBook, "location")

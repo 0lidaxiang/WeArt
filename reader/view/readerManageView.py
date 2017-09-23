@@ -20,16 +20,16 @@ def gotoReaderPages(request, pageName):
         return 'reader/login.html'
 
 def readerIndex(request):
-    return render(request,  gotoReaderPages(request, "readerIndex"))
+    return render(request,  gotoReaderPages(request, "readerIndex"), {"userName": request.session['userName']})
 
 def booksRecorded(request):
-    return render(request,  gotoReaderPages(request, "booksRecorded"))
+    return render(request,  gotoReaderPages(request, "booksRecorded"), {"userName": request.session['userName']})
 
 def readingHistory(request):
-    return render(request,  gotoReaderPages(request, "readingHistory"))
+    return render(request,  gotoReaderPages(request, "readingHistory"), {"userName": request.session['userName']})
 
 def readerSetting(request):
-    return render(request,  gotoReaderPages(request, "readerSetting"))
+    return render(request,  gotoReaderPages(request, "readerSetting"), {"userName": request.session['userName']})
 
 def getEnableAuthorStatus(request):
     try:

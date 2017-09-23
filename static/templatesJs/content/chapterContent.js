@@ -38,3 +38,30 @@ function getContentData() {
     console.log(resp);
   });
 }
+
+function writeMyVersion() {
+  var lastUrl = window.location.href;
+  var idBook = $("#idBook").val();
+
+  $.ajax({
+    url: '/content/readerWriteAContentHtml/',
+    type: 'GET',
+    dataType: 'json',
+    data: {"idBook": idBook, "lastUrl": lastUrl}
+  })
+  .done(function(resp) {
+    // console.log(resp);
+    if (resp.status == "success") {
+      window.location.href = resp.message
+    }
+    else if (resp.status == "fail") {
+      alert(resp.message);
+    }
+    else{
+      alert(resp.message);
+    }
+  })
+  .fail(function(resp) {
+    console.log(resp);
+  });
+}

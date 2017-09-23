@@ -17,7 +17,11 @@ import datetime
 import subprocess
 
 def chapterContent(request):
+    if "readerId" not in request.session:
+        return render(request, 'reader/login.html')
+
     context = {}
+
     # get the book id of user input if it is not null
     if 'idBook' not in request.GET:
         context['status'] = "fail"

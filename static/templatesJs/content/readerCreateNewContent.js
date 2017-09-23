@@ -1,20 +1,16 @@
-jQuery(document).ready(function($) {
-  $('#authorFunctionTreeLi').addClass('active');
-  $('#authorFunctionTreeUl').addClass('menu-open');
-  $('#createNewContentLi').addClass('active');
-});
-
 function submitContent() {
+  var idBook = $("#idBook").val();
   var bookName = $("#bookName").val();
   var chapterOrder = $("#chapterOrder").val();
   var commitContent = $("#commitContent").val();
   var content = $("#content").val();
 
   $.ajax({
-      url: '/content/createAContent/',
+      url: '/content/readerWriteAContent/',
       type: 'GET',
       dataType: 'json',
       data: {
+        "idBook" : idBook,
         "bookName" : bookName,
         "chapterOrder" : chapterOrder,
         "commitContent" : commitContent,
@@ -42,14 +38,16 @@ function submitContent() {
 }
 
 function getContent() {
+  var idBook = $("#idBook").val();
   var bookName = $("#bookName").val();
   var chapterOrder = $("#chapterOrder").val();
 
   $.ajax({
-    url: '/content/authorGetContent/',
+    url: '/content/readerGetChapterContent/',
     type: 'POST',
     dataType: 'json',
     data: {
+      "idBook": idBook,
       "bookName": bookName,
       "chapterOrder": chapterOrder,
    }
