@@ -168,7 +168,6 @@ def createAChapter(request):
 
 def touchChapterFile(operateDir, fileName):
     try:
-        # cmd = "git config --global user.email user1@gmail.com; git config --global user.name user1"
         cmd = "cd " + operateDir + ";touch " + fileName
         p = subprocess.Popen(cmd, shell=True)
         (stdoutput,erroutput) = p.communicate()

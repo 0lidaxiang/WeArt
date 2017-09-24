@@ -17,8 +17,8 @@ import datetime
 import subprocess
 
 def chapterContent(request):
-    if "readerId" not in request.session:
-        return render(request, 'reader/login.html')
+    # if "readerId" not in request.session:
+    #     return render(request, 'reader/login.html')
 
     context = {}
 

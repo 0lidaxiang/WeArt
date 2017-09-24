@@ -99,9 +99,9 @@ def createAContent(request):
         # step3: modify the git config info to this author
         cmd1 = "cd " + myhome_path
         cmd2 = "; git config --local user.name " + authorId
-        cmd3 = "; git config --local user.email " + authorId + "@gmail.com; "
+        cmd3 = "; git config --local user.email " + authorId + "@weart.com; "
 
-        cmd = cmd1 + cmd2
+        cmd = cmd1 + cmd2 + cmd3
         p = subprocess.Popen(cmd, shell=True)
         (stdoutput,erroutput) = p.communicate()
 
