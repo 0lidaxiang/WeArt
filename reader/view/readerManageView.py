@@ -19,17 +19,22 @@ def gotoReaderPages(request, pageName):
     else:
         return 'reader/login.html'
 
+def getUserName(request):
+    if "readerId" not in request.session:
+        return 'reader/login.html'
+    return request.session["userName"]
+
 def readerIndex(request):
-    return render(request,  gotoReaderPages(request, "readerIndex"), {"userName": request.session['userName']})
+    return render(request,  gotoReaderPages(request, "readerIndex"), {"userName": getUserName(request)})
 
 def booksRecorded(request):
-    return render(request,  gotoReaderPages(request, "booksRecorded"), {"userName": request.session['userName']})
+    return render(request,  gotoReaderPages(request, "booksRecorded"), {"userName": getUserName(request)})
 
 def readingHistory(request):
-    return render(request,  gotoReaderPages(request, "readingHistory"), {"userName": request.session['userName']})
+    return render(request,  gotoReaderPages(request, "readingHistory"), {"userName": getUserName(request)})
 
 def readerSetting(request):
-    return render(request,  gotoReaderPages(request, "readerSetting"), {"userName": request.session['userName']})
+    return render(request,  gotoReaderPages(request, "readerSetting"), {"userName": getUserName(request)})
 
 def getEnableAuthorStatus(request):
     try:

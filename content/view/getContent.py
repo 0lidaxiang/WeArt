@@ -25,10 +25,10 @@ def authorGetContent(request):
     if request.session["authorStatus"] != "active":
         return 'author/authorStatus.html'
 
-    authorId = request.session['authorId']
+    idReader = request.session['readerId']
 
     idBook = ""
-    res, statusNumber, mes = book.getIdByNameAndAuthor(userInputBookName, authorId)
+    res, statusNumber, mes = book.getIdByNameAndAuthor(userInputBookName, idReader)
     if res:
         idBook = mes
 

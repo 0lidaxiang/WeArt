@@ -37,8 +37,8 @@ class chapter(models.Model):
                 return True, 140000, obj.status
             elif returnArg == "createTime":
                 return True, 140000, obj.createTime
-            elif returnArg == "idAuthor_id":
-                return True, 140000, obj.idAuthor_id
+            elif returnArg == "idReader_id":
+                return True, 140000, obj.idReader_id
             else:
                 return False, 140003, "錯誤 : chapter 表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:
@@ -59,12 +59,12 @@ class chapter(models.Model):
             return False, str(e)
 
     # @classmethod
-    # def modify(self, name, remoteIP, location, idAuthor_id):
+    # def modify(self, name, remoteIP, location, idReader_id):
     #     try:
     #         nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
     #         idVal = createId(20, name)
     #
-    #         obj = self(id=idVal, name=name, remoteIP = remoteIP, location=location, status = "active", createTime=nowTime, idAuthor_id=idAuthor_id)
+    #         obj = self(id=idVal, name=name, remoteIP = remoteIP, location=location, status = "active", createTime=nowTime, idReader_id=idReader_id)
     #         obj.save()
     #         return True, ""
     #     except Exception as e:

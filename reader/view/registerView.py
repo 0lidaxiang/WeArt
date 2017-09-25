@@ -14,6 +14,13 @@ from django.views.decorators import csrf
 from reader.models import reader
 
 def registerReader(request):
+    if "userName" not in request.POST:
+        return render(request, 'reader/register.html')
+    if "password" not in request.POST:
+        return render(request, 'reader/register.html')
+    if "email" not in request.POST:
+        return render(request, 'reader/register.html')
+
     userName =  unicode(request.POST['userName'])
     password = request.POST['password']
     email = unicode(request.POST['email'])

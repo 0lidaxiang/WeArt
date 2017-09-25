@@ -42,9 +42,9 @@ def createABook(request):
         return JsonResponse(context)
 
     try:
-        # check whether a book is exist by bookname and idAuthor_id  before writing data into database
-        authorId = request.session['authorId']
-        res, statusNumber, mes = book.getIdByNameAndAuthor(userInputBookName, authorId)
+        # check whether a book is exist by bookname and idReader_id  before writing data into database
+        # readerId = request.session['readerId']
+        res, statusNumber, mes = book.getIdByNameAndAuthor(userInputBookName, readerId)
         if res:
             context['status'] = "fail"
             context['message'] = "已經存在該本書！請重新輸入其它書名或登錄其它賬號"
@@ -61,7 +61,7 @@ def createABook(request):
             monthClassedDirName = serverHomeDir + "/" + str(now.year) + "/" + str(now.month)
 
             # step2: write data into database
-            res,mes = book.add(userInputBookName, gitserver_ip, monthClassedDirName, authorId)
+            res,mes = book.add(userInputBookName, gitserver_ip, monthClassedDirName, readerId)
             if not res:
                 # This needs to delete the all folder
                 # This needs to delete the data in database if exists.
@@ -109,10 +109,10 @@ def createABook(request):
 
         elif statusNumber == 130005:
             context['status'] = "fail"
-            context['message'] = "未知服務器錯誤：" + statusNumber + mes
+            context['message'] = "未知服務器錯誤：" + str(statusNumber) + mes
         else:
             context['status'] = "fail"
-            context['message'] = "其它服務器錯誤：" + statusNumber + mes
+            context['message'] = "其它服務器錯誤：" + str(statusNumber) + mes
 
     except Exception as e:
         context['status'] = "fail"

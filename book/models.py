@@ -4,7 +4,7 @@
 from django.db import models
 from tool.tools import createId
 from time import localtime,strftime
-from author.models import author
+from reader.models import reader
 
 # Create your models here.
 class book(models.Model):
@@ -19,12 +19,12 @@ class book(models.Model):
     chapterCount = models.IntegerField(max_length=11)
     status = models.CharField(max_length=20)
     createTime = models.DateTimeField(max_length=50)
-    idAuthor = models.ForeignKey(author)
+    idReader = models.ForeignKey(reader)
 
     @classmethod
-    def getIdByNameAndAuthor(self, nameArg, idAuthorArg):
+    def getIdByNameAndAuthor(self, nameArg, idReaderArg):
         try:
-            obj = self.objects.get(name = nameArg, idAuthor_id = idAuthorArg)
+            obj = self.objects.get(name = nameArg, idReader_id = idReaderArg)
             return True, 130000, obj.id
         except self.DoesNotExist:
             return False, 130004, "錯誤: getIdByNameAndAuthor 讀取 book 表錯誤。"
@@ -48,8 +48,8 @@ class book(models.Model):
                 return True, 130000, obj.chapterCount
             elif returnArg == "createTime":
                 return True, 130000, obj.createTime
-            elif returnArg == "idAuthor_id":
-                return True, 130000, obj.idAuthor_id
+            elif returnArg == "idReader_id":
+                return True, 130000, obj.idReader_id
             else:
                 return False, 130001, "錯誤: book 表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:
@@ -58,12 +58,12 @@ class book(models.Model):
                 return False, 130003, str(e)
 
     @classmethod
-    def add(self, bookName, remoteIP, location, idAuthor_id):
+    def add(self, bookName, remoteIP, location, idReader_id):
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
             idVal = createId(20, bookName)
 
-            obj = self(id=idVal, name=bookName, remoteIP = remoteIP, location=location, chapterCount = 0, status = "active", createTime=nowTime, idAuthor_id=idAuthor_id)
+            obj = self(id=idVal, name=bookName, remoteIP = remoteIP, location=location, chapterCount = 0, status = "active", createTime=nowTime, idReader_id=idReader_id)
             obj.save()
             return True, idVal
         except Exception as e:
@@ -108,11 +108,11 @@ class book(models.Model):
                 obj.createTime = value
                 obj.save(update_fields=["createTime"])
                 return True, obj.createTime
-            elif property == "idAuthor_id":
+            elif property == "idReader_id":
                 obj = self(id=idBookArg)
-                obj.idAuthor_id = value
-                obj.save(update_fields=["idAuthor_id"])
-                return True, obj.idAuthor_id
+                obj.idReader_id = value
+                obj.save(update_fields=["idReader_id"])
+                return True, obj.idReader_id
             else:
                 return False, "錯誤1001: book表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:

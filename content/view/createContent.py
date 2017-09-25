@@ -68,8 +68,8 @@ def createAContent(request):
 
     try:
         # step1: get idBook and check whether a book is exist by bookname
-        authorId = request.session['authorId']
-        res, statusNumber, mes = book.getIdByNameAndAuthor(userInputBookName, authorId)
+        readerId = request.session['readerId']
+        res, statusNumber, mes = book.getIdByNameAndAuthor(userInputBookName, readerId)
         if not res:
             if statusNumber == 130004:
                 context['status'] = "fail"
@@ -98,8 +98,8 @@ def createAContent(request):
 
         # step3: modify the git config info to this author
         cmd1 = "cd " + myhome_path
-        cmd2 = "; git config --local user.name " + authorId
-        cmd3 = "; git config --local user.email " + authorId + "@weart.com; "
+        cmd2 = "; git config --local user.name " + readerId
+        cmd3 = "; git config --local user.email " + readerId + "@weart.com; "
 
         cmd = cmd1 + cmd2 + cmd3
         p = subprocess.Popen(cmd, shell=True)

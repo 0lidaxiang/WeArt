@@ -42,9 +42,9 @@ def createAChapter(request):
             context['message'] = "您還沒有填寫新書名稱。請重載後重新嘗試。"
             return JsonResponse(context)
 
-        # get the idBook and check whether it exists by bookname and idAuthor_id
-        authorId = request.session['authorId']
-        res, statusNumber, idBook = book.getIdByNameAndAuthor(userInputBookName, authorId)
+        # get the idBook and check whether it exists by bookname and idReader_id
+        readerId = request.session['readerId']
+        res, statusNumber, idBook = book.getIdByNameAndAuthor(userInputBookName, readerId)
         if not res:
             context['status'] = "fail"
             if statusNumber == 130004:
@@ -138,7 +138,7 @@ def createAChapter(request):
 
         # step5: git commit this chapter file to gitServer
         commitContent = "add the chapter " + str(chapterNowNumber)
-        res, mes = gitCommitChapter(operateDir, chapterFileName, authorId , authorId + "@weart.com", commitContent)
+        res, mes = gitCommitChapter(operateDir, chapterFileName, readerId , readerId + "@weart.com", commitContent)
         if not res:
             context['status'] = "fail"
             context['message'] = "2 : commit failed. " + mes
