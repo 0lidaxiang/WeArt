@@ -118,11 +118,6 @@ def readerWriteAContent(request):
 
             cmd = cmd1 + cmd2 + cmd3
 
-            print cmd
-            print cmd
-            print cmd
-            print cmd
-
             p = subprocess.Popen(cmd, shell=True)
             (stdoutput,erroutput) = p.communicate()
 
