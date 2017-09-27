@@ -16,4 +16,5 @@ urlpatterns = [
     url('^readerGetChapterContent/', readerGetChapterContent),
     url('^readerCreateNewContent/', readerCreateNewContent),
     url('^readerWriteAContentHtml/$', readerWriteAContentHtml),
+    url('^showHistory/$', showHistory),
 ]
