@@ -51,23 +51,27 @@ function getotherVersionContentData() {
     data: {"idBook": idBook, "chapterOrder": chapterOrder}
   })
   .done(function(resp) {
-    console.log(resp);
+    // console.log(resp);
     if (resp.status == "success") {
-      mainContent = resp.history
+      var history = resp.history;
+
       var obj = "<div id='otherVersionContent' class='col-md-12 col-sm-12 alert alert-success'>";
-      for (var i = 0; i < mainContent.length; i++) {
-        obj = obj + mainContent[i] + '<br>';
+      for (var i = 0; i < history.length; i++) {
+        for (var j = 0; j < history[i].contenthistory1.length; j++) {
+          obj = obj + history[i].contenthistory1[j] + '<br>';
+        }
       }
       obj = obj + "</div>";
       $("#otherVersionContent").replaceWith(obj);
 
-      mainContent = resp.logs
-      var obj = "<div id='logsContent' class='col-md-12 col-sm-12 alert alert-success'>";
-      for (var i = 0; i < mainContent.length; i++) {
-        obj = obj + mainContent[i] + '<br>';
-      }
-      obj = obj + "</div>";
-      $("#logsContent").replaceWith(obj);
+      // var obj = "<div id='logsContent' class='col-md-12 col-sm-12 alert alert-success'>";
+      // for (var i = 0; i < history.length; i++) {
+      //   for (var j = 0; j < history[i].content.length; j++) {
+      //     obj = obj + history[i].content[j] + '<br>';
+      //   }
+      // }
+      // obj = obj + "</div>";
+      // $("#logsContent").replaceWith(obj);
     }
     else if (resp.status == "fail") {
       var obj = "<div class='box'><div class='box-body' id='logsContent'><div class='col-md-12 col-sm-12'><h4>" + resp.message + "</h4></div></div></div>";

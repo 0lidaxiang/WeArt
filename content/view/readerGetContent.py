@@ -104,6 +104,7 @@ def showHistory(request):
         logs = list(p.stdout.readlines())
 
 
+
         authorIds = []
         for log in logs:
             if log.startswith('Author: ') :
@@ -111,105 +112,62 @@ def showHistory(request):
                 if tempAuthorId not in authorIds:
                     authorIds.append(tempAuthorId)
 
-        # print "-------------- authorIds ------------------"
-        # for au in authorIds:
-        #     print au
-        # print "################# authorIds #################"
-        # print "\n\n\n"
+        newLogs = [{}]
+        i = 0
+        lengthLogs =  len(logs)
+
+        tempNewLog = {"authorId" : "", "commitHead" : "", "date" : "","content" : ""}
+        for tempL in logs:
+
+            if  i % 6 == 0 and tempL.startswith('commit '):
+                tempNewLog["commitHead"] = tempL.lstrip('commit ').rstrip("\n")
+            elif  i % 6 == 1 and tempL.startswith('Author: '):
+                tempNewLog["authorId"] = str(re.findall(r"<(.+)@", tempL.lstrip('Author: '))[0] )
+
+            elif  i % 6 == 2  and tempL.startswith('Date: '):
+                tempNewLog["date"] = tempL.lstrip('Date: ').rstrip("\n")
+
+            elif  i % 6 == 4 and tempL.startswith(' '):
+                tempNewLog["content"] = tempL.lstrip(' ').rstrip("\n")
+
+            if  i % 6 == 5 or i == (lengthLogs -1):
+                newLogs.append(dict(tempNewLog))
+            i = i + 1
+
+        newLogs.pop(0)
+
+        # print "\n\n--------------newLogs ------------------"
+        # for value in newLogs:
+        #     print value
+        # print "--------------------------newLogs------------------ \n\n"
 
         authorsAndLogs = []
-        for authorId in authorIds:
+        for newLog in newLogs:
             authorAndLog =  {"author" : "", "logList" : [], "contenthistory1" : []}
-            # authorId = "40f98a05660bf871802e"
-            authorAndLog['author'] = authorId
+            authorAndLog['author'] = newLog["authorId"]
 
-            is_author = False
-            logList = []
-            for l in logs:
-                # print l.lstrip('commit ').rstrip("\n")
-                is_author = False
-                if l.startswith('commit') :
-                    is_author = True
+            # for logV in authorAndLog["logList"]:
+            cmd1 = "cd " + locationBook + "/" + idBook
+            # cmd2= ";cat " + idBook + "_" + chapterOrder + ".txt"
+            cmd2= ";git show " + newLog["commitHead"]
+            cmd = cmd1 + cmd2
+            p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+            lp = list(p.stdout.readlines())
 
-                if (l.find(authorId) > -1):
-                    # is_author = False
-                    # authorAndLog['logList'].append(l.lstrip('commit').rstrip("\n") )
-                    logList.append(l.lstrip('commit').rstrip("\n") )
-            authorAndLog['logList'] = logList
-
-            print "author " + authorId + " 's logList： "
-            print authorAndLog['logList']
-
-            # contenthistory1 = []
-            # authorAndLog["logList"].reverse()
-            for logV in authorAndLog["logList"]:
-                cmd1 = "cd " + locationBook + "/" + idBook
-                # cmd2= ";cat " + idBook + "_" + chapterOrder + ".txt"
-                cmd2= ";git show " + logV
-                cmd = cmd1 + cmd2
-                p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-                lp = list(p.stdout.readlines())
-
-                flag = False
-                for v in lp:
-                    if v.startswith('@@'):
-                        flag = True
-                        continue
-                    if flag == True and v.startswith("+") == True:
-                        authorAndLog['contenthistory1'].append(v.lstrip('+'))
-                    if flag == True and v.startswith("-") == True:
-                        authorAndLog['contenthistory1'].remove(v.lstrip('-'))
+            flag = False
+            for v in lp:
+                if v.startswith('@@'):
+                    flag = True
+                    continue
+                if flag == True and v.startswith("+") == True:
+                    authorAndLog['contenthistory1'].append(v.lstrip('+'))
+                if flag == True and v.startswith("-") == True:
+                    authorAndLog['contenthistory1'].remove(v.lstrip('-'))
             authorsAndLogs.append(authorAndLog)
 
-
-        print " \n authorsAndLogs:\n\n"
-        # print authorsAndLogs
-        for value in authorsAndLogs:
-            print value["author"]
-            print value["logList"]
-            # print value["contenthistory1"]
-
-        # print type(authorsAndLogs[0]["contenthistory1"])
-        context['history'] = authorsAndLogs[1]["contenthistory1"]
-
-
-
-
-
+        context['history'] = authorsAndLogs
 
         # find all log keys of this book
-        # contentLog = []
-        # # is_author = False
-        # for v in logs:
-        #     # if v.find(request.session['readerId']) > -1 :
-        #         # is_author = True
-        #     # if is_author and v.startswith('commit'):
-        #     if v.startswith('commit'):
-        #         contentLog.append(v.lstrip('commit') )
-        # context['logs'] = contentLog
-        #
-        # contenthistory = []
-        # contentLog.reverse()
-        # for logV in contentLog:
-        #     cmd1 = "cd " + locationBook + "/" + idBook
-        #     # cmd2= ";cat " + idBook + "_" + chapterOrder + ".txt"
-        #     cmd2= ";git show " + logV
-        #     cmd = cmd1 + cmd2
-        #     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-        #     lp = list(p.stdout.readlines())
-        #
-        #     flag = False
-        #     for v in lp:
-        #         if v.startswith('@@'):
-        #             flag = True
-        #             continue
-        #         if flag == True and v.startswith("+") == True:
-        #             contenthistory.append(v.lstrip('+'))
-        #         if flag == True and v.startswith("-") == True:
-        #             contenthistory.remove(v.lstrip('-'))
-        # context['history'] = contenthistory
-        # print "contenthistory::"
-        # print contenthistory
 
         # return render(request, 'result.html', context)
         return JsonResponse(context)
