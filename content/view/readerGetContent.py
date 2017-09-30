@@ -7,7 +7,8 @@ from django.shortcuts import render
 from django.conf import settings
 from git import Repo
 from book.models import book
-# from django.views.decorators import csrf
+from chapter.models import chapter
+from version.models import version
 
 import paramiko
 import sys
@@ -96,26 +97,27 @@ def showHistory(request):
             return JsonResponse(context)
         locationBook = mes
 
+        # step1: get version and votes info of every author from databases
+        res, statusNumber, mes  = chapter.getValue(idBook ,"id")
+        idChapterArg = mes
+        if res:
+            res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
+            for v in ver:
+                print str(v.vote) + "  " + v.idChapter_id
+            # print str(ver.vote) + "  " + ver.idChapter_id
+
+        # step2: get git-logs of this book
         cmd1 = "cd " + locationBook + "/" + idBook
-        # cmd2= ";cat " + idBook + "_" + chapterOrder + ".txt"
         cmd2= ";git log"
         cmd = cmd1 + cmd2
         p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
         logs = list(p.stdout.readlines())
 
 
-
-        authorIds = []
-        for log in logs:
-            if log.startswith('Author: ') :
-                tempAuthorId = str(re.findall(r"<(.+)@", log.lstrip('Author: '))[0] )
-                if tempAuthorId not in authorIds:
-                    authorIds.append(tempAuthorId)
-
+        # step3： re-strcut the git-logs
         newLogs = [{}]
         i = 0
         lengthLogs =  len(logs)
-
         tempNewLog = {"authorId" : "", "commitHead" : "", "date" : "","content" : ""}
         for tempL in logs:
 
@@ -133,22 +135,15 @@ def showHistory(request):
             if  i % 6 == 5 or i == (lengthLogs -1):
                 newLogs.append(dict(tempNewLog))
             i = i + 1
-
         newLogs.pop(0)
 
-        # print "\n\n--------------newLogs ------------------"
-        # for value in newLogs:
-        #     print value
-        # print "--------------------------newLogs------------------ \n\n"
-
+        # step4: cat the chapter file content by commit log
         authorsAndLogs = []
         for newLog in newLogs:
             authorAndLog =  {"author" : "", "logList" : [], "contenthistory1" : []}
             authorAndLog['author'] = newLog["authorId"]
 
-            # for logV in authorAndLog["logList"]:
             cmd1 = "cd " + locationBook + "/" + idBook
-            # cmd2= ";cat " + idBook + "_" + chapterOrder + ".txt"
             cmd2= ";git show " + newLog["commitHead"]
             cmd = cmd1 + cmd2
             p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
@@ -161,13 +156,17 @@ def showHistory(request):
                     continue
                 if flag == True and v.startswith("+") == True:
                     authorAndLog['contenthistory1'].append(v.lstrip('+'))
-                if flag == True and v.startswith("-") == True:
-                    authorAndLog['contenthistory1'].remove(v.lstrip('-'))
+                # if flag == True and v.startswith("-") == True:
+                    # authorAndLog['contenthistory1'].remove(v.lstrip('-'))
             authorsAndLogs.append(authorAndLog)
 
+        print "\n\n--------------newLogs ------------------"
+        for value in authorsAndLogs:
+            # print value["contenthistory1"]
+            print value["logList"]
+            # print value["author"]
+            # print "------------value--------- \n"
+        print "--------------------------newLogs------------------ \n\n"
+
         context['history'] = authorsAndLogs
-
-        # find all log keys of this book
-
-        # return render(request, 'result.html', context)
         return JsonResponse(context)

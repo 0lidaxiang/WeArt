@@ -6,6 +6,8 @@ from django.shortcuts import render
 from django.conf import settings
 from git import Repo
 from book.models import book
+from chapter.models import chapter
+from version.models import version
 
 import paramiko
 import sys
@@ -120,8 +122,18 @@ def createAContent(request):
         # 推送本地修改到远程仓库
         origin.push()
 
-        context['status'] = "success"
-        context['message'] = '您已經成功更新 《' + userInputBookName + "》的第 " + userInputChpaterOrder + " 章節內容。"
+        # step5: write data into version table
+        res, statusNumber, mes  = chapter.getValue(idBook ,"id")
+        idChapter = mes
+        if res:
+            res, statusNumber, mes = version.add(idChapter, 0, 0, readerId)
+            if res:
+                context['status'] = "success"
+                context['message'] = '您已經成功更新 《' + userInputBookName + "》的第 " + userInputChpaterOrder + " 章節內容。"
+                return JsonResponse(context)
+
+        context['status'] = "fail"
+        context['message'] = '錯誤： ' + str(statusNumber) + " ， " + mes
 
     except Exception as e:
         context['status'] = "fail"

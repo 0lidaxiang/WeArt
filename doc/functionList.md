@@ -15,6 +15,7 @@ The complated function number is module number and function number, like 100001.
 |6| book | 13| |    
 |7| chapter | 14| |  
 |8| tool | 15| | |
+|9| version | 16| | |
 
 ## Function Number In WeArt module
 The WeArt module number is <font color=#DAA520 size=4>10</font>.
@@ -67,3 +68,16 @@ The tool module number is <font color=#DAA520 size=4>15</font>.
 | Order | File Name | Function Name | Number | Other Intro |
 |---|---|---|---|---|---|---|
 |1| | | | | |
+
+## Function Number In chapter module
+The version module number is <font color=#DAA520 size=4> 16 </font>.  
+
+| Order | File Name | Function Name | FucNumber | Other Intro |
+|---|---|---|---|---|---|---|  
+| 1 | model.py | getValue | 0000 | |
+| 2 | model.py | getValue | 0001 | |
+| 3 | model.py | getValue | 0002 | |
+| 4 | model.py | getValue | 0003 | |
+| 5 | model.py | add | 0101 | |
+| 6 | model.py | add | 0102 | |
+| 7 | | | | | |

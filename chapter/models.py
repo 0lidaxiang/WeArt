@@ -24,7 +24,7 @@ class chapter(models.Model):
     @classmethod
     def getValue(self, bookIdArg, returnArg):
         try:
-            obj = self.objects.get(id=bookIdArg)
+            obj = self.objects.get(idBook_id=bookIdArg)
             if returnArg == "id":
                 return True, 140000, obj.id
             elif returnArg == "name":
