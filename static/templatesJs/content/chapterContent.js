@@ -51,7 +51,7 @@ function getotherVersionContentData() {
     data: {"idBook": idBook, "chapterOrder": chapterOrder}
   })
   .done(function(resp) {
-    // console.log(resp);
+    console.log(resp);
     if (resp.status == "success") {
       var history = resp.history;
 

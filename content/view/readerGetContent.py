@@ -98,13 +98,21 @@ def showHistory(request):
         locationBook = mes
 
         # step1: get version and votes info of every author from databases
+        idAuthorsAndVotes = []
         res, statusNumber, mes  = chapter.getValue(idBook ,"id")
         idChapterArg = mes
+
         if res:
             res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
             for v in ver:
-                print str(v.vote) + "  " + v.idChapter_id
-            # print str(ver.vote) + "  " + ver.idChapter_id
+                idAuthorAndVote = {"vote": 0, "score": 0, "idAuthor": ""}
+                idAuthorAndVote["vote"] = int(v.vote)
+                idAuthorAndVote["score"] = int(v.score)
+                idAuthorAndVote["idAuthor"] = v.idAuthor_id
+                idAuthorsAndVotes.append(idAuthorAndVote)
+        idAuthorsAndVotes.sort(reverse = True, key=lambda x:(x['vote'],x['score']))
+        # print idAuthorsAndVotes[0]["idAuthor"]
+        # context['idAuthorsAndVotes'] = idAuthorsAndVotes
 
         # step2: get git-logs of this book
         cmd1 = "cd " + locationBook + "/" + idBook
@@ -125,6 +133,10 @@ def showHistory(request):
                 tempNewLog["commitHead"] = tempL.lstrip('commit ').rstrip("\n")
             elif  i % 6 == 1 and tempL.startswith('Author: '):
                 tempNewLog["authorId"] = str(re.findall(r"<(.+)@", tempL.lstrip('Author: '))[0] )
+                for idAuthorAndVote in idAuthorsAndVotes:
+                    if idAuthorAndVote["idAuthor"] == tempNewLog["authorId"]:
+                        tempNewLog["vote"] = idAuthorAndVote["vote"]
+                        break
 
             elif  i % 6 == 2  and tempL.startswith('Date: '):
                 tempNewLog["date"] = tempL.lstrip('Date: ').rstrip("\n")
@@ -138,10 +150,12 @@ def showHistory(request):
         newLogs.pop(0)
 
         # step4: cat the chapter file content by commit log
-        authorsAndLogs = []
+        historys = []
         for newLog in newLogs:
             authorAndLog =  {"author" : "", "logList" : [], "contenthistory1" : []}
             authorAndLog['author'] = newLog["authorId"]
+            authorAndLog['logList'] = newLog["content"]
+            authorAndLog['vote'] = newLog["vote"]
 
             cmd1 = "cd " + locationBook + "/" + idBook
             cmd2= ";git show " + newLog["commitHead"]
@@ -158,15 +172,17 @@ def showHistory(request):
                     authorAndLog['contenthistory1'].append(v.lstrip('+'))
                 # if flag == True and v.startswith("-") == True:
                     # authorAndLog['contenthistory1'].remove(v.lstrip('-'))
-            authorsAndLogs.append(authorAndLog)
+            historys.append(authorAndLog)
 
-        print "\n\n--------------newLogs ------------------"
-        for value in authorsAndLogs:
-            # print value["contenthistory1"]
-            print value["logList"]
-            # print value["author"]
-            # print "------------value--------- \n"
-        print "--------------------------newLogs------------------ \n\n"
+        # print "\n\n--------------historys ------------------"
+        # print historys
+        historys.sort(reverse = True, key=lambda x:(x['vote']))
+        # for v in historys:
+            # print v
+        # print "--------------------------historys------------------ \n\n"
 
-        context['history'] = authorsAndLogs
+        # step5: re-strcut the history file content classied by author ，sorted by vote
+        newHistory = {"vote": 0, "idAuthor": "", "logList": "", "newestContent": ""}
+
+        context['history'] = historys
         return JsonResponse(context)

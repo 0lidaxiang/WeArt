@@ -17,7 +17,7 @@ class version(models.Model):
     id = models.CharField(max_length=50,primary_key=True)
     idChapter = models.ForeignKey(chapter) # in database,this variable is named "idChapter_id"
     vote = models.IntegerField(max_length=11)
-    socre = models.IntegerField(max_length=11)
+    score = models.IntegerField(max_length=11)
     idAuthor = models.ForeignKey(reader)  # in database,this variable is named "idAuthor_id"
     createTime = models.DateTimeField(max_length=50)
     modifyTime = models.DateTimeField(max_length=50)
@@ -33,8 +33,8 @@ class version(models.Model):
                 return True, 160000, obj.idChapter
             elif returnArg == "vote":
                 return True, 160000, obj.vote
-            elif returnArg == "socre":
-                return True, 160000, obj.socre
+            elif returnArg == "score":
+                return True, 160000, obj.score
             elif returnArg == "idAuthor":
                 return True, 160000, obj.idAuthor
             elif returnArg == "createTime":
@@ -60,11 +60,12 @@ class version(models.Model):
 
 
     @classmethod
-    def add(self, idChapter, vote, socre, idAuthor):
+    def add(self, idChapter, vote, score, idAuthor):
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
-            idVal = createId(50, idChapter)
-            obj = self(id=idVal, idChapter_id=idChapter, vote = vote, socre=socre, idAuthor_id = idAuthor, createTime=nowTime, modifyTime=nowTime,)
+            idVal = createId(50, idChapter + idAuthor) # every author writeing is a version
+            # idVal = createId(50, idChapter + idAuthor + nowTime) # every update is a version
+            obj = self(id=idVal, idChapter_id=idChapter, vote = vote, score=score, idAuthor_id = idAuthor, createTime=nowTime, modifyTime=nowTime,)
             obj.save()
             return True,160101, ""
         except Exception as e:
