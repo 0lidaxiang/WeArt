@@ -152,7 +152,7 @@ def showHistory(request):
         # step4: cat the chapter file content by commit log
         historys = []
         for newLog in newLogs:
-            authorAndLog =  {"author" : "", "logList" : [], "contenthistory1" : []}
+            authorAndLog =  {"vote": 0 , "author" : "", "logList" : [], "content" : []}
             authorAndLog['author'] = newLog["authorId"]
             authorAndLog['logList'] = newLog["content"]
             authorAndLog['vote'] = newLog["vote"]
@@ -169,20 +169,31 @@ def showHistory(request):
                     flag = True
                     continue
                 if flag == True and v.startswith("+") == True:
-                    authorAndLog['contenthistory1'].append(v.lstrip('+'))
-                # if flag == True and v.startswith("-") == True:
-                    # authorAndLog['contenthistory1'].remove(v.lstrip('-'))
+                    authorAndLog['content'].append(v.lstrip('+'))
+                if flag == True and v.startswith("-") == True:
+                    print v
+                    # authorAndLog['content'].remove(v.lstrip('-'))
             historys.append(authorAndLog)
-
-        # print "\n\n--------------historys ------------------"
-        # print historys
+        # historys sorted by vote
         historys.sort(reverse = True, key=lambda x:(x['vote']))
-        # for v in historys:
-            # print v
-        # print "--------------------------historys------------------ \n\n"
 
-        # step5: re-strcut the history file content classied by author ，sorted by vote
-        newHistory = {"vote": 0, "idAuthor": "", "logList": "", "newestContent": ""}
+        # step5: re-strcut the history file content classied by author
+        # get author list of this file logs
+        authorsInLogs = []
+        for his in historys:
+            if his["author"] not in authorsInLogs:
+                authorsInLogs.append(his["author"])
+        newHistorys = []
+        for au in authorsInLogs:
+            newHistory = {"vote": 0, "author": "", "logList": [], "content": []}
+            # print au
+            newHistory['author'] =au
+            for his in historys:
+                if his["author"] == au:
+                    newHistory['content'].append(his["content"])
+                    newHistory['logList'].append(his["logList"])
+                    newHistory['vote'] = his["vote"]
+            newHistorys.append(newHistory)
 
-        context['history'] = historys
+        context['history'] = newHistorys
         return JsonResponse(context)
