@@ -40,7 +40,7 @@ function getContentData() {
   });
 }
 
-function getotherVersionContentData() {
+function getotherVersionContentData(idAuthor) {
   var idBook = $("#idBook").val();
   var chapterOrder = $("#chapterOrder").val();
 
@@ -48,24 +48,26 @@ function getotherVersionContentData() {
     url: '/content/showHistory/',
     type: 'GET',
     dataType: 'json',
-    data: {"idBook": idBook, "chapterOrder": chapterOrder}
+    data: {"idBook": idBook, "chapterOrder": chapterOrder , "idAuthor": idAuthor}
   })
   .done(function(resp) {
-    // console.log(resp);
+    console.log(resp);
     if (resp.status == "success") {
       var history = resp.history;
 
       var objContent = "<div id='otherVersionContent' class='col-md-12 col-sm-12 alert alert-success'>";
       var objLog = "<div id='logsContent' class='col-md-12 col-sm-12 alert alert-success'>";
       var objAuthor = "<div id='authorList' class='col-md-12 col-sm-12 alert alert-success'>";
-      for (var i = 0; i < history.length; i++) {
-        for (var j = 0; j < history[i].content.length; j++) {
-          objContent = objContent + history[i].content[j] + '<br>';
-        }
-        for (var j = 0; j < history[i].logList.length; j++) {
-          objLog = objLog + history[i].logList[j] + '<br>';
-        }
-        objAuthor = objAuthor + "<a href='" + history[i].author + "'>" + history[i].author + '</a><br>';
+
+      for (var i = history.content.length - 1; i >= 0; i--) {
+          objContent = objContent + history.content[i] + '<br>';
+      }
+      for (var i = history.logList.length - 1; i >= 0; i--) {
+        objLog = objLog + history.logList[i] + '<br>';
+      }
+      var authorList = resp.authorList;
+      for (var i = 0; i < authorList.length; i++) {
+        objAuthor = objAuthor + "<a href='javascript:getotherVersionContentData(" + "\"" + authorList[i]  + "\"" + ")'>" + authorList[i] + '</a><br>';
       }
       objContent = objContent + "</div>";
       objLog = objLog + "</div>";
