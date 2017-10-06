@@ -59,10 +59,10 @@ function getotherVersionContentData(idAuthor) {
       var objLog = "<div id='logsContent' class='col-md-12 col-sm-12 alert alert-success'>";
       var objAuthor = "<div id='authorList' class='col-md-12 col-sm-12 alert alert-success'>";
 
-      for (var i = history.content.length - 1; i >= 0; i--) {
+      for (var i = 0; i < history.content.length; i++) {
           objContent = objContent + history.content[i] + '<br>';
       }
-      for (var i = history.logList.length - 1; i >= 0; i--) {
+      for (var i = 0; i < history.logList.length; i++) {
         objLog = objLog + history.logList[i] + '<br>';
       }
       var authorList = resp.authorList;

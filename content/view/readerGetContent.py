@@ -111,8 +111,6 @@ def showHistory(request):
                 idAuthorAndVote["idAuthor"] = v.idAuthor_id
                 idAuthorsAndVotes.append(idAuthorAndVote)
         idAuthorsAndVotes.sort(reverse = True, key=lambda x:(x['vote'],x['score']))
-        # print idAuthorsAndVotes[0]["idAuthor"]
-        # context['idAuthorsAndVotes'] = idAuthorsAndVotes
 
         # step2: get git-logs of this book
         cmd1 = "cd " + locationBook + "/" + idBook
@@ -120,7 +118,6 @@ def showHistory(request):
         cmd = cmd1 + cmd2
         p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
         logs = list(p.stdout.readlines())
-
 
         # step3： re-strcut the git-logs
         newLogs = [{}]
@@ -130,7 +127,7 @@ def showHistory(request):
         for tempL in logs:
 
             if  i % 6 == 0 and tempL.startswith('commit '):
-                tempNewLog["commitHead"] = tempL.lstrip('commit ').rstrip("\n")
+                tempNewLog["commitHead"] = tempL.lstrip('commit').rstrip("\n")
             elif  i % 6 == 1 and tempL.startswith('Author: '):
                 tempNewLog["authorId"] = str(re.findall(r"<(.+)@", tempL.lstrip('Author: '))[0] )
                 for idAuthorAndVote in idAuthorsAndVotes:
@@ -146,6 +143,7 @@ def showHistory(request):
 
             if  i % 6 == 5 or i == (lengthLogs -1):
                 newLogs.append(dict(tempNewLog))
+
             i = i + 1
         newLogs.pop(0)
 
@@ -158,30 +156,28 @@ def showHistory(request):
             authorAndLog['vote'] = newLog["vote"]
 
             cmd1 = "cd " + locationBook + "/" + idBook
-            cmd2= ";git show " + newLog["commitHead"]
+            # cmd2= ";git show HEAD"
+            cmd2= ";git show " + newLog["commitHead"][0]
+            # print newLog["commitHead"]
+            # cmd2= ";git show " + newLog["commitHead"]
             cmd = cmd1 + cmd2
             p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
             lp = list(p.stdout.readlines())
 
-            # print lp
             flag = False
+            # print len(lp)
             for v in lp:
                 if v.startswith('@@'):
                     flag = True
                     continue
-                # if flag == True and v.startswith("+") == True:
                 if flag == True :
+                    # if v.startswith("+") == True or v.startswith("-") == True:
                     authorAndLog['content'].append(v)
-                # if flag == True and v.startswith("-") == True:
-                    # print v.lstrip('-')
-                    # authorAndLog['content'].append(v)
-                    # authorAndLog['content'].remove(v.lstrip('-'))
             historys.append(authorAndLog)
         # historys sorted by vote
         historys.sort(reverse = True, key=lambda x:(x['vote']))
 
-
-        # [{"authorid" : "", "logList" : [] , "commitsSorted" : [] }]
+        historys.reverse()
 
         # step5: re-strcut the history file content classied by author
         # get author list of this file logs
@@ -194,45 +190,65 @@ def showHistory(request):
         if "idAuthor" in request.GET :
             newHistory = {"vote": 0, "author": "", "logList": [], "content": []}
             newHistory['author'] = request.GET["idAuthor"]
-            for his in historys:
-                if his["author"] == newHistory['author']:
-                    for v in his["content"]:
 
+
+            for his in historys:
+                # print his["content"]
+
+                if his["author"] == newHistory['author']:
+                    # lenC = len(his["content"])
+                    for v in his["content"]:
                         if v.startswith("+") == True:
                             newHistory['content'].append(v.lstrip('+'))
-                        if v.startswith("-") == True:
-                            newHistory['content'].remove(v.lstrip('-'))
+                        elif v.startswith("-") == True:
 
-                    newHistory['logList'].append(his["logList"])
+                            new = {"content" : []}
+                            new["content"] = v.lstrip('-')
+
+                            newHistory["content"].remove(new["content"])
+                        else :
+                            newHistory['content'].append(v.lstrip(''))
+
+                    ss = his["logList"]
+                    # if ss not in newHistory['logList']:
+                    newHistory['logList'].append(ss)
+                    # newHistory['logList'].append(his["logList"])
                     newHistory['vote'] = his["vote"]
             newHistorys.append(newHistory)
         else:
             for au in authorsInLogs:
                 newHistory = {"vote": 0, "author": "", "logList": [], "content": []}
                 newHistory['author'] =au
+
+                print "len(historys)"
+                lenc = len(historys)
+                # print lenc
+                ii = 1
                 for his in historys:
+                    # print ii
                     if his["author"] == newHistory['author']:
                         for v in his["content"]:
                             # print v
-                            if v.startswith("+") == True:
+                            if v.startswith("-") == False:
                                 newHistory['content'].append(v.lstrip('+'))
-                            elif v.startswith("-") == True:
-                                print newHistory['content']
-                                print "\n"
-
-                                new = {"content" : []}
-                                new["content"].append(v.lstrip('-'))
-                                # print type(str(new["content"]))
-                                # newStr = str(new["content"]).rstrip("]").lstrip("[")
-                                print new["content"]
-                                newHistory['content'].remove(new["content"])
-
-                        newHistory['logList'].append(his["logList"])
+                            # if v.startswith("+") == True:
+                            #     newHistory['content'].append(v.lstrip('+'))
+                            # elif v.startswith("-") == True:
+                            #     new = {"content" : []}
+                            #     new["content"] = v.lstrip('-')
+                            #     newHistory["content"].remove(new["content"])
+                            # # if ii > lenc:
+                            # else:
+                            #     newHistory['content'].append(v.lstrip(''))
+                        ss = his["logList"]
+                        # if ss not in newHistory['logList']:
+                        newHistory['logList'].append(ss)
+                        # newHistory['logList'].append(his["logList"])
                         newHistory['vote'] = his["vote"]
+                        ii = ii + 1
                 newHistorys.append(newHistory)
 
-
-
+        # print newHistorys[0]["content"]
         context['history'] = newHistorys[0]
         context['authorList'] = list(authorsInLogs)
         return JsonResponse(context)
