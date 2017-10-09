@@ -129,9 +129,9 @@ class book(models.Model):
 
     @classmethod
     def getAll(self, amount):
-        # obj = self.objects.all().filter(pub_date__year=2006)[:10]
         try:
-            obj = self.objects.all()[:10]
+            # obj = self.objects.all()[:10]
+            obj = self.objects.all()
             return True, 130006, obj
         except self.DoesNotExist:
             return False, 130007, "錯誤: getAll 讀取 book 表錯誤。"

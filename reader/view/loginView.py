@@ -45,13 +45,13 @@ def loginReader(request):
 
     try:
         readerObj = reader.objects.get(email=userName)
-        if readerObj.status == "allowed":
-            if passwd != readerObj.passwd:
-                context['status'] = "fail"
-                context['message'] = "密碼錯誤！請重新登錄！"
-                return JsonResponse(context)
-                # return render(request, 'reader/loginFail.html', {'message': u'密碼錯誤！請重新登錄！'})
+        if passwd != readerObj.passwd:
+            context['status'] = "fail"
+            context['message'] = "密碼錯誤！請重新登錄！"
+            return JsonResponse(context)
+            # return render(request, 'reader/loginFail.html', {'message': u'密碼錯誤！請重新登錄！'})
 
+        if readerObj.status == "allowed":
             request.session["readerId"] = readerObj.id
             request.session["userName"] = readerObj.name
 
@@ -67,7 +67,6 @@ def loginReader(request):
                 else:
                     context['message'] = lastUrl
                 return JsonResponse(context)
-
 
             authorId = author.getId(readerObj.id)
             if authorId != "":

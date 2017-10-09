@@ -114,9 +114,6 @@ def showHistory(request):
             idChapterArg = mes
             if res:
                 res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
-                # print type( list(ver) )
-                # print ver
-                # print "\n\n"
                 for v in ver:
                     idAuthorAndVote = {"vote": 0, "score": 0, "idAuthor": ""}
                     idAuthorAndVote["vote"] = int(v.vote)

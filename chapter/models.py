@@ -82,8 +82,7 @@ class chapter(models.Model):
     @classmethod
     def getAll(self, idBookArg):
         try:
-            # obj = self.objects.all()[:10]
-            obj = self.objects.all().filter(idBook_id=idBookArg)[:10]
+            obj = self.objects.all().filter(idBook_id=idBookArg)
             return True, 140006, obj
         except self.DoesNotExist:
             return False, 140007, "錯誤: getAll 讀取 chapter 表錯誤。"
