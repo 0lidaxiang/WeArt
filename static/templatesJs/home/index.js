@@ -20,7 +20,7 @@ function getRecommendArts() {
       obj = obj + tableObj + thObj;
 
       for (var i in bookAll) {
-        obj = obj + "<tr><td>" + (i+1) + "</td><td><a href='/chapter/bookChapter/?idBook= " + bookAll[i].id + "&bookName=" + bookAll[i].name + "'>" + bookAll[i].id + "</a></td><td>" + bookAll[i].name + "</td><td>" + bookAll[i].idReader_id + "</td><td> " + bookAll[i].chapterCount  + "</td></tr>";
+        obj = obj + "<tr><td>" + (i+1) + "</td><td><a href='/chapter/bookChapter/?idBook=" + bookAll[i].id + "&bookName=" + bookAll[i].name + "'>" + bookAll[i].id + "</a></td><td>" + bookAll[i].name + "</td><td>" + bookAll[i].idReader_id + "</td><td> " + bookAll[i].chapterCount  + "</td></tr>";
       }
       obj = obj + "</table></div></div>";
 

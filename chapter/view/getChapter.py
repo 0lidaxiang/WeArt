@@ -19,11 +19,17 @@ def bookChapter(request):
     inputIdBook = request.GET['idBook']
 
     # get the book name of user input if it is not null
-    if 'bookName' not in request.GET:
-        context['status'] = "fail"
-        context['message'] = "The bookName variable is not in request.GET."
-        return JsonResponse(context)
-    bookName = request.GET['bookName']
+    # if 'bookName' not in request.GET:
+    #     context['status'] = "fail"
+    #     context['message'] = "The bookName variable is not in request.GET."
+    #     return JsonResponse(context)
+    # bookName = request.GET['bookName']
+    bookName = ""
+    res, status, mes = book.getValue(inputIdBook, "name")
+    if res:
+        bookName = mes
+    else:
+        print "getchapter bookChapter error" + str(status)
 
     return render(request, 'chapter/bookChapter.html', context={'idBook': inputIdBook,'bookName': bookName})
 

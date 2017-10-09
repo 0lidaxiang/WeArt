@@ -14,29 +14,30 @@ The complated function number is module number and function number, like 100001.
 |3| author | 12| |
 |6| book | 13| |    
 |7| chapter | 14| |  
-|8| tool | 15| | |
-|9| version | 16| | |
+|8| tool | 15| |
+|9| version | 16| |
+| | collection | 17| | |
 
 ## Function Number In WeArt module
 The WeArt module number is <font color=#DAA520 size=4>10</font>.
 
 | Order | File Name | Function Name | Number | Other Intro |
 |---|---|---|---|---|---|---|
-|1| | | | | |
+| | | | | | |
 
 ## Function Number In reader module
 The reader module number is <font color=#DAA520 size=4>11</font>.
 
 | Order | File Name | Function Name | Number | Other Intro |
 |---|---|---|---|---|---|---|
-|1| | | | | |
+| | | | | | |
 
 ## Function Number In author module
 The author module number is <font color=#DAA520 size=4>12</font>.
 
 | Order | File Name | Function Name | Number | Other Intro |
 |---|---|---|---|---|---|---|
-|1| | | | | |
+| | | | | | |
 
 ## Function Number In book module
 The book module number is <font color=#DAA520 size=4> 13 </font>.
@@ -49,27 +50,30 @@ The book module number is <font color=#DAA520 size=4> 13 </font>.
 | 4 | model.py | getValue | 0000 | |
 | 5 | model.py | getValue | 0001 | |
 | 6 | model.py | getValue | 0002 | |
-| 8 | | | | | |
+|   | | | | | |
 
 ## Function Number In chapter module
 The chapter module number is <font color=#DAA520 size=4> 14 </font>.  
 
 | Order | File Name | Function Name | FucNumber | Other Intro |
 |---|---|---|---|---|---|---|  
-| 1 | model.py | getValue | 0003 | |
-| 2 | model.py | getValue | 0004 | |
-| 3 | model.py | getValue | 0005 | |
-| 3 | model.py | getValue | 0000 | |
-| 4 | | | | | |
+| 1 | model.py | getValue | 0000 | |
+| 2 | model.py | getValue | 0003 | |
+| 3 | model.py | getValue | 0004 | |
+| 4 | model.py | getValue | 0005 | |
+| 5 | model.py | getAll | 0006 | |
+| 6 | model.py | getAll | 0007 | |
+| 7 | model.py | getAll | 0008 | |
+|  | | | | | |
 
 ## Function Number In tool module
 The tool module number is <font color=#DAA520 size=4>15</font>.
 
 | Order | File Name | Function Name | Number | Other Intro |
 |---|---|---|---|---|---|---|
-|1| | | | | |
+| | | | | | |
 
-## Function Number In chapter module
+## Function Number In version module
 The version module number is <font color=#DAA520 size=4> 16 </font>.  
 
 | Order | File Name | Function Name | FucNumber | Other Intro |
@@ -80,4 +84,29 @@ The version module number is <font color=#DAA520 size=4> 16 </font>.
 | 4 | model.py | getValue | 0003 | |
 | 5 | model.py | add | 0101 | |
 | 6 | model.py | add | 0102 | |
-| 7 | | | | | |
+| 7 | model.py | getVersionsByIdChapter | 0200 | |
+| 8 | model.py | getVersionsByIdChapter | 0202 | |
+| 9 | model.py | getVersionsByIdChapter | 0203 | |
+|   | | | | | |
+
+## Function Number In collection module
+The chapter module number is <font color=#DAA520 size=4> 17 </font>.  
+
+| Order | File Name | Function Name | FucNumber | Other Intro |
+|---|---|---|---|---|---|---|  
+| 1  | model.py | getValue | 0000 | |
+| 2  | model.py | getValue | 0001 | |
+| 3  | model.py | getValue | 0002 | |
+| 4  | model.py | getValue | 0003 | |
+| 5  | model.py | getAll | 0100 | |
+| 6  | model.py | getAll | 0101 | |
+| 7  | model.py | getAll | 0102 | |
+| 8  | model.py | add | 0200 | |
+| 9  | model.py | add | 0201 | |
+| 10 | model.py | delete | 0300 | |
+| 11 | model.py | delete | 0301 | |
+| 12 | model.py | delete | 0302 | |
+<!-- | 13 | addCollect.py | add | 0400 | |
+| 14 | addCollect.py | add | 0401 | |
+| 15 | addCollect.py | add | 0402 | | -->
+|   | | | | | |

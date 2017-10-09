@@ -27,4 +27,5 @@ urlpatterns = [
     url('^chapter/', include('chapter.urls')),
     url('^book/', include('book.urls')),
     url('^content/', include('content.urls')),
+    url('^collection/', include('collection.urls')),
 ]

@@ -45,7 +45,6 @@ def readerWriteAContentHtml(request):
         context['status'] = "success"
         context['message'] = "/content/readerCreateNewContent/?idBook=" + idBook
         return JsonResponse(context)
-        # return render(request, "content/readerCreateNewContent/?idBook=" + idBook)
 
 def readerWriteAContent(request):
         if "readerId" not in request.session:
