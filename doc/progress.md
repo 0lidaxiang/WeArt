@@ -3,10 +3,6 @@
 StartTime : 2017-02-25
 ModifyTime :  2017-07-20
 
-[project gantt chart](./ganttChart.html)
-
-![project gantt chart](./ganttChart.html)
-
 ## 1. Preparation Phrase Plan
 + [x] ~~1. Test how to use git server software.~~
 + [x] ~~2. Make sure that whether it can to use python to control linux commands.~~
@@ -29,8 +25,8 @@ ModifyTime :  2017-07-20
 + [x] 6. ~~Author can create a novel and chapters.(2017-09-16)~~
 + [x] 7. ~~Author can update the novel content.(2017-09-17)~~
 + [x] 8. ~~Reader can read book,chapters list and content.(2017-09-21)~~
-+ [x] 9. Differnt Readers can write different version chapters according by the same story outline.(2017-09-28)
-+ [x] 10. Reader can read different version content.(2017-10-09)
++ [x] 9. ~~Differnt Readers can write different version chapters according by the same story outline.(2017-09-28)~~
++ [x] 10. ~~Reader can read different version content.(2017-10-09)~~
 + [ ] 11. Reader can collect their favorite books.(2017-10-15)
 + [ ] 12. Author and Administrator manages books.(2017-10-28)
 + [ ] 13. The home pages and other functions.(2017-10-31)
