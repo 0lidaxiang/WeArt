@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.forest.min.css">
+  <style media="screen">
+    /* Grid lines*/
+    .grid .tick {
+      stroke: lightgrey;
+      opacity: 0.3;
+      shape-rendering: auto;
+    }
+    .grid path {
+      stroke-width: 0;
+    }
+    /* Gantt chart title*/
+    .titleText {
+        text-anchor:middle;
+        font-size:18px;
+        fill:#000;
+    }
+    /* Today line */
+    .today{
+      fill: red;
+      stroke: red;
+      stroke-width: 2px;
+    }
+     /** Section styling */
+    .section {
+       stroke:none;
+       opacity:0.3;
+    }
+    .section0 {
+      fill:lightgreen;
+    }
+    .section1 {
+      fill:white;
+    }
+    .section2 {
+      fill:#ff0;
+    }
+    .sectionTitle {
+        fill: gray;
+        text-anchor:start;
+        font-size:14px;
+        text-height:14px;
+    }
+     /* Completed task */
+    .done0, .done1, .done2 {
+        stroke:grey;
+        fill: darkgrey;
+        stroke-width:2;
+    }
+
+    /* Active task */
+    .activeText0,.activeText1,  .activeText2, .activeText3 {
+      fill: red !important;
+    }
+
+    .active0, .active1, .active2 {
+        stroke-width:2;
+        stroke: black;
+        fill: #00dd00;
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      logLevel:3,
+      startOnLoad:true,
+      gantt: {
+        logLevel : 3,
+         titleTopMargin:25,
+         barHeight:20,
+         barGap:4,
+         topPadding:50,
+         sidePadding:75,
+         gridLineStartPadding:50,
+         fontSize:11,
+         numberSectionStyles:3,
+         axisFormatter: [["%Y%-m/%-d", function (d){return d.getDate() == 1;}]]
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="mermaid">
+      gantt
+      dateFormat  YYYY-MM-DD
+      title WeArt Study
+
+      section Design Stage
+      Apply for this study/project                    :done,    p1, 2017-01-04, 7d
+      Discuss the feasibility of the idea             :done,    p2, after p1, 8d
+      Test base ideas and create github repo          :done,    p3, 2017-02-01, 8d
+      Design architecture model                       :done,    p4, 2017-02-13, 5d
+      List develop-plan and ideas by files            :done,    p5, 2017-02-24, 19d
+      Design front-end                                :done,    p6, 2017-03-17, 14d
+      Project Gantt Chart                             :done,    p7, 2017-05-11, 4d
+      Make front-end design to pictures               :done,    p8, 2017-06-26, 20d
+
+      section Developing Stage
+      DEMO & Deploy server                            :done,    dev1Ph1,  2017-06-26, 15d
+      Design database                                 :done,    dev1Ph2,  after dev1Ph1, 9d
+      Design two Diagrams                             :done,    dev1Ph3,  after dev1Ph2, 3d
+      Reader register and login                       :done,    dev1Ph4,  after dev1Ph3, 4d
+      Author function enabled                         :done,    dev1Ph5,  after dev1Ph4, 4d
+      Add html pages, create books function of author :done,    dev1Ph6,  after dev1Ph5, 10d
+      Create books and chaptes                        :done,    dev1Ph7,  2017-09-11,    5d
+      Update contents                                 :done,    dev2Ph1,  after dev1Ph7, 2d
+      Reading book,chapters list and content          :done,    dev2Ph2,  after dev2Ph1, 4d
+      Differnt Readers write one chapter              :done,    dev2Ph3,  after dev2Ph2, 3d
+      Read different version content                  :done,    dev2Ph4,  after dev2Ph3, 14d
+      Readers collect favorite books                  :active,  dev2Ph5,  2017-10-09, 3d
+      Author and Administrator manages books          :active,  dev2Ph6,  after dev2Ph5, 3d
+      The home pages and other functions              :active,  dev2Ph7,  after dev2Ph6, 7d
+      Administrator manages readers and authors       :         dev2Ph8,  after dev2Ph7, 4d
+      Administrator registers and logins              :         dev2Ph9,  after dev2Ph8, 4d
+      Unit test & Fix bugs                            :         dev2Ph10, after dev2Ph9,  14d
+
+      section Editing Files Stage
+      Load test & Pressure test                       :         editPh1, after dev2Ph10, 7d
+      Optimize server                                 :         editPh2, after dev2Ph10, 14d
+      Write documents(diagrams and charts...)         :         editPh3, after dev2Ph10, 14d
+
+  </div>
+</body>
+
+</html>

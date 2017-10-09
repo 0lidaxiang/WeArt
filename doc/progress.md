@@ -3,8 +3,9 @@
 StartTime : 2017-02-25
 ModifyTime :  2017-07-20
 
-![project gantt chart](./project-gantt.png)
-> gantt chart的源代码在 WeArt.gantt 里面，把gantt chart 源代码粘贴到 [在线编辑器](http://knsv.github.io/mermaid/live_editor/) 上，即可获得上面的甘特图，之后就可以截图或也可以下载 SVG 格式或者选择 VIEW 模式。另外一种办法是自己安装 mermaid 库进行编译这些代码。
+[project gantt chart](./ganttChart.html)
+
+![project gantt chart](./ganttChart.html)
 
 ## 1. Preparation Phrase Plan
 + [x] ~~1. Test how to use git server software.~~
@@ -24,24 +25,23 @@ ModifyTime :  2017-07-20
 + [x] 2. ~~Design Use case diagram and Class diagram.(2017-07-22)~~
 + [x] 3. ~~Reader can login and register.(2017-07-26)~~
 + [x] 4. ~~Author can be enabled.(2017-07-30)~~
-+ [x] 5. ~~Author can create a novel and chapters.(2017-09-16)~~
-+ [x] 6. ~~Author can update the novel content.(2017-09-17)~~
-+ [x] 7. ~~Reader can read book,chapters list and content.(2017-09-21)~~
-+ [ ] 8. Differnt Readers can write one chapter and send different version for the same story.(2017-09-26)
-+ [ ] 9. Reader can read different version content.(2017-10-05)
-+ [ ] 10. Reader can collect their favorite books.(2017-10-15)
-+ [ ] 11. Administrator registers and logins.(2017-10-25)
-+ [ ] 12. Administrator manages authors(register, login, refuse, lock account,delete account).(2017-10-25)
-+ [ ] 13. Administrator manages readers(register, login, refuse, lock account,delete account).(2017-10-25)
-+ [ ] 14. Administrator manages books.(2017-10-31)
-+ [ ] 15. The home pages and other functions.(2017-10-31)
-
++ [x] 5. ~~Add html pages, create books function of author apps.(2017-08-12)~~
++ [x] 6. ~~Author can create a novel and chapters.(2017-09-16)~~
++ [x] 7. ~~Author can update the novel content.(2017-09-17)~~
++ [x] 8. ~~Reader can read book,chapters list and content.(2017-09-21)~~
++ [x] 9. Differnt Readers can write different version chapters according by the same story outline.(2017-09-28)
++ [x] 10. Reader can read different version content.(2017-10-09)
++ [ ] 11. Reader can collect their favorite books.(2017-10-15)
++ [ ] 12. Author and Administrator manages books.(2017-10-28)
++ [ ] 13. The home pages and other functions.(2017-10-31)
++ [ ] 14. Administrator manages readers and authors(register, login, refuse, lock account,delete account).(2017-11-15)
++ [ ] 15.  Administrator registers and logins.(2017-11-25)
 
 ## 3. Test Phrase Plan
-+ [ ] 1. Unit test & Fix bugs
-+ [ ] 2. Pressure test & Optimize server
-+ [ ] 3. Load test & Optimize server
++ [ ] 1. Unit test & Fix bugs.(2017-12-10)
++ [ ] 2. Pressure test & Optimize server.(2017-12-15)
++ [ ] 3. Load test & Optimize server.(2017-12-25)
 
 ## 4. Others
-+ [ ] 1. Write the documents in github and others needed by this study.Maybe need to rewrite some documents by traditional characters.
-+ [ ] 2. Modify all texts about this project.ex: sql files, process file, server enviroment building shell...
++ [ ] 1. Write the documents in github and others needed by this study.Maybe need to rewrite some documents by traditional characters.(2017-12-10)
++ [ ] 2. Modify all texts about this project.ex: eer model, class diagrams, sql files, process file, server enviroment building shell...(2017-12-10)
