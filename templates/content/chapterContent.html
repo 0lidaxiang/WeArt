@@ -28,7 +28,7 @@
   <!-- Main Content -->
   <div id= "content" class="container">
       <div class="col-md-12">
-        <h1>《{{ bookName}}》 第 {{chapterOrder}} 章節 {{chapterName}}</h1>
+        <h3>《{{ bookName}}》 第 {{chapterOrder}} 章節 {{chapterName}}</h3>
         <!-- (暫時只列出10000字) -->
       </div>
 
@@ -38,9 +38,6 @@
         </div>
       </div>
 
-      <input type="hidden" id="idBook" value={{ idBook}}>
-      <input type="hidden" id="chapterOrder" value={{ chapterOrder}}>
-
       <div class="col-md-12">
         <div id="mainContent" class="col-md-12 alert alert-success">
 
@@ -49,30 +46,10 @@
 
       <hr>
       <div class="col-md-12">
-        <h2>作者列表</h2>
+        <h3>作者列表</h3>
       </div>
       <div class="col-md-12">
         <div id="authorList" class="col-md-12 alert alert-success">
-
-        </div>
-      </div>
-
-      <hr>
-      <div class="col-md-12">
-        <h2>更新歷史</h2>
-      </div>
-      <div class="col-md-12">
-        <div id="logsContent" class="col-md-12 alert alert-success">
-
-        </div>
-      </div>
-
-      <hr>
-      <div class="col-md-12">
-        <h2>當前內容</h2>
-      </div>
-      <div class="col-md-12">
-        <div id="otherVersionContent" class="col-md-12 alert alert-success">
 
         </div>
       </div>
@@ -87,6 +64,8 @@
     All rights reserved.
   </footer>
 
+  <input type="hidden" id="idBook" value={{ idBook}}>
+  <input type="hidden" id="chapterOrder" value={{ chapterOrder}}>
 
 </body>
 

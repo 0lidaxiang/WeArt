@@ -80,15 +80,13 @@ def readerGetContent(request):
     # return HttpResponse(json.dumps(contentList), content_type="application/json")
 
 def showHistory(request):
-        context = {}
-
         reload(sys)
         sys.setdefaultencoding('utf8')
 
-        context["status"] = "success"
         idBook = request.GET['idBook'];
         chapterOrder = request.GET['chapterOrder'];
 
+        context = {}
         locationBook = ""
         res, statusNumber, mes = book.getValue(idBook, "location")
         if not res:
@@ -97,165 +95,63 @@ def showHistory(request):
             return JsonResponse(context)
         locationBook = mes
 
-        # step1: get version and votes info of every author from databases
-        idAuthorsAndVotes = []
-        res, statusNumber, mes  = chapter.getValue(idBook ,"id")
-        idChapterArg = mes
-
-        if res:
-            res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
-            for v in ver:
-                idAuthorAndVote = {"vote": 0, "score": 0, "idAuthor": ""}
-                idAuthorAndVote["vote"] = int(v.vote)
-                idAuthorAndVote["score"] = int(v.score)
-                idAuthorAndVote["idAuthor"] = v.idAuthor_id
-                idAuthorsAndVotes.append(idAuthorAndVote)
-        idAuthorsAndVotes.sort(reverse = True, key=lambda x:(x['vote'],x['score']))
-
-        # step2: get git-logs of this book
+        # authorList: get authors list, just for html to list
         cmd1 = "cd " + locationBook + "/" + idBook
-        cmd2= ";git log"
+        cmd2= ";git log --all --format='%aN' | sort -u"
         cmd = cmd1 + cmd2
         p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-        logs = list(p.stdout.readlines())
+        authors = p.stdout.readlines()
+        context['authorList'] = authors
 
-        # step3： re-strcut the git-logs
-        newLogs = [{}]
-        i = 0
-        lengthLogs =  len(logs)
-        tempNewLog = {"authorId" : "", "commitHead" : "", "date" : "","content" : ""}
-        for tempL in logs:
-
-            if  i % 6 == 0 and tempL.startswith('commit '):
-                tempNewLog["commitHead"] = tempL.lstrip('commit').rstrip("\n")
-            elif  i % 6 == 1 and tempL.startswith('Author: '):
-                tempNewLog["authorId"] = str(re.findall(r"<(.+)@", tempL.lstrip('Author: '))[0] )
-                for idAuthorAndVote in idAuthorsAndVotes:
-                    if idAuthorAndVote["idAuthor"] == tempNewLog["authorId"]:
-                        tempNewLog["vote"] = idAuthorAndVote["vote"]
-                        break
-
-            elif  i % 6 == 2  and tempL.startswith('Date: '):
-                tempNewLog["date"] = tempL.lstrip('Date: ').rstrip("\n")
-
-            elif  i % 6 == 4 and tempL.startswith(' '):
-                tempNewLog["content"] = tempL.lstrip(' ').rstrip("\n")
-
-            if  i % 6 == 5 or i == (lengthLogs -1):
-                newLogs.append(dict(tempNewLog))
-
-            i = i + 1
-        newLogs.pop(0)
-
-        # step4: cat the chapter file content by commit log
-        historys = []
-        for newLog in newLogs:
-            authorAndLog =  {"vote": 0 , "author" : "", "logList" : [], "content" : []}
-            authorAndLog['author'] = newLog["authorId"]
-            authorAndLog['logList'] = newLog["content"]
-            authorAndLog['vote'] = newLog["vote"]
-
-            cmd1 = "cd " + locationBook + "/" + idBook
-            # cmd2= ";git show HEAD"
-            cmd2= ";git show " + newLog["commitHead"]
-            # print newLog["commitHead"]
-            # cmd2= ";git show " + newLog["commitHead"]
-            cmd = cmd1 + cmd2
-            p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-            lp = list(p.stdout.readlines())
-
-            flag = False
-            # print len(lp)
-            for v in lp:
-                if v.startswith('@@'):
-                    flag = True
-                    continue
-                if flag == True :
-                    # if v.startswith("+") == True or v.startswith("-") == True:
-                    authorAndLog['content'].append(v)
-            # print lp
-            # if lp.startswith('@@'):
-            #     authorAndLog['content'].append(v)
-
-            historys.append(authorAndLog)
-        # historys sorted by vote
-        historys.sort(reverse = True, key=lambda x:(x['vote']))
-
-        historys.reverse()
-        # print historys
-        # step5: re-strcut the history file content classied by author
-        # get author list of this file logs
-        authorsInLogs = []
-        for his in historys:
-            if his["author"] not in authorsInLogs:
-                authorsInLogs.append(his["author"])
-
-        newHistorys = []
+        # lastest content of the author which you want to search
+        idAuthorToSearch = ""
         if "idAuthor" in request.GET :
-            newHistory = {"vote": 0, "author": "", "logList": [], "content": []}
-            newHistory['author'] = request.GET["idAuthor"]
-
-
-            for his in historys:
-                # print his["content"]
-
-                if his["author"] == newHistory['author']:
-                    # lenC = len(his["content"])
-                    for v in his["content"]:
-                        if v.startswith("+") == True:
-                            newHistory['content'].append(v.lstrip('+'))
-                        elif v.startswith("-") == True:
-
-                            new = {"content" : []}
-                            new["content"] = v.lstrip('-')
-
-                            newHistory["content"].remove(new["content"])
-                        else :
-                            newHistory['content'].append(v.lstrip(''))
-
-                    ss = his["logList"]
-                    # if ss not in newHistory['logList']:
-                    newHistory['logList'].append(ss)
-                    # newHistory['logList'].append(his["logList"])
-                    newHistory['vote'] = his["vote"]
-            newHistorys.append(newHistory)
+            idAuthorToSearch = request.GET["idAuthor"]
         else:
-            for au in authorsInLogs:
-                newHistory = {"vote": 0, "author": "", "logList": [], "content": []}
-                newHistory['author'] =au
+            # step1: get version and votes info of every author from databases
+            idAuthorsAndVotes = []
+            res, statusNumber, mes  = chapter.getValue(idBook ,"id")
+            idChapterArg = mes
+            if res:
+                res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
+                # print type( list(ver) )
+                # print ver
+                # print "\n\n"
+                for v in ver:
+                    idAuthorAndVote = {"vote": 0, "score": 0, "idAuthor": ""}
+                    idAuthorAndVote["vote"] = int(v.vote)
+                    idAuthorAndVote["score"] = int(v.score)
+                    idAuthorAndVote["idAuthor"] = v.idAuthor_id
+                    idAuthorsAndVotes.append(idAuthorAndVote)
+            idAuthorsAndVotes.sort(reverse = True, key=lambda x:(x['vote'],x['score']))
+            idAuthorToSearch = idAuthorsAndVotes[0]["idAuthor"]
 
-                # print "len(historys)"
-                lenc = len(historys)
-                # print lenc
-                ii = 1
-                # his = historys[0]
-                for his in historys:
-                    # print his
-                    if his["author"] == newHistory['author']:
-
-                        for v in his["content"]:
-                            # print v
-                            # if v.startswith("-") == False:
-                            #     newHistory['content'].append(v.lstrip('+'))
-                            if v.startswith("+") == True:
-                                newHistory['content'].append(v.lstrip('+'))
-                            elif v.startswith("-") == True:
-                                new = {"content" : []}
-                                new["content"] = v.lstrip('-')
-                                newHistory["content"].remove(new["content"])
-                                # print v
-                            # if ii > lenc:
-                            else:
-                                newHistory['content'].append(v.lstrip(''))
-                        ss = his["logList"]
-                        # if ss not in newHistory['logList']:
-                        newHistory['logList'].append(ss)
-                        # newHistory['logList'].append(his["logList"])
-                        newHistory['vote'] = his["vote"]
-                        ii = ii + 1
-                newHistorys.append(newHistory)
-
-        # print newHistorys[0]["content"]
-        context['history'] = newHistorys[0]
-        context['authorList'] = list(authorsInLogs)
+        # step2: lastest content of the author which you want to search
+        status,mes = getLastestContent(idBook, chapterOrder, idAuthorToSearch, locationBook)
+        if status:
+            context["status"] = "success"
+        else:
+            context["status"] = "fail"
+        context['content'] = mes
         return JsonResponse(context)
+
+def getLastestContent(idBook, chapterOrder, idAuthorToSearch, locationBook):
+    try:
+        # get latest log sha1Vals of the author which you want to search
+        cmd1 = "cd " + locationBook + "/" + idBook
+        cmd2= ";git log --date=format:'%Y-%m-%d %H:%M:%S' --author " + idAuthorToSearch + " -1  --pretty=format:'%H'"
+            # + " -1  --pretty=format:'%H  %an  %ad  %s'"
+        cmd = cmd1 + cmd2
+        p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+        sha1Vals = list(p.stdout.readlines())
+
+        # get content of every latest log sha1Vals for the file which you want to search
+        sha1ValToSearch = sha1Vals[0]
+        cmd1 = "cd " + locationBook + "/" + idBook
+        cmd2= ";git show " + sha1ValToSearch + ":" + idBook + "_" + chapterOrder + ".txt"
+        cmd = cmd1 + cmd2
+        p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+        content = list(p.stdout.readlines())
+        return True, content
+    except Exception as e:
+        return False, str(e)
