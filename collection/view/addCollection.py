@@ -41,12 +41,12 @@ def add(request):
             return context
 
         context['status'] = "success"
-        context['errorNumber'] = status
+        context['errorNumber'] = 170400
         context['message'] = "添加成功．"
         return JsonResponse(context)
     except Exception as e:
         context['status'] = "fail"
-        context['errorNumber'] = 170402
+        context['errorNumber'] = 170401
         context['message'] = str(e)
         print str(e)
         return JsonResponse(context)

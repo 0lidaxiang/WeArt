@@ -106,7 +106,11 @@ The chapter module number is <font color=#DAA520 size=4> 17 </font>.
 | 10 | model.py | delete | 0300 | |
 | 11 | model.py | delete | 0301 | |
 | 12 | model.py | delete | 0302 | |
-<!-- | 13 | addCollect.py | add | 0400 | |
+| 12 | model.py | delete | 0303 | |
+| 13 | addCollect.py | add | 0400 | |
 | 14 | addCollect.py | add | 0401 | |
-| 15 | addCollect.py | add | 0402 | | -->
+| 15 | getCollection.py | getMyCollection | 0500 | |
+| 16 | getCollection.py | getMyCollection | 0501 | |
+| 17 | deleteCollection.py | delete | 0600 | |
+| 18 | deleteCollection.py | delete | 0601 | |
 |   | | | | | |

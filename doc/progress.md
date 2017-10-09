@@ -27,7 +27,7 @@ ModifyTime :  2017-07-20
 + [x] 8. ~~Reader can read book,chapters list and content.(2017-09-21)~~
 + [x] 9. ~~Differnt Readers can write different version chapters according by the same story outline.(2017-09-28)~~
 + [x] 10. ~~Reader can read different version content.(2017-10-09)~~
-+ [ ] 11. Reader can collect their favorite books.(2017-10-15)
++ [ ] 11. Reader can collect their favorite books and delete collections.(2017-10-10)
 + [ ] 12. Author and Administrator manages books.(2017-10-28)
 + [ ] 13. The home pages and other functions.(2017-10-31)
 + [ ] 14. Administrator manages readers and authors(register, login, refuse, lock account,delete account).(2017-11-15)
