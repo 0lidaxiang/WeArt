@@ -30,9 +30,6 @@ def readerIndex(request):
 def booksRecorded(request):
     return render(request,  gotoReaderPages(request, "booksRecorded"), {"userName": getUserName(request)})
 
-def readingHistory(request):
-    return render(request,  gotoReaderPages(request, "readingHistory"), {"userName": getUserName(request)})
-
 def readerSetting(request):
     return render(request,  gotoReaderPages(request, "readerSetting"), {"userName": getUserName(request)})
 

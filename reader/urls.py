@@ -21,7 +21,6 @@ urlpatterns = [
 
     url('^index/', readerIndex),
     url('^booksRecorded/$', booksRecorded),
-    url('^readingHistory/$', readingHistory),
     url('^readerSetting/$', readerSetting),
     url('^getEnableAuthorStatus/$', getEnableAuthorStatus),
     url('^modifyAuthorStatus/$', modifyAuthorStatus),
