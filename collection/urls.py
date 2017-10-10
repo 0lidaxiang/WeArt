@@ -12,5 +12,5 @@ urlpatterns = [
     url('^addCollection/$', add),
     url('^goToAddCollection/$', goToAddCollection),
     url('^getMyCollection/$', getMyCollection),
-    url('^delete/$', delete),
+    url('^deleteCollection/$', deleteObj),
 ]

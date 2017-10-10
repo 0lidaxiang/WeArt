@@ -15,8 +15,8 @@ class collection(models.Model):
         db_table = 'collection'
 
     id = models.CharField(max_length=30,primary_key=True)
-    idReader = models.ForeignKey(reader, on_delete=models.DO_NOTHING)  # in database,this variable is named "idReader_id"
-    idBook = models.ForeignKey(book, on_delete=models.DO_NOTHING)  # in database,this variable is named "idBook_id"
+    idReader = models.ForeignKey(reader)  # in database,this variable is named "idReader_id"
+    idBook = models.ForeignKey(book)  # in database,this variable is named "idBook_id"
     createTime = models.DateTimeField(max_length=50)
 
     @classmethod
@@ -63,7 +63,7 @@ class collection(models.Model):
             return False,170201, str(e)
 
     @classmethod
-    def delete(self, idArg, idReaderArg):
+    def deleteObj(self, idArg, idReaderArg):
         try:
             obj = self.objects.get(id=idArg)
             if obj.idReader_id == idReaderArg:

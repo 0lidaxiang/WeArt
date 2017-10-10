@@ -56,7 +56,7 @@ function getMainContentData() {
 function deleteCollection(idCollectionArg) {
   // alert("delete: " + idCollectionArg);
   $.ajax({
-    url: '/collection/delete/',
+    url: '/collection/deleteCollection/',
     type: 'GET',
     dataType: 'json',
     data: {"idCollectionArg" : idCollectionArg}

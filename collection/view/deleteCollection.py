@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from collection.models import collection
 
-def delete(request):
+def deleteObj(request):
     if "readerId" not in request.session:
         return render(request, 'reader/login.html')
 
@@ -13,7 +13,7 @@ def delete(request):
     idReader = request.session["readerId"]
     context = {}
     try:
-        res, status, mes = collection.delete(idCollectionArg, idReader)
+        res, status, mes = collection.deleteObj(idCollectionArg, idReader)
         if not res:
             context['status'] = "fail"
             context['errorNumber'] = status
