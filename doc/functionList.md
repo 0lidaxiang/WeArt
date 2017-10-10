@@ -26,10 +26,16 @@ The WeArt module number is <font color=#DAA520 size=4>10</font>.
 | | | | | | |
 
 ## Function Number In reader module
-The reader module number is <font color=#DAA520 size=4>11</font>.
+The reader module number is <font color=#DAA520 size=4> 11 </font>.
 
 | Order | File Name | Function Name | Number | Other Intro |
 |---|---|---|---|---|---|---|
+| 1  |  models.py | modifyObj | 0300 | |
+| 2  |  models.py | modifyObj | 0301 | |
+| 3  |  models.py | modifyObj | 0302 | |
+| 4  |  models.py | modifyObj | 0303 | |
+| 5  |  modifyReader.py | modifyReader | 0500 | |
+| 6  |  modifyReader.py | modifyReader | 0501 | |
 | | | | | | |
 
 ## Function Number In author module

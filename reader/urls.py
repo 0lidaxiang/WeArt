@@ -6,6 +6,7 @@ from reader.view.baseView import  *
 from reader.view.loginView import  *
 from reader.view.registerView import  *
 from reader.view.readerManageView import  *
+from reader.view.modifyReader import  *
 from author.view.artsManageView import  *
 
 urlpatterns = [
@@ -18,6 +19,7 @@ urlpatterns = [
     url('^loginReader/$', loginReader),
     url('^registerReader/', registerReader),
     url('^activate/(.+)/$', activeReader),
+    url('^modifyReader/$', modifyReader),
 
     url('^index/', readerIndex),
     url('^booksRecorded/$', booksRecorded),
@@ -25,5 +27,4 @@ urlpatterns = [
     url('^getEnableAuthorStatus/$', getEnableAuthorStatus),
     url('^modifyAuthorStatus/$', modifyAuthorStatus),
 
-    # url('^createNewChapter/$', createNewChapter),
 ]

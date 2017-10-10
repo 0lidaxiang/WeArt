@@ -27,11 +27,15 @@ ModifyTime :  2017-07-20
 + [x] 8. ~~Reader can read book,chapters list and content.(2017-09-21)~~
 + [x] 9. ~~Differnt Readers can write different version chapters according by the same story outline.(2017-09-28)~~
 + [x] 10. ~~Reader can read different version content.(2017-10-09)~~
-+ [ ] 11. Reader can collect their favorite books and delete collections.(2017-10-10)
-+ [ ] 12. Author and Administrator manages books.(2017-10-28)
-+ [ ] 13. The home pages and other functions.(2017-10-31)
-+ [ ] 14. Administrator manages readers and authors(register, login, refuse, lock account,delete account).(2017-11-15)
-+ [ ] 15.  Administrator registers and logins.(2017-11-25)
++ [x] 11. ~~Reader modify userName and password.(2017-10-10)~~
++ [x] 12. ~~Reader can collect their favorite books and delete collections.(2017-10-11)~~
++ [x] 13. ~~Author and Administrator manages books.(2017-10-11)~~
++ [ ] 14. Delete foreign keys of database.(2017-10-12)                
++ [ ] 15. Administrator manages readers and authors.(2017-10-15)      
++ [ ] 16. Administrator registers and logins.(2017-10-15)          
++ [ ] 17. Administrator modify userName and password.(2017-10-16)     
++ [ ] 18. Replace some pages with new html files(1).(2017-10-31)       
++ [ ] 19. Replace some pages with new html files(2).(2017-11-15)
 
 ## 3. Test Phrase Plan
 + [ ] 1. Unit test & Fix bugs.(2017-12-10)
