@@ -119,21 +119,41 @@ class book(models.Model):
                 return False, "錯誤1002: 讀取book表錯誤。"
 
     @classmethod
-    def delete(self, bookIdArg):
+    def deleteObj(self, idBookArg, idReaderArg):
         try:
-            obj = self.objects.get(id=bookIdArg)
-            obj.delete()
-            return True, ""
+            obj = self.objects.get(id=idBookArg)
+            if obj.idReader_id == idReaderArg:
+                obj.delete()
+
+                return True,130100, ""
+            else:
+                return True,130101, "錯誤：　您沒有權限刪除該收藏記錄！"
+        except self.DoesNotExist:
+            return False, 130102, "錯誤: delete 讀取 book 表錯誤。"
         except Exception as e:
-            return False, str(e)
+            return False, 130103, str(e)
 
     @classmethod
     def getAll(self, amount):
         try:
-            # obj = self.objects.all()[:10]
-            obj = self.objects.all()
-            return True, 130006, obj
+            # get all data when amount=0
+            if amount == 0:
+                obj = self.objects.all()
+                return True, 130200, obj
+
+            obj = self.objects.all()[:amount]
+            return True, 130200, obj
         except self.DoesNotExist:
-            return False, 130007, "錯誤: getAll 讀取 book 表錯誤。"
+            return False, 130201, "book 表不存在該數值"
         except Exception as e:
-            return False, 130008, str(e)
+            return False, 130202, str(e)
+
+    @classmethod
+    def getAllByAuthor(self, idReaderArg):
+        try:
+            obj = self.objects.all().filter(idReader_id=idReaderArg)
+            return True, 130300, obj
+        except self.DoesNotExist:
+            return False, 130301, "book 表不存在該數值"
+        except Exception as e:
+            return False, 130302, str(e)

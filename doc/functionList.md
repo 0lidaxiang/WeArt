@@ -44,12 +44,26 @@ The book module number is <font color=#DAA520 size=4> 13 </font>.
 
 | Order | File Name | Function Name | Number | Other Intro |
 |---|---|---|---|---|---|---|
-| 1 | model.py | getIdByNameAndAuthor | 0003 | | |
-| 2 | model.py | getIdByNameAndAuthor | 0004 | | |
-| 3 | model.py | getIdByNameAndAuthor | 0005 | | |
-| 4 | model.py | getValue | 0000 | |
-| 5 | model.py | getValue | 0001 | |
-| 6 | model.py | getValue | 0002 | |
+| 1  |  model.py | getIdByNameAndAuthor | 0003 | | |
+| 2  |  model.py | getIdByNameAndAuthor | 0004 | | |
+| 3  |  model.py | getIdByNameAndAuthor | 0005 | | |
+| 4  |  model.py | getValue | 0000 | |
+| 5  |  model.py | getValue | 0001 | |
+| 6  |  model.py | getValue | 0002 | |
+| 7  |  model.py | deleteObj | 0100 | |
+| 8  |  model.py | deleteObj | 0101 | |
+| 9  |  model.py | deleteObj | 0102 | |
+| 10 |  model.py | deleteObj | 0103 | |
+| 11 |  model.py | getAll | 0200 | |
+| 12 |  model.py | getAll | 0201 | |
+| 13 |  model.py | getAll | 0202 | |
+| 14 |  model.py | getAllByAuthor | 0300 | |
+| 15 |  model.py | getAllByAuthor | 0301 | |
+| 16 |  model.py | getAllByAuthor | 0302 | |
+| 17 | getBook.py | getMyBook | 0500 | |
+| 18 | getBook.py | getMyBook | 0501 | |
+| 19 | deleteBook.py | deleteObj | 0600 | |
+| 20 | deleteBook.py | deleteObj | 0601 | |
 |   | | | | | |
 
 ## Function Number In chapter module
@@ -103,14 +117,14 @@ The chapter module number is <font color=#DAA520 size=4> 17 </font>.
 | 7  | model.py | getAll | 0102 | |
 | 8  | model.py | add | 0200 | |
 | 9  | model.py | add | 0201 | |
-| 10 | model.py | delete | 0300 | |
-| 11 | model.py | delete | 0301 | |
-| 12 | model.py | delete | 0302 | |
-| 12 | model.py | delete | 0303 | |
+| 10 | model.py | deleteObj | 0300 | |
+| 11 | model.py | deleteObj | 0301 | |
+| 12 | model.py | deleteObj | 0302 | |
+| 12 | model.py | deleteObj | 0303 | |
 | 13 | addCollect.py | add | 0400 | |
 | 14 | addCollect.py | add | 0401 | |
 | 15 | getCollection.py | getMyCollection | 0500 | |
 | 16 | getCollection.py | getMyCollection | 0501 | |
-| 17 | deleteCollection.py | delete | 0600 | |
-| 18 | deleteCollection.py | delete | 0601 | |
+| 17 | deleteCollection.py | deleteObj | 0600 | |
+| 18 | deleteCollection.py | deleteObj | 0601 | |
 |   | | | | | |

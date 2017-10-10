@@ -23,7 +23,7 @@ def getMyCollection(request):
             context['status'] = "fail"
             context['errorNumber'] = status
             context['message'] = "錯誤 : getMyCollection　寫入 collection 表錯誤。"
-            return context
+            return JsonResponse(context)
 
         context['status'] = "success"
         context['errorNumber'] = 170500

@@ -16,7 +16,7 @@ class collection(models.Model):
 
     id = models.CharField(max_length=30,primary_key=True)
     idReader = models.ForeignKey(reader)  # in database,this variable is named "idReader_id"
-    idBook = models.ForeignKey(book)  # in database,this variable is named "idBook_id"
+    idBook = models.ForeignKey(book,null=True, on_delete=models.SET_NULL)  # in database,this variable is named "idBook_id"
     createTime = models.DateTimeField(max_length=50)
 
     @classmethod
@@ -70,9 +70,8 @@ class collection(models.Model):
                 obj.delete()
                 return True,170300, ""
             else:
-                return True,170301, "錯誤：　您沒有權限刪除該收藏記錄！"
-
+                return True,170301, "您沒有權限刪除該收藏記錄"
         except self.DoesNotExist:
-            return False, 170302, "錯誤: delete 讀取 collection 表錯誤。"
+            return False, 170302, "delete 讀取 collection 表錯誤"
         except Exception as e:
             return False,170303, str(e)
