@@ -40,14 +40,19 @@ def getMyBook(request):
             bookTemp["chapterCount"] = v.chapterCount
             bookTemp["status"] = v.status
             bookTemp["createTime"] = v.createTime
-            bookTemp["operation"] = "<a href=javascript:deleteBook('" + v.id + "');> deleteBook"  + "</a>"
+            bookTemp["operation"] = "<a href=javascript:deleteBook('" + v.id + "');> delete"  + "</a>"
             books.append(bookTemp)
             idx+=1
         context['data'] = books
         return JsonResponse(context)
     except Exception as e:
-        context['status'] = "fail"
-        context['statusNumber'] = 130501
-        context['message'] = str(e)
-        print str(e)
+        coll = {}
+        coll["id"] = 0
+        coll["idReader"] = "Server Exception"
+        coll["idBook"] = str(130501)
+        coll["bookName"] = str(e)
+        coll["createTime"] = str(e)
+        coll["operation"] = str(e)
+        collections.append(coll)
+        context['data'] = collections
         return JsonResponse(context)

@@ -19,30 +19,43 @@ def getMyCollection(request):
     context = {}
     try:
         res, status, mes = collection.getAll(idReader)
-        if not res:
-            context['status'] = "fail"
-            context['errorNumber'] = status
-            context['message'] = "錯誤 : getMyCollection　寫入 collection 表錯誤。"
-            return JsonResponse(context)
 
-        context['status'] = "success"
-        context['errorNumber'] = 170500
         collections = []
+        if not res:
+            coll = {}
+            coll["id"] = 0
+            coll["idReader"] = "Server Error"
+            coll["idBook"] = str(status)
+            coll["bookName"] = str(mes)
+            coll["createTime"] = str(mes)
+            coll["operation"] = str(mes)
+            collections.append(coll)
+            context['data'] = collections
+            return JsonResponse(context)
+        idx = 0
         for v in mes:
             coll = {}
             res,status,mes = book.getValue(v.idBook_id, "name")
             if res:
-                coll["idColl"] = v.id
+                coll["id"] = idx
                 coll["idReader"] = v.idReader_id
                 coll["idBook"] = v.idBook_id
-                coll["bookName"] = mes
+                coll["bookName"] = str(mes)
                 coll["createTime"] = v.createTime
+                coll["operation"] = "<a href=javascript:deleteCollection('" + v.id + "');> delete"  + "</a>"
             collections.append(coll)
-        context['message'] = collections
+            idx+=1
+
+        context['data'] = collections
         return JsonResponse(context)
     except Exception as e:
-        context['status'] = "fail"
-        context['errorNumber'] = 170501
-        context['message'] = str(e)
-        print str(e)
+        coll = {}
+        coll["id"] = 0
+        coll["idReader"] = "Server Exception"
+        coll["idBook"] = str(170501)
+        coll["bookName"] = str(e)
+        coll["createTime"] = str(e)
+        coll["operation"] = str(e)
+        collections.append(coll)
+        context['data'] = collections
         return JsonResponse(context)
