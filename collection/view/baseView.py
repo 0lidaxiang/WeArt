@@ -12,5 +12,4 @@ def gotoPages(request, pageName):
         return 'collection/' + pageName + '.html'
 
 def addCollectionInter(request):
-    print request.GET['idBook']
     return render(request,  gotoPages(request, "addCollectionInter"), {"idBook" : request.GET['idBook']})

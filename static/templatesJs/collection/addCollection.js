@@ -42,8 +42,6 @@ function goToAddCollection() {
       window.location.href = resp.message
     }
     else if (resp.status == "success2") {
-      // window.location.href = resp.message
-      console.log("success2");
       addCollection(resp.message);
     }
     else if (resp.status == "fail") {
