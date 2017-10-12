@@ -16,7 +16,8 @@ The complated function number is module number and function number, like 100001.
 |7| chapter | 14| |  
 |8| tool | 15| |
 |9| version | 16| |
-| | collection | 17| | |
+|10| collection | 17| |
+|11| vote | 18| | |
 
 ## Function Number In WeArt module
 The WeArt module number is <font color=#DAA520 size=4>10</font>.
@@ -97,17 +98,25 @@ The tool module number is <font color=#DAA520 size=4>15</font>.
 The version module number is <font color=#DAA520 size=4> 16 </font>.  
 
 | Order | File Name | Function Name | FucNumber | Other Intro |
-|---|---|---|---|---|---|---|  
-| 1 | model.py | getValue | 0000 | |
-| 2 | model.py | getValue | 0001 | |
-| 3 | model.py | getValue | 0002 | |
-| 4 | model.py | getValue | 0003 | |
-| 5 | model.py | add | 0101 | |
-| 6 | model.py | add | 0102 | |
-| 7 | model.py | getVersionsByIdChapter | 0200 | |
-| 8 | model.py | getVersionsByIdChapter | 0202 | |
-| 9 | model.py | getVersionsByIdChapter | 0203 | |
-|   | | | | | |
+|--- |---|---|---|---|---|---|  
+| 1  | model.py | getValue | 0000 | |
+| 2  | model.py | getValue | 0001 | |
+| 3  | model.py | getValue | 0002 | |
+| 4  | model.py | getValue | 0003 | |
+| 5  | model.py | add | 0101 | |
+| 6  | model.py | add | 0102 | |
+| 7  | model.py | getVersionsByIdChapter | 0200 | |
+| 8  | model.py | getVersionsByIdChapter | 0202 | |
+| 9  | model.py | getVersionsByIdChapter | 0203 | |
+| 10 | model.py | modifyObj | 0300 | |
+| 11 | model.py | modifyObj | 0301 | |
+| 12 | model.py | modifyObj | 0302 | |
+| 13 | model.py | modifyObj | 0303 | |
+| 14 | model.py | getValueById | 0400 | |
+| 15 | model.py | getValueById | 0401 | |
+| 16 | model.py | getValueById | 0402 | |
+| 17 | model.py | getValueById | 0403 | |
+|    | | | | | |
 
 ## Function Number In collection module
 The chapter module number is <font color=#DAA520 size=4> 17 </font>.  
@@ -134,3 +143,11 @@ The chapter module number is <font color=#DAA520 size=4> 17 </font>.
 | 17 | deleteCollection.py | deleteObj | 0600 | |
 | 18 | deleteCollection.py | deleteObj | 0601 | |
 |   | | | | | |
+
+## Function Number In vote module
+The tool module number is <font color=#DAA520 size=4> 18 </font>.
+
+| Order | File Name | Function Name | Number | Other Intro |
+|---|---|---|---|---|---|---|
+| 1 | chapterVersionVote.py | chapterVersionVote | 0500 | |
+| 2 | chapterVersionVote.py | chapterVersionVote | 0501 | | |

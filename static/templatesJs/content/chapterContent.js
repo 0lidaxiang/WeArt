@@ -14,6 +14,7 @@ function getMainContentData(idAuthor) {
   })
   .done(function(resp) {
     // console.log(resp);
+    $("#idVersion").val(resp.idVersion);
     var content = resp.content;
     if (resp.status == "success" && content != null) {
       var objContent = "<div id='mainContent' class='col-md-12 col-sm-12 alert alert-success'>";

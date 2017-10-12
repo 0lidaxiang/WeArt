@@ -103,25 +103,31 @@ def showHistory(request):
         authors = p.stdout.readlines()
         context['authorList'] = authors
 
+        # step1: get version and votes info of every author from databases
+        idAuthorsAndVotes = []
+        res, statusNumber, mes  = chapter.getValue(idBook ,"id")
+        idChapterArg = mes
+        if res:
+            res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
+            for v in ver:
+                idAuthorAndVote = {"vote": 0, "score": 0, "idAuthor": ""}
+                idAuthorAndVote["idVersion"] = v.id
+                idAuthorAndVote["vote"] = int(v.vote)
+                idAuthorAndVote["score"] = int(v.score)
+                idAuthorAndVote["idAuthor"] = v.idAuthor_id
+                idAuthorsAndVotes.append(idAuthorAndVote)
+        idAuthorsAndVotes.sort(reverse = True, key=lambda x:(x['vote'],x['score']))
+
         # lastest content of the author which you want to search
         idAuthorToSearch = ""
         if "idAuthor" in request.GET :
             idAuthorToSearch = request.GET["idAuthor"]
         else:
-            # step1: get version and votes info of every author from databases
-            idAuthorsAndVotes = []
-            res, statusNumber, mes  = chapter.getValue(idBook ,"id")
-            idChapterArg = mes
-            if res:
-                res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
-                for v in ver:
-                    idAuthorAndVote = {"vote": 0, "score": 0, "idAuthor": ""}
-                    idAuthorAndVote["vote"] = int(v.vote)
-                    idAuthorAndVote["score"] = int(v.score)
-                    idAuthorAndVote["idAuthor"] = v.idAuthor_id
-                    idAuthorsAndVotes.append(idAuthorAndVote)
-            idAuthorsAndVotes.sort(reverse = True, key=lambda x:(x['vote'],x['score']))
             idAuthorToSearch = idAuthorsAndVotes[0]["idAuthor"]
+
+        for idAuthorsAndVote in idAuthorsAndVotes:
+            if idAuthorsAndVote["idAuthor"] == idAuthorToSearch:
+                context['idVersion'] = idAuthorsAndVote["idVersion"]
 
         # step2: lastest content of the author which you want to search
         status,mes = getLastestContent(idBook, chapterOrder, idAuthorToSearch, locationBook)
@@ -130,6 +136,7 @@ def showHistory(request):
         else:
             context["status"] = "fail"
         context['content'] = mes
+
         return JsonResponse(context)
 
 def getLastestContent(idBook, chapterOrder, idAuthorToSearch, locationBook):

@@ -16,11 +16,39 @@ class version(models.Model):
 
     id = models.CharField(max_length=50,primary_key=True)
     idChapter = models.ForeignKey(chapter) # in database,this variable is named "idChapter_id"
-    vote = models.IntegerField(max_length=11)
-    score = models.IntegerField(max_length=11)
+    vote = models.FloatField(max_length=11)
+    score = models.FloatField(max_length=11)
     idAuthor = models.ForeignKey(reader)  # in database,this variable is named "idAuthor_id"
     createTime = models.DateTimeField(max_length=50)
     modifyTime = models.DateTimeField(max_length=50)
+
+    @classmethod
+    def getValueById(self, idVersion, returnArg):
+        try:
+            obj = self.objects.get(id=idVersion)
+
+            if returnArg == "id":
+                return True, 160400, obj.id
+            elif returnArg == "idChapter":
+                return True, 160400, obj.idChapter
+            elif returnArg == "vote":
+                return True, 160400, obj.vote
+            elif returnArg == "score":
+                return True, 160400, obj.score
+            elif returnArg == "idAuthor":
+                return True, 160400, obj.idAuthor
+            elif returnArg == "createTime":
+                return True, 160400, obj.createTime
+            elif returnArg == "modifyTime":
+                return True, 160400, obj.modifyTime
+            elif returnArg == "all":
+                return True, 160400, obj
+            else:
+                return False, 160401, "錯誤 : version 表中不存在該屬性，returnArg錯誤。"
+        except self.DoesNotExist:
+                return False, 160402, "錯誤 : version 表不存在該數據。"
+        except Exception as e:
+                return False, 160403, str(e)
 
     @classmethod
     def getValuesByIdChapter(self, idChapterArg, idAuthorArg, returnArg):
@@ -58,7 +86,6 @@ class version(models.Model):
         except Exception as e:
                 return False, 160203, str(e)
 
-
     @classmethod
     def add(self, idChapter, vote, score, idAuthor):
         try:
@@ -70,3 +97,27 @@ class version(models.Model):
             return True,160101, ""
         except Exception as e:
             return False,160102, str(e)
+
+    @classmethod
+    # def modifyObj(self, idChapter, vote, score, idAuthor):
+    def modifyObj(self, idVersion, argName, value):
+        try:
+            obj = self.objects.get(id=idVersion)
+            if argName == "vote":
+                obj.vote = value;
+                obj.save()
+            elif argName == "score":
+                obj.score = value;
+                obj.save()
+            elif argName == "modifyTime":
+                obj.modifyTime = value;
+                obj.save()
+            else:
+                return False, 160301, "modify 讀取 reader 表錯誤"
+
+            return True,160300, ""
+        except self.DoesNotExist:
+            return False, 160302, "modify 讀取 reader 表錯誤"
+        except Exception as e:
+            print str(e)
+            return False,160303, str(e)
