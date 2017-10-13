@@ -5,13 +5,46 @@ from django.http import JsonResponse
 from django.shortcuts import render
 # from django.shortcuts import redirect
 # from book.models import book
-# from chapter.models import chapter
+from voteChapter.models import voteChapter
 from version.models import version
+
+def getRating(request):
+    context = {}
+
+    if 'idVersion' not in request.GET:
+        context['status'] = "fail"
+        context['message'] = "The idVersion variable is not in request.GET."
+        return JsonResponse(context)
+    idVersion = request.GET['idVersion']
+    if idVersion == "":
+        context['status'] = "fail"
+        context['message'] = "投票评分为空"
+        return JsonResponse(context)
+
+    try:
+        # get old rating
+        res,statusNumber,mes =  version.getValueById(idVersion, "score")
+        if not res:
+            context['res'] = "fail"
+            context['statusNumber'] = statusNumber
+            context['message'] = '錯誤： ' + str(statusNumber) + " ， " + mes
+            return JsonResponse(context)
+
+        context['res'] = "success"
+        context['statusNumber'] = 180600
+        context['message'] = mes
+
+    except Exception as e:
+        context['res'] = "fail"
+        context['statusNumber'] = 180601
+        context['message'] = "異常錯誤: " + str(180501) + " " + str(e)
+
+    return JsonResponse(context)
 
 def chapterVersionVote(request):
     if "readerId" not in request.session:
         return render(request, 'reader/login.html')
-
+    idReader = request.session["readerId"]
     # print request.GET['idVersion']
     context = {}
 
@@ -46,6 +79,14 @@ def chapterVersionVote(request):
         return JsonResponse(context)
 
     try:
+        # write data(every vote history) to voteChapter
+        res,statusNumber,mes = voteChapter.add(idReader, idVersion, float(ratingUser))
+        if not res:
+            context['res'] = "fail"
+            context['statusNumber'] = statusNumber
+            context['message'] = '錯誤： ' + str(statusNumber) + " ， " + mes
+            return JsonResponse(context)
+
         # get old rating
         res,statusNumber,mes =  version.getValueById(idVersion, "all")
         if not res:
@@ -53,11 +94,13 @@ def chapterVersionVote(request):
             context['statusNumber'] = statusNumber
             context['message'] = '錯誤： ' + str(statusNumber) + " ， " + mes
             return JsonResponse(context)
-        
+
         # check is or not this chapter
-        # modify the voteCount and socre into database
-        voteCountNew = int(mes.voteCount) + 1
-        scoreNew = (float(mes.score) + float(ratingUser)) / voteCountNew
+        # modify the voteCount and score into database
+        voteCountOld = int(mes.voteCount)
+        voteCountNew = voteCountOld + 1
+        scoreNew = (float(mes.score)* voteCountOld + float(ratingUser)) / voteCountNew
+
         res, statusNumber, mes = version.modifyObj(idVersion, "voteCount", voteCountNew)
         if not res:
             context['res'] = "fail"

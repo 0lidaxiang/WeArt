@@ -31,10 +31,10 @@ ModifyTime :  2017-07-20
 + [x] 12. ~~Reader can collect their favorite books and delete collections.(2017-10-11)~~
 + [x] 13. ~~Author and Administrator manages books.(2017-10-11)~~
 + [x] 14. ~~Delete foreign keys of database.(2017-10-11)~~                
-+ [ ] 15. Readers vote for a chapter of one version.(2017-10-14)                
++ [x] 15. ~~Readers vote for a chapter of one version.(2017-10-14)~~                
 + [ ] 16. Administrator manages readers and authors.(2017-10-15)      
 + [ ] 17. Administrator registers and logins.(2017-10-15)          
-+ [ ] 18. Administrator modify userName and password.(2017-10-21)     
++ [ ] 18. Administrator modify userName and password.(2017-10-15)     
 + [ ] 19. Replace some pages with new html files(1).(2017-10-31)       
 + [ ] 20. Replace some pages with new html files(2).(2017-11-15)
 

@@ -149,5 +149,19 @@ The tool module number is <font color=#DAA520 size=4> 18 </font>.
 
 | Order | File Name | Function Name | Number | Other Intro |
 |---|---|---|---|---|---|---|
-| 1 | chapterVersionVote.py | chapterVersionVote | 0500 | |
-| 2 | chapterVersionVote.py | chapterVersionVote | 0501 | | |
+| 1  | model.py | getValue | 0000 | |
+| 2  | model.py | getValue | 0001 | |
+| 3  | model.py | getValue | 0002 | |
+| 4  | model.py | getValue | 0003 | |
+| 5  | model.py | getAllByIdReader | 0100 | |
+| 6  | model.py | getAllByIdReader | 0101 | |
+| 7  | model.py | getAllByIdReader | 0102 | |
+| 8  | model.py | add | 0200 | |
+| 9  | model.py | add | 0201 | |
+| 10 | model.py | deleteObj | 0300 | |
+| 11 | model.py | deleteObj | 0301 | |
+| 12 | model.py | deleteObj | 0302 | |getRating
+| 13 | chapterVersionVote.py | chapterVersionVote | 0500 | |
+| 14 | chapterVersionVote.py | chapterVersionVote | 0501 | |
+| 15 | chapterVersionVote.py | getRating | 0600 | |
+| 16 | chapterVersionVote.py | getRating | 0601 | | |

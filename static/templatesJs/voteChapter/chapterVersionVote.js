@@ -25,7 +25,7 @@ jQuery(document).ready(
           }
         })
         .done(function(resp) {
-          console.log(resp);
+          // console.log(resp);
           if (resp.res) {
             alert("投票成功");
             window.location.reload();
@@ -40,4 +40,5 @@ jQuery(document).ready(
         });
 
     });
+
 });

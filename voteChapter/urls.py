@@ -4,5 +4,6 @@ from voteChapter.view.chapterVersionVote import *
 
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
+    url('^getRating/$', getRating),
     url('^chapterVersionVote/$', chapterVersionVote),
 ]

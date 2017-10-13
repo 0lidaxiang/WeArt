@@ -40,6 +40,7 @@ function getMainContentData(idAuthor) {
       var obj = "<div class='box'><div class='box-body' id='mainContent'><div class='col-md-12 col-sm-12'><h4>" + resp.message + "</h4></div></div></div>";
       $("#mainContent").replaceWith(obj);
     }
+    getChapterVersionRating();
   })
   .fail(function(resp) {
     console.log(resp);
@@ -66,6 +67,32 @@ function writeMyVersion() {
     }
     else{
       alert(resp.message);
+    }
+  })
+  .fail(function(resp) {
+    console.log(resp);
+  });
+}
+
+function getChapterVersionRating(idAuthor) {
+  var idVersion = $("#idVersion").val();
+
+  $.ajax({
+    url: '/voteChapter/getRating/',
+    type: 'GET',
+    dataType: 'json',
+    data: {"idVersion": idVersion}
+  })
+  .done(function(resp) {
+    // console.log(resp);
+    if (resp.res == "success") {
+      $("#chapterVersionVoteVal").val(resp.message.toFixed(2));
+    }
+    else if (resp.res == "fail") {
+      $("#chapterVersionVoteVal").val(resp.message);
+    }
+    else{
+      $("#chapterVersionVoteVal").val(resp.message);
     }
   })
   .fail(function(resp) {

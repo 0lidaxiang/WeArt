@@ -15,65 +15,68 @@ class voteChapter(models.Model):
         db_table = 'voteChapter'
 
     id = models.CharField(max_length=50,primary_key=True)
-    idReader = models.CharField(max_length=20)  # in database,this variable is named "idReader_id"
-    idVersion = models.CharField(max_length=50)  # in database,this variable is named "idBook_id"
-    rating = models.FloatField()  # in database,this variable is named "idBook_id"
+    idReader_id = models.CharField(max_length=20)
+    idVersion = models.CharField(max_length=50)
+    rating = models.FloatField()
     createTime = models.DateTimeField()
     modifyTime = models.DateTimeField()
 
     @classmethod
-    def getValue(self, idReader, returnArg):
+    def getValue(self, idReaderArg, idVersionArg, returnArg):
         try:
-            obj = self.objects.get(idBook_id=bookIdArg)
+            obj = self.objects.get(idReader_id=idReaderArg, idVersion_id = idVersionArg)
             if returnArg == "id":
-                return True, 170000, obj.id
-            elif returnArg == "idReader":
-                return True, 170000, obj.name
-            elif returnArg == "idBook":
-                return True, 170000, obj.fileName
+                return True, 180000, obj.id
+            # elif returnArg == "idReader":
+            #     return True, 180000, obj.name
+            # elif returnArg == "idVersion":
+            #     return True, 180000, obj.fileName
+            elif returnArg == "rating":
+                return True, 180000, obj.rating
             elif returnArg == "createTime":
-                return True, 170000, obj.chapterOrder
+                return True, 180000, obj.createTime
+            elif returnArg == "modifyTime":
+                return True, 180000, obj.modifyTime
+            elif returnArg == "all":
+                return True, 180000, obj
             else:
-                return False, 170001, "錯誤 : getValue　讀取 voteChapter 表錯誤。voteChapter 表中不存在該屬性，returnArg錯誤。"
+                return False, 180001, "錯誤 : getValue　讀取 voteChapter 表錯誤。voteChapter 表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:
-                return False, 170002, "錯誤 : getValue　讀取 voteChapter 表錯誤。voteChapter 表不存在該數據。"
+                return False, 180002, "錯誤 : getValue　讀取 voteChapter 表錯誤。voteChapter 表不存在該數據。"
         except Exception as e:
-                return False, 170003, str(e)
+                return False, 180003, str(e)
 
     @classmethod
-    def getAll(self, idReaderArg):
+    def getAllByIdReader(self, idReaderArg):
         try:
             obj = self.objects.all().filter(idReader_id=idReaderArg)
-            return True, 170100, obj
+            return True, 180100, obj
         except self.DoesNotExist:
-            return False, 170101, "錯誤: getAll 讀取 voteChapter 表錯誤。"
+            return False, 180101, "錯誤: getAllByIdReader 讀取 voteChapter 表錯誤。"
         except Exception as e:
-            return False, 170102, str(e)
+            return False, 180102, str(e)
 
     @classmethod
-    def add(self, idReader_id, idBook_id):
+    def add(self, idReaderArg, idVersionArg, ratingArg):
 
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
-            idVal = createId(20, idReader_id + idBook_id)
+            idVal = createId(50, idReaderArg + idVersionArg + str(ratingArg))
 
-            obj = self(id=idVal, idReader_id=idReader_id, idBook_id = idBook_id, createTime=nowTime)
+            obj = self(id=idVal, idReader_id=idReaderArg, idVersion = idVersionArg, rating = ratingArg, createTime=nowTime, modifyTime=nowTime)
             obj.save()
-            return True,170200, ""
+            return True,180200, ""
         except Exception as e:
             print str(e)
-            return False,170201, str(e)
+            return False,180201, str(e)
 
     @classmethod
-    def deleteObj(self, idArg, idReaderArg):
+    def deleteObj(self, idArg):
         try:
             obj = self.objects.get(id=idArg)
-            if obj.idReader_id == idReaderArg:
-                obj.delete()
-                return True,170300, ""
-            else:
-                return True,170301, "您沒有權限刪除該收藏記錄"
+            obj.delete()
+            return True,180300, ""
         except self.DoesNotExist:
-            return False, 170302, "delete 讀取 voteChapter 表錯誤"
+            return False, 180301, "deleteObj 讀取 voteChapter 表錯誤"
         except Exception as e:
-            return False,170303, str(e)
+            return False,180302, str(e)
