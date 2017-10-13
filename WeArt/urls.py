@@ -28,5 +28,5 @@ urlpatterns = [
     url('^book/', include('book.urls')),
     url('^content/', include('content.urls')),
     url('^collection/', include('collection.urls')),
-    url('^vote/', include('vote.urls')),
+    url('^voteChapter/', include('voteChapter.urls')),
 ]

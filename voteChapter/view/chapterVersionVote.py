@@ -47,22 +47,25 @@ def chapterVersionVote(request):
 
     try:
         # get old rating
-        res,statusNumber,mes =  version.getValueById(idVersion, "vote")
+        res,statusNumber,mes =  version.getValueById(idVersion, "all")
         if not res:
             context['res'] = "fail"
             context['statusNumber'] = statusNumber
             context['message'] = '錯誤： ' + str(statusNumber) + " ， " + mes
             return JsonResponse(context)
+        
         # check is or not this chapter
-        # modify the vote and socre into database
-        ratingUserFloat = float(ratingUser) + float(mes)
-        res, statusNumber, mes = version.modifyObj(idVersion, "vote", ratingUserFloat)
+        # modify the voteCount and socre into database
+        voteCountNew = int(mes.voteCount) + 1
+        scoreNew = (float(mes.score) + float(ratingUser)) / voteCountNew
+        res, statusNumber, mes = version.modifyObj(idVersion, "voteCount", voteCountNew)
         if not res:
             context['res'] = "fail"
             context['statusNumber'] = statusNumber
             context['message'] = '錯誤： ' + str(statusNumber) + " ， " + mes
             return JsonResponse(context)
-        res, statusNumber, mes = version.modifyObj(idVersion, "score", ratingUserFloat)
+
+        res, statusNumber, mes = version.modifyObj(idVersion, "score", scoreNew)
         if not res:
             context['res'] = "fail"
             context['statusNumber'] = statusNumber

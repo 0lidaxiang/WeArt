@@ -13,11 +13,9 @@ jQuery(document).ready(
         var idVersion = $('#idVersion').val();
         var rating = $('#versionRating').val();
         var chapterFileName = $('#idBook').val() + $('#chapterOrder').val();
-        console.log(idVersion);
-        console.log(rating);
-        console.log(chapterFileName);
+
         $.ajax({
-          url: '/vote/chapterVersionVote/',
+          url: '/voteChapter/chapterVersionVote/',
           type: 'GET',
           dataType: 'json',
           data: {
@@ -30,6 +28,7 @@ jQuery(document).ready(
           console.log(resp);
           if (resp.res) {
             alert("投票成功");
+            window.location.reload();
           }
           else{
             alert(resp.message);

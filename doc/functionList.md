@@ -17,7 +17,7 @@ The complated function number is module number and function number, like 100001.
 |8| tool | 15| |
 |9| version | 16| |
 |10| collection | 17| |
-|11| vote | 18| | |
+|11| voteChapter | 18| | |
 
 ## Function Number In WeArt module
 The WeArt module number is <font color=#DAA520 size=4>10</font>.
@@ -144,7 +144,7 @@ The chapter module number is <font color=#DAA520 size=4> 17 </font>.
 | 18 | deleteCollection.py | deleteObj | 0601 | |
 |   | | | | | |
 
-## Function Number In vote module
+## Function Number In voteChapter module
 The tool module number is <font color=#DAA520 size=4> 18 </font>.
 
 | Order | File Name | Function Name | Number | Other Intro |

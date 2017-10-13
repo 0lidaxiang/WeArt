@@ -103,20 +103,20 @@ def showHistory(request):
         authors = p.stdout.readlines()
         context['authorList'] = authors
 
-        # step1: get version and votes info of every author from databases
+        # step1: get version and score info of every author from databases
         idAuthorsAndVotes = []
         res, statusNumber, mes  = chapter.getValue(idBook ,"id")
         idChapterArg = mes
         if res:
             res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
             for v in ver:
-                idAuthorAndVote = {"vote": 0, "score": 0, "idAuthor": ""}
+                idAuthorAndVote = {"idVersion" : "", "voteCount": 0, "score": 0, "idAuthor": ""}
                 idAuthorAndVote["idVersion"] = v.id
-                idAuthorAndVote["vote"] = int(v.vote)
-                idAuthorAndVote["score"] = int(v.score)
+                idAuthorAndVote["voteCount"] = int(v.voteCount)
+                idAuthorAndVote["score"] = float(v.score)
                 idAuthorAndVote["idAuthor"] = v.idAuthor_id
                 idAuthorsAndVotes.append(idAuthorAndVote)
-        idAuthorsAndVotes.sort(reverse = True, key=lambda x:(x['vote'],x['score']))
+        idAuthorsAndVotes.sort(reverse = True, key=lambda x:(x['score'],x['voteCount']))
 
         # lastest content of the author which you want to search
         idAuthorToSearch = ""

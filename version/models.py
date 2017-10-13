@@ -16,7 +16,7 @@ class version(models.Model):
 
     id = models.CharField(max_length=50,primary_key=True)
     idChapter = models.ForeignKey(chapter) # in database,this variable is named "idChapter_id"
-    vote = models.FloatField(max_length=11)
+    voteCount = models.FloatField(max_length=11)
     score = models.FloatField(max_length=11)
     idAuthor = models.ForeignKey(reader)  # in database,this variable is named "idAuthor_id"
     createTime = models.DateTimeField(max_length=50)
@@ -31,8 +31,8 @@ class version(models.Model):
                 return True, 160400, obj.id
             elif returnArg == "idChapter":
                 return True, 160400, obj.idChapter
-            elif returnArg == "vote":
-                return True, 160400, obj.vote
+            elif returnArg == "voteCount":
+                return True, 160400, obj.voteCount
             elif returnArg == "score":
                 return True, 160400, obj.score
             elif returnArg == "idAuthor":
@@ -59,8 +59,8 @@ class version(models.Model):
                 return True, 160000, obj.id
             elif returnArg == "idChapter":
                 return True, 160000, obj.idChapter
-            elif returnArg == "vote":
-                return True, 160000, obj.vote
+            elif returnArg == "voteCount":
+                return True, 160000, obj.voteCount
             elif returnArg == "score":
                 return True, 160000, obj.score
             elif returnArg == "idAuthor":
@@ -87,24 +87,24 @@ class version(models.Model):
                 return False, 160203, str(e)
 
     @classmethod
-    def add(self, idChapter, vote, score, idAuthor):
+    def add(self, idChapter, voteCount, score, idAuthor):
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
             idVal = createId(50, idChapter + idAuthor) # every author writeing is a version
             # idVal = createId(50, idChapter + idAuthor + nowTime) # every update is a version
-            obj = self(id=idVal, idChapter_id=idChapter, vote = vote, score=score, idAuthor_id = idAuthor, createTime=nowTime, modifyTime=nowTime,)
+            obj = self(id=idVal, idChapter_id=idChapter, voteCount = voteCount, score=score, idAuthor_id = idAuthor, createTime=nowTime, modifyTime=nowTime,)
             obj.save()
             return True,160101, ""
         except Exception as e:
             return False,160102, str(e)
 
     @classmethod
-    # def modifyObj(self, idChapter, vote, score, idAuthor):
+    # def modifyObj(self, idChapter, voteCount, score, idAuthor):
     def modifyObj(self, idVersion, argName, value):
         try:
             obj = self.objects.get(id=idVersion)
-            if argName == "vote":
-                obj.vote = value;
+            if argName == "voteCount":
+                obj.voteCount = value;
                 obj.save()
             elif argName == "score":
                 obj.score = value;

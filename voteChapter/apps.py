@@ -4,5 +4,5 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class VoteConfig(AppConfig):
-    name = 'vote'
+class VotechapterConfig(AppConfig):
+    name = 'voteChapter'
