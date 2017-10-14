@@ -33,7 +33,7 @@ class reader(models.Model):
         return self.createTime.strftime('%Y-%m-%d %H:%M:%S')
     accountCreateTime.short_description = '申請時間'
 
-    @classmethod
+    # @classmethod
     # def getAll(self, amount):
     #     try:
     #         if amount == 0:

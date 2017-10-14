@@ -36,12 +36,14 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '140.118.155.82']
 
 INSTALLED_APPS = (
     'django.contrib.admin',
-    'reader',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'reader',
+    'author',
+    'book',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -137,14 +139,14 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'weartRegister@gmail.com'
-EMAIL_HOST_PASSWORD = 'weArt2017'  #not email's password ,this is Authentication code.
+EMAIL_HOST_PASSWORD = 'weArt2017'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DOMAIN = "127.0.0.1:8000"
 
 # This is remote GIT server ip address.And it needs to be changed when changing git-server.
-# GIT_SERVER_IP = "192.168.122.171"   # gitserver_ip needs changes when changing git server
-GIT_SERVER_IP = "172.16.153.128"   # gitserver_ip needs changes when changing git server
+GIT_SERVER_IP = "192.168.122.171"   # lab server git-server ip
+# GIT_SERVER_IP = "172.16.153.128"   # my loacl git-server ip
 GIT_SERVER_USER = "lidaxiang"
 GIT_SERVER_USERPASSWD = "lidaxiang"
 

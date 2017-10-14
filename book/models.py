@@ -11,15 +11,32 @@ class book(models.Model):
     class Meta:
         app_label = "book"
         db_table = 'book'
+        verbose_name = "書籍表"
+        verbose_name_plural = "書籍列表管理"
 
-    id = models.CharField(max_length=20,primary_key=True)
-    name = models.CharField(max_length=100)
-    remoteIP = models.CharField(max_length=20)
-    location = models.CharField(max_length=20)
-    chapterCount = models.IntegerField(max_length=11)
-    status = models.CharField(max_length=20)
-    createTime = models.DateTimeField(max_length=50)
-    idReader = models.ForeignKey(reader)
+    STATUS_CHOICES = (
+        ("active", 'active'),
+        ("inactive", 'inactive'),
+        ("locked", 'locked'),
+    )
+
+    id = models.CharField("編號", max_length=20,primary_key=True)
+    name = models.CharField("書名", max_length=100)
+    remoteIP = models.CharField("遠端倉庫IP", max_length=20)
+    location = models.CharField("存儲位置",  max_length=20)
+    chapterCount = models.IntegerField("章節數量" )
+    status = models.CharField("狀態", max_length=20, choices = STATUS_CHOICES)
+    createTime = models.DateTimeField("創建時間", max_length=50)
+    idReader_id = models.CharField("作者編號", max_length=30)
+
+    def accountStatus(self):
+        return self.status == 'active'
+    accountStatus.boolean = True
+    accountStatus.short_description = "允許讀者查看"
+
+    def accountCreateTime(self):
+        return self.createTime.strftime('%Y-%m-%d %H:%M:%S')
+    accountCreateTime.short_description = '申請時間'
 
     @classmethod
     def getIdByNameAndAuthor(self, nameArg, idReaderArg):

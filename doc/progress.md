@@ -32,17 +32,11 @@ ModifyTime :  2017-07-20
 + [x] 13. ~~Author and Administrator manages books.(2017-10-11)~~
 + [x] 14. ~~Delete foreign keys of database.(2017-10-11)~~                
 + [x] 15. ~~Readers vote for a chapter of one version.(2017-10-14)~~                
-+ [ ] 16. Administrator manages readers and authors.(2017-10-15)      
-+ [ ] 17. Administrator registers and logins.(2017-10-15)          
-+ [ ] 18. Administrator modify userName and password.(2017-10-15)     
-+ [ ] 19. Replace some pages with new html files(1).(2017-10-31)       
-+ [ ] 20. Replace some pages with new html files(2).(2017-11-15)
++ [x] 16. ~~Register a administrator account, login and modify password.(2017-10-15)~~          
++ [x] 17. ~~Administrator manages books, readers and authors.(2017-10-15)~~        
++ [ ] 18. Replace some pages with new html files.(2017-10-28)
 
-## 3. Test Phrase Plan
-+ [ ] 1. Unit test & Fix bugs.(2017-11-25)
-+ [ ] 2. Pressure test & Optimize server.(2017-12-05)
-+ [ ] 3. Load test & Optimize server.(2017-12-15)
-
-## 4. Others
-+ [ ] 1. Write the documents in github and others needed by this study.Maybe need to rewrite some documents by traditional characters.(2017-12-25)
-+ [ ] 2. Modify all texts about this project.ex: eer model, class diagrams, sql files, process file, server enviroment building shell...(2017-12-25)
+## 3. Test Phrase Plan And Editing Files
++ [ ] 1. Unit test & Fix bugs.(2017-11-01)
++ [ ] 2. Load test & Pressure test & Optimize server.(2017-11-10)
++ [ ] 3. Write the documents in github and others needed by this study.Example: eer model, class diagrams, sql files, process file, server enviroment building shell...(2017-11-25)
