@@ -18,7 +18,7 @@ from django.contrib import admin
 from home.view.indexView import *
 
 urlpatterns = [
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
     url('^$', index),
     url('^index/$', index),
     url('^home/', include('home.urls')),

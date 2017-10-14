@@ -1,16 +1,18 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import socket
+from time import localtime, strftime
+
 from django.shortcuts import render
 from django.http import HttpResponse
-
-from time import localtime, strftime
 from django.conf import settings as django_settings
-# from django.conf import settings
 from django.core.mail import send_mail
+from django.views.decorators import csrf
+from time import localtime,strftime
+# from django.conf import settings
+
 from tool.Token import *
 from tool.tools import *
-from django.views.decorators import csrf
 from reader.models import reader
 
 def registerReader(request):
@@ -28,22 +30,30 @@ def registerReader(request):
 
     userName = userName.encode('utf8')
     try:
-        readerObj = reader.objects.get(email=email)
-        if readerObj.status == "abuse":
+        res, statusNumber, message = reader.getValueByEmail(email, "status")
+        if not res:
+            idVal = createId(20, userName + email)
+            passwordEncrypted = createId(96,password)
+            res, statusNumber, message = reader.add(idVal, userName, passwordEncrypted, email, "abuse", nowTime)
+
+            if not res:
+                return render(request, 'reader/registerFail.html', {'message': u"註冊失敗！請重新嘗試或聯絡管理員" + str(statusNumber) + " : " + message})
+
+            if sendVerifyEmail(userName, email):
+                return render(request, 'reader/registerVerificating.html')
+            else:
+                return render(request, 'reader/registerFail.html', {'message': u"發送郵件失敗！請更換郵箱地址重新注冊或聯繫管理員！"})
+
+        if message == "abuse":
             if sendVerifyEmail(userName, email):
                 return render(request, 'reader/registerVerificating.html')
             else:
                 return render(request, 'reader/registerFail.html', {'message': u"發送郵件失敗！請更換郵箱地址重新注冊或聯繫管理員！"})
         else:
             return render(request, 'reader/registerFail.html', {'message': u"您填寫的郵箱已經被注冊！請更換郵箱地址重新注冊！"})
-    except reader.DoesNotExist:
-        test1 = reader(id = createId(20, userName),name = userName,passwd = createId(96,password),email = email,status = "abuse",createTime = nowTime)
-        test1.save()
-
-        if sendVerifyEmail(userName, email):
-            return render(request, 'reader/registerVerificating.html')
-        else:
-            return render(request, 'reader/registerFail.html', {'message': u"發送郵件失敗！請更換郵箱地址重新注冊或聯繫管理員！"})
+    except Exception as e:
+        print e
+        return render(request, 'reader/registerFail.html', {'message': u"註冊失敗！請重新嘗試或聯絡管理員" + str(e)})
 
 def sendVerifyEmail(userName, email):
     try:
@@ -73,10 +83,13 @@ def activeReader(request, token):
     except:
         #delete this user's Token
         emailSignature = token_confirm.remove_validate_token(token)
-        users = reader.objects.filter(email=emailSignature)
-        for user in users:
-	           user.delete()
+
+        # users = reader.objects.filter(email=emailSignature)
+        res, statusNumber, message = reader.deleteObj("email", emailSignature)
+        if not res:
+            return render(request, 'reader/registerFail.html', {'message': u"驗證中獲取 reader info 失敗！請重新嘗試或聯絡管理員" + str(statusNumber) + " : " + message})
         return render(request, 'reader/registerFail.html', {'message': u'對不起，驗證鏈接已經過期！請重新注冊！'})
+
     try:
         readerObj = reader.objects.get(email=emailSignature)
     except reader.DoesNotExist:

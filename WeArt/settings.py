@@ -106,15 +106,17 @@ USE_L10N = True
 # if USE_TZ is True,the database must store the UTC time
 USE_TZ = False
 
+# ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 # STATIC_URL = '/static/'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
+STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static'), ]
 
 # session settings
 SESSION_COOKIE_AGE = 60*60*24
@@ -130,8 +132,8 @@ EMAIL_USE_TLS = True
 DOMAIN = "127.0.0.1:8000"
 
 # This is remote GIT server ip address.And it needs to be changed when changing git-server.
-GIT_SERVER_IP = "192.168.122.171"   # gitserver_ip needs changes when changing git server
-# GIT_SERVER_IP = "172.16.153.128"   # gitserver_ip needs changes when changing git server
+# GIT_SERVER_IP = "192.168.122.171"   # gitserver_ip needs changes when changing git server
+GIT_SERVER_IP = "172.16.153.128"   # gitserver_ip needs changes when changing git server
 GIT_SERVER_USER = "lidaxiang"
 GIT_SERVER_USERPASSWD = "lidaxiang"
 

@@ -37,6 +37,19 @@ The reader module number is <font color=#DAA520 size=4> 11 </font>.
 | 4  |  models.py | modifyObj | 0303 | |
 | 5  |  modifyReader.py | modifyReader | 0500 | |
 | 6  |  modifyReader.py | modifyReader | 0501 | |
+| 7  |  models.py | getValueById | 0000 | |
+| 8  |  models.py | getValueById | 0001 | |
+| 9  |  models.py | getValueById | 0002 | |
+| 10  |  models.py | getValueById | 0003 | |
+| 11  |  models.py | add | 0102 | |
+| 12  |  models.py | add | 0103 | |
+| 13  |  models.py | deleteObj | 0200 | |
+| 14  |  models.py | deleteObj | 0201 | |
+| 15  |  models.py | deleteObj | 0202 | |
+| 13  |  models.py | getAll | 0100 | |
+| 14  |  models.py | getAll | 0101 | |
+| 15  |  models.py | getAll | 0102 | |
+| 16  |  models.py | getAll | 0103 | |
 | | | | | | |
 
 ## Function Number In author module

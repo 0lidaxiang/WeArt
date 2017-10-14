@@ -126,7 +126,7 @@ class book(models.Model):
             obj.delete()
             return True,130100, location
         except self.DoesNotExist:
-            return False, 130102, "錯誤: delete 讀取 book 表錯誤。"
+            return False, 130102, "delete 讀取 book 表錯誤"
         except Exception as e:
             return False, 130103, str(e)
 
