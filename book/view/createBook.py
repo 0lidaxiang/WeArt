@@ -3,16 +3,16 @@
 
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.conf import settings
-from git import Repo
-from book.models import book
-
 import paramiko
 import sys
 import json
 import os
 import datetime
 import subprocess
+
+from django.conf import settings
+from git import Repo
+from book.models import book
 
 def createABook(request):
     context = {}

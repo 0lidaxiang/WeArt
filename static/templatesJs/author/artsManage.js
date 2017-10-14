@@ -25,13 +25,13 @@ function deleteBook(idBookArg) {
     data: {"idBook" : idBookArg}
   })
   .done(function(resp) {
-    console.log(resp);
+    // console.log(resp);
     var message = resp.message;
-    if (resp.status == "success") {
+    if (resp.res == "success") {
       alert("刪除成功！");
       window.location.reload();
     }
-    else if (resp.status == "fail") {
+    else if (resp.res == "fail") {
       var obj = "<div class='col-md-12 col-sm-12'><h4>" + resp.statusNumber + " , " + resp.message + "</h4></div>";
       $("#mainContent").replaceWith(obj);
     }

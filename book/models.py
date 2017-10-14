@@ -119,15 +119,12 @@ class book(models.Model):
                 return False, "錯誤1002: 讀取book表錯誤。"
 
     @classmethod
-    def deleteObj(self, idBookArg, idReaderArg):
+    def deleteObj(self, idBookArg):
         try:
             obj = self.objects.get(id=idBookArg)
-            if obj.idReader_id == idReaderArg:
-                obj.delete()
-
-                return True,130100, ""
-            else:
-                return True,130101, "錯誤：　您沒有權限刪除該收藏記錄！"
+            location = obj.location
+            obj.delete()
+            return True,130100, location
         except self.DoesNotExist:
             return False, 130102, "錯誤: delete 讀取 book 表錯誤。"
         except Exception as e:

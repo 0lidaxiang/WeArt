@@ -71,6 +71,10 @@ The book module number is <font color=#DAA520 size=4> 13 </font>.
 | 18 | getBook.py | getMyBook | 0501 | |
 | 19 | deleteBook.py | deleteObj | 0600 | |
 | 20 | deleteBook.py | deleteObj | 0601 | |
+| 19 | deleteBook.py | rmDirOfWebServer | 0700 | |
+| 20 | deleteBook.py | rmDirOfWebServer | 0701 | |
+| 19 | deleteBook.py | rmDirOfGitServer | 0800 | |
+| 20 | deleteBook.py | rmDirOfGitServer | 0801 | |
 |   | | | | | |
 
 ## Function Number In chapter module
