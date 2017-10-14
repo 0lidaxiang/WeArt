@@ -8,12 +8,30 @@ class reader(models.Model):
     class Meta:
         app_label = "reader"
         db_table = 'reader'
-    id = models.CharField(max_length=20,primary_key=True)
-    name = models.CharField(max_length=100)
-    passwd = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    status = models.CharField(max_length=20)
-    createTime = models.DateTimeField(max_length=50)
+        verbose_name = "讀者表"
+        verbose_name_plural = "讀者列表管理"
+
+    STATUS_CHOICES = (
+        ("allowed", 'allowed'),
+        ("abuse", 'abuse'),
+        ("locked", 'locked'),
+    )
+
+    id = models.CharField("編號", max_length=20,primary_key=True)
+    name = models.CharField("用戶名", max_length=100)
+    passwd = models.CharField("密碼", max_length=100)
+    email = models.CharField("電子郵箱", max_length=100)
+    status = models.CharField("賬號狀態", max_length=20, choices = STATUS_CHOICES)
+    createTime = models.DateTimeField("申請時間", max_length=50)
+
+    def accountStatus(self):
+        return self.status == 'allowed'
+    accountStatus.boolean = True
+    accountStatus.short_description = "允許登錄"
+
+    def accountCreateTime(self):
+        return self.createTime.strftime('%Y-%m-%d %H:%M:%S')
+    accountCreateTime.short_description = '申請時間'
 
     @classmethod
     # def getAll(self, amount):

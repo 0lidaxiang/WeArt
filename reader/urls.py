@@ -10,9 +10,6 @@ from reader.view.modifyReader import  *
 from author.view.artsManageView import  *
 
 urlpatterns = [
-    # url(r'^admin/', include(admin.site.urls)),
-
-    # The following two urls are not required to be verifing login status.
     url('^register/$', TemplateView.as_view(template_name="reader/register.html")),
     url('^login/', login),
     url('^logout/$', logout),
