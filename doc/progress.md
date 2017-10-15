@@ -43,9 +43,14 @@ ModifyTime :  2017-07-20
 + Reader index page for showing data.(2017-10-28)
 
 + [ ] 20. Replace some pages with new html files.(2017-10-28)
-+ [ ] 21. [Optional] Redis cache function.(2017-11-28)
 
-## 3. Test Phrase Plan And Editing Files
+## 3. Optional Development Phrase Plan
++ [ ] 21. [Optional] Use task queue(Celery in django) to serialize the operations operating the same file from different users, and these operations requests occuring at the same time.(2017-12-28)
++ [ ] 23. [Optional] Redis cache function.(2017-12-28)
++ [ ] 24. [Optional] Files writing error.(2017-12-28)
++ [ ] 25. [Optional] Database roolback.(2017-12-28)
+
+## 4. Test Phrase Plan And Editing Files
 + [ ] 1. Unit test & Fix bugs.(2017-11-01)
 
 + [ ] 2. Using Apache ab test tool for Performance Test & Optimize server.(2017-11-10)
