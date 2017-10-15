@@ -18,6 +18,7 @@ The complated function number is module number and function number, like 100001.
 |9| version | 16| |
 |10| collection | 17| |
 |11| voteChapter | 18| | |
+|12| recommand | 19| | |
 
 ## Function Number In WeArt module
 The WeArt module number is <font color=#DAA520 size=4>10</font>.
@@ -182,3 +183,13 @@ The tool module number is <font color=#DAA520 size=4> 18 </font>.
 | 14 | chapterVersionVote.py | chapterVersionVote | 0501 | |
 | 15 | chapterVersionVote.py | getRating | 0600 | |
 | 16 | chapterVersionVote.py | getRating | 0601 | | |
+
+## Function Number In recommand module
+The tool module number is <font color=#DAA520 size=4> 19 </font>.
+
+| Order | File Name | Function Name | Number | Other Intro |
+|---|---|---|---|---|---|---|
+| 1  | model.py | getValueByStatus | 0000 | |
+| 2  | model.py | getValueByStatus | 0001 | |
+| 3  | model.py | getValueByStatus | 0002 | |
+| 4  | model.py | getValueByStatus | 0003 | | |

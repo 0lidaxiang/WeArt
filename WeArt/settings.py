@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '140.118.155.82']
 
 
 # Application definition
-
+TEST_DATABASE_NAME = "test_weArt"
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,9 +41,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'django_extensions',
     'django-dia',
+
+    'recommand',
     'author',
     'book',
     'chapter',
@@ -51,7 +52,6 @@ INSTALLED_APPS = (
     'content',
     'home',
     'reader',
-    'recommand',
     'tool',
     'version',
     'voteChapter',
@@ -113,6 +113,7 @@ DATABASES = {
         'PORT':'3306',
         'OPTIONS':{
             "init_command": "SET default_storage_engine=MyISAM",
+            'charset': 'utf8',
         },
     }
 }

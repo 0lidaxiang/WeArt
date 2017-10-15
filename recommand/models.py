@@ -31,3 +31,22 @@ class recommand(models.Model):
     def accountCreateTime(self):
         return self.createTime.strftime('%Y-%m-%d %H:%M:%S')
     accountCreateTime.short_description = '申請時間'
+
+    @classmethod
+    def getValueByStatus(self, statusArg, returnArg):
+        try:
+            obj = self.objects.get(status=statusArg)
+            if returnArg == "id":
+                return True, 190000, obj.id
+            elif returnArg == "idBook_id":
+                return True, 190000, obj.idBook_id
+            elif returnArg == "createTime":
+                return True, 190000, obj.createTime
+            elif returnArg == "modifyTime":
+                return True, 190000, obj.modifyTime
+            else:
+                return False, 190001, "recommand 表中不存在該屬性，returnArg錯誤。"
+        except self.DoesNotExist:
+                return False, 190002, "recommand 表不存在該數據。"
+        except Exception as e:
+                return False, 190003, str(e)
