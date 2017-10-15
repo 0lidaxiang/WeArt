@@ -41,9 +41,20 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'reader',
+
+
+    'django_extensions',
+    'django-dia',
     'author',
-    'book',
+    'chapter',
+    'collection',
+    'content',
+    'home',
+    'reader',
+    'tool',
+    'version',
+    'voteChapter',
+    'WeArt',
 )
 
 MIDDLEWARE_CLASSES = (

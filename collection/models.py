@@ -15,8 +15,8 @@ class collection(models.Model):
         db_table = 'collection'
 
     id = models.CharField(max_length=30,primary_key=True)
-    idReader = models.ForeignKey(reader)  # in database,this variable is named "idReader_id"
-    idBook = models.ForeignKey(book,null=True, on_delete=models.SET_NULL)  # in database,this variable is named "idBook_id"
+    idReader_id = models.CharField(max_length=20)
+    idBook_id = models.CharField(max_length=20)
     createTime = models.DateTimeField(max_length=50)
 
     @classmethod

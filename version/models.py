@@ -15,10 +15,10 @@ class version(models.Model):
         db_table = 'version'
 
     id = models.CharField(max_length=50,primary_key=True)
-    idChapter = models.ForeignKey(chapter) # in database,this variable is named "idChapter_id"
+    idChapter_id = models.CharField(max_length=30)
     voteCount = models.FloatField(max_length=11)
     score = models.FloatField(max_length=11)
-    idAuthor = models.ForeignKey(reader)  # in database,this variable is named "idAuthor_id"
+    idAuthor_id = models.CharField(max_length=20)  
     createTime = models.DateTimeField(max_length=50)
     modifyTime = models.DateTimeField(max_length=50)
 

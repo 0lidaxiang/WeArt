@@ -19,7 +19,7 @@ class chapter(models.Model):
     chapterOrder = models.CharField(max_length=20)
     status = models.CharField(max_length=20)
     createTime = models.DateTimeField(max_length=50)
-    idBook = models.ForeignKey(book)  # in database,this variable is named "idBook_id"
+    idBook_id = models.CharField(max_length=20)
 
     @classmethod
     def getValue(self, bookIdArg, returnArg):
