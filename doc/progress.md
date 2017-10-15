@@ -56,7 +56,7 @@ ModifyTime :  2017-07-20
 + Load Test.Test the program in overload environment and analysis the conditions when program is not working using table or graph.(2017-11-10)
 + Optimize server is mainly to optimize the conf of nginx.(2017-11-10)
 + [ ] 3. Write the documents in github and others needed by this study.(2017-11-25)     
-** This documents includes: **  
+**This documents includes:**  
 + architecture model
 + er model
 + sql files
