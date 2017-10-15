@@ -4,7 +4,7 @@ This is the independent Study of NTUST. Our group have two members, Da-Xiang Li 
 This project is a website using git and Python. We want to help people that have ideas but not has so much time to complete their arts like novel.Everyone interesed on your art can apply to write new version content or next chapter, according to your novel outline.
 
 # Documents Introduction
-The doc folder has Database Design(ER Model), function list,progress(include gantt chart), Architecture Design and other documents. ER model uses the **MySQL Workbench 6.3**(community version) software. Architecture Design uses **StartUML 2.8.0** software. Use Apache HTTP server benchmarking tool (**ab tool**) for Performance Tests.
+The doc folder has Database Design(ER Model), function list, progress(include gantt chart), Architecture Design and other documents. ER model uses the **MySQL Workbench 6.3**(community version) software. Architecture Design uses **StartUML 2.8.0** software. Use Apache HTTP server benchmarking tool (**ab tool**) for Performance Tests.
 
 ### [Gantt Chart](http://htmlpreview.github.io/?https://github.com/0lidaxiang/WeArt/blob/master/doc/ganttChart.html)
 ### [Progress](./doc/progress.md)  

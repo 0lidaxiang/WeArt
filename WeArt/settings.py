@@ -154,6 +154,5 @@ GIT_SERVER_USERPASSWD = "lidaxiang"
 # the port when user register to become reader
 REGISTER_SERVER_DOMAIN = socket.gethostbyname(socket.gethostname()) + ":8000"
 
-# script file name
-# this file is in doc/scripts and it should be moved to user home directory in git server
-SCRIPT_MKDIR = " mkdir_from_web_server.py"
+# the books classied root directory in git-server and web-server
+BOOKS_ROOT_DIR = "/home/lidaxiang"

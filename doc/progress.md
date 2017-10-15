@@ -34,13 +34,13 @@ ModifyTime :  2017-07-20
 + [x] ~~15. Readers vote for a chapter of one version.(2017-10-14)~~                
 + [x] ~~16. Register a administrator account, login and modify password.(2017-10-15)~~          
 + [x] ~~17. Administrator manages books, readers and authors.(2017-10-15)~~   
-+ [ ] 18. Recommand app, add,modify and get.(2017-10-28)
++ [x] ~~18. Recommand app, add,modify and get.(2017-10-28)~~
 
-+ [ ] 19. Fix bugs knowed.(2017-10-28)
-+ Modify the database struct (column name,data type) and use django commands to update database changes not using sql commands.(2017-10-28)
-+ Change using extra bash file to using inner command string, when making the book's classied directory.(2017-10-28)
-+ The error that joining in writing other reader's chapter when not logined.(2017-10-28)
-+ Reader index page for showing data.(2017-10-28)
++ [x] ~~19. Fix bugs knowed.(2017-10-15)~~
++ ~~Modify the database struct (column name,data type) and use django commands to update database changes not using sql commands.(2017-10-15)~~
++ ~~Correct the the order number of chapter list page.Limit the input of chapter number to a minimum of 1.(2017-10-15)~~
++ ~~Updates the version table when author modify and create a chapter.(2017-10-15)~~
++ ~~Change using extra bash file to using inner command string, when making the book's classied directory.(2017-10-15)~~
 
 + [ ] 20. Replace some pages with new html files.(2017-10-28)
 
@@ -49,6 +49,7 @@ ModifyTime :  2017-07-20
 + [ ] 23. [Optional] Redis cache function.(2017-12-28)
 + [ ] 24. [Optional] Files writing error.(2017-12-28)
 + [ ] 25. [Optional] Database roolback.(2017-12-28)
++ [ ] 26. [Optional] Reader index page for showing data.(2017-12-28)
 
 ## 4. Test Phrase Plan And Editing Files
 + [ ] 1. Unit test & Fix bugs.(2017-11-01)

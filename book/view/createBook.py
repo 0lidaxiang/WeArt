@@ -27,7 +27,7 @@ def createABook(request):
 
     readerId = request.session["readerId"]
 
-    serverHomeDir = "/home/lidaxiang"
+    booksRootDir = settings.BOOKS_ROOT_DIR
 
     # get the new book name of user input if it is not null
     if 'newBookName' not in request.GET:
@@ -58,7 +58,8 @@ def createABook(request):
 
             # step1: struct the parent directory name
             now = datetime.datetime.now()
-            monthClassedDirName = serverHomeDir + "/" + str(now.year) + "/" + str(now.month)
+            yearClassedDirName = booksRootDir + "/" + str(now.year)
+            monthClassedDirName = yearClassedDirName + "/" + str(now.month)
 
             # step2: write data into database
             res,mes = book.add(userInputBookName, gitserver_ip, monthClassedDirName, readerId)
@@ -72,7 +73,7 @@ def createABook(request):
             idBook = mes
 
             # step3: make directory in gitServer
-            res,mes = mkClassedDirInGitServer(gitserver_ip, gitserver_user, gitserver_userPasswd, serverHomeDir, idBook)
+            res,mes = mkClassedDirInGitServer(gitserver_ip, gitserver_user, gitserver_userPasswd,yearClassedDirName,monthClassedDirName)
             if not res:
                 context['status'] = "fail"
                 context['message'] = "錯誤： " + mes
@@ -89,7 +90,7 @@ def createABook(request):
                 return JsonResponse(context)
 
             # step3: check and make the parent directory in webServer
-            res,mes = mkClassedDirInWebServer(serverHomeDir)
+            res,mes = mkClassedDirInWebServer(yearClassedDirName,monthClassedDirName)
             if not res:
                 # This needs to delete the all folder
 
@@ -119,29 +120,38 @@ def createABook(request):
         context['message'] = "異常錯誤: " + str(e)
     return JsonResponse(context)
 
-def mkClassedDirInWebServer(operateDir):
-    script_mkdir = settings.SCRIPT_MKDIR
+def mkClassedDirInWebServer(yearClassedDirName,monthClassedDirName):
     try:
-        cmd = "cd " + operateDir + ";python " + script_mkdir
-        p = subprocess.Popen(cmd, shell=True)
-        (stdoutput,erroutput) = p.communicate()
+        booksRootDir = settings.BOOKS_ROOT_DIR
+        if not os.path.exists(yearClassedDirName):
+            os.makedirs(yearClassedDirName)
+            os.makedirs(monthClassedDirName)
+        else:
+            if not os.path.exists(monthClassedDirName):
+                os.makedirs(monthClassedDirName)
         return True,""
     except Exception as e:
         return False,str(e)
 
-def mkClassedDirInGitServer(gitserver_ip, gitserver_user, gitserver_userPasswd, operateDir, idBook):
-    script_mkdir = settings.SCRIPT_MKDIR
-
+def mkClassedDirInGitServer(gitserver_ip, gitserver_user, gitserver_userPasswd,yearClassedDirName,monthClassedDirName):
     try:
-        ssh = paramiko.SSHClient()
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        # conncet to server
-        ssh.connect(gitserver_ip,22,gitserver_user, gitserver_userPasswd,timeout=5)
+        booksRootDir = settings.BOOKS_ROOT_DIR
+        transport = paramiko.Transport((gitserver_ip, 22))
+        transport.connect(username = gitserver_user, password = gitserver_userPasswd)
+        sftp = paramiko.SFTPClient.from_transport(transport)
 
-        cmd = "cd " + operateDir + ";python " + script_mkdir
-        ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(cmd)
+        try:
+            sftp.chdir(yearClassedDirName)
+        except IOError:
+            sftp.mkdir(yearClassedDirName)
 
-        ssh.close()
+        try:
+            sftp.chdir(monthClassedDirName)
+        except IOError:
+            sftp.mkdir(monthClassedDirName)
+
+        sftp.close()
+
         return True,""
     except Exception as e:
         return False,str(e)
