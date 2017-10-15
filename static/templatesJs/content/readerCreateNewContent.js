@@ -5,6 +5,21 @@ function submitContent() {
   var commitContent = $("#commitContent").val();
   var content = $("#content").val();
 
+  if (idBook == "") {
+    alert("請填寫書籍編號");
+    return;
+  }
+
+  if (chapterOrder == "") {
+    alert("請填寫章節序號");
+    return;
+  }
+
+  if (content == "") {
+    alert("請填寫內容");
+    return;
+  }
+
   $.ajax({
       url: '/content/readerWriteAContent/',
       type: 'GET',
@@ -41,6 +56,20 @@ function getContent() {
   var idBook = $("#idBook").val();
   var bookName = $("#bookName").val();
   var chapterOrder = $("#chapterOrder").val();
+
+  if (idBook == "") {
+    alert("請填寫書籍編號");
+    return;
+  }
+  if (bookName == "") {
+    alert("請填寫書名");
+    return;
+  }
+
+  if (chapterOrder == "") {
+    alert("請填寫章節序號");
+    return;
+  }
 
   $.ajax({
     url: '/content/readerGetChapterContent/',

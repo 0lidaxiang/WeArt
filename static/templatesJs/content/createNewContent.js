@@ -10,6 +10,26 @@ function submitContent() {
   var commitContent = $("#commitContent").val();
   var content = $("#content").val();
 
+  if (bookName == "") {
+    alert("請填寫書名");
+    return;
+  }
+
+  if (commitContent == "") {
+    alert("請填寫更新摘要");
+    return;
+  }
+
+  if (chapterOrder == "") {
+    alert("請填寫章節序號");
+    return;
+  }
+
+  if (content == "") {
+    alert("請填寫內容");
+    return;
+  }
+
   $.ajax({
       url: '/content/createAContent/',
       type: 'GET',
@@ -44,6 +64,16 @@ function submitContent() {
 function getContent() {
   var bookName = $("#bookName").val();
   var chapterOrder = $("#chapterOrder").val();
+
+  if (bookName == "") {
+    alert("請填寫書名");
+    return;
+  }
+
+  if (chapterOrder == "") {
+    alert("請填寫章節序號");
+    return;
+  }
 
   $.ajax({
     url: '/content/authorGetContent/',

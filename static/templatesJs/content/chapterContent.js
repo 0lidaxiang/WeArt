@@ -5,6 +5,16 @@ $(document).ready(function() {
 function getMainContentData(idAuthor) {
   var idBook = $("#idBook").val();
   var chapterOrder = $("#chapterOrder").val();
+  
+  if (idBook == "") {
+    alert("請填寫書籍編號");
+    return;
+  }
+
+  if (chapterOrder == "") {
+    alert("請填寫章節序號");
+    return;
+  }
 
   $.ajax({
     url: '/content/showHistory/',

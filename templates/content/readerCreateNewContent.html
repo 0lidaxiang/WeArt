@@ -29,7 +29,7 @@
       </h1>
 
       <input type="hidden" id="idBook" value={{ idBook}}>
-      
+
       <!-- Main content -->
         <div class="row" id="mainContent">
           <div class="col-xs-12">
@@ -41,7 +41,7 @@
                       <label for="bookname">
                           書的名稱：
                       </label>
-                      <input class="form-control" id="bookName" name="bookName" placeholder="for which book" type="text">
+                      <input class="form-control" id="bookName" name="bookName" required="required"  placeholder="for which book" type="text">
                       </input>
                     </div>
 
@@ -49,7 +49,7 @@
                         <label for="chapterName">
                             章節序號：
                         </label>
-                        <input class="form-control" id="chapterOrder"  name="chapterOrder" placeholder="chapter order number" type="number">
+                        <input class="form-control" id="chapterOrder" required="required" name="chapterOrder" placeholder="chapter order number" type="number" min=1>
                         </input>
                     </div>
 
