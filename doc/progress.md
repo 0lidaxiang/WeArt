@@ -35,13 +35,11 @@ ModifyTime :  2017-07-20
 + [x] ~~16. Register a administrator account, login and modify password.(2017-10-15)~~          
 + [x] ~~17. Administrator manages books, readers and authors.(2017-10-15)~~   
 + [x] ~~18. Recommand app, add,modify and get.(2017-10-28)~~
-
 + [x] ~~19. Fix bugs knowed.(2017-10-15)~~
 + ~~Modify the database struct (column name,data type) and use django commands to update database changes not using sql commands.(2017-10-15)~~
 + ~~Correct the the order number of chapter list page.Limit the input of chapter number to a minimum of 1.(2017-10-15)~~
 + ~~Updates the version table when author modify and create a chapter.(2017-10-15)~~
 + ~~Change using extra bash file to using inner command string, when making the book's classied directory.(2017-10-15)~~
-
 + [ ] 20. Replace some pages with new html files.(2017-10-28)
 
 ## 3. Optional Development Phrase Plan
@@ -53,12 +51,10 @@ ModifyTime :  2017-07-20
 
 ## 4. Test Phrase Plan And Editing Files
 + [ ] 1. Unit test & Fix bugs.(2017-11-01)
-
 + [ ] 2. Using Apache ab test tool for Performance Test & Optimize server.(2017-11-10)
 + Performance Test for using different value  of Concurrency Level parameter and the number of requests parameter.And analysis the result using table or graph. (2017-11-10)
 + Load Test.Test the program in overload environment and analysis the conditions when program is not working using table or graph.(2017-11-10)
 + Optimize server is mainly to optimize the conf of nginx.(2017-11-10)
-
 + [ ] 3. Write the documents in github and others needed by this study.(2017-11-25)     
 ** This documents includes: **  
 + architecture model
