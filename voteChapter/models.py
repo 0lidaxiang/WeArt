@@ -14,12 +14,12 @@ class voteChapter(models.Model):
         app_label = "voteChapter"
         db_table = 'voteChapter'
 
-    id = models.CharField(max_length=50,primary_key=True)
-    idReader_id = models.CharField(max_length=20)
-    idVersion = models.CharField(max_length=50)
-    rating = models.FloatField()
-    createTime = models.DateTimeField()
-    modifyTime = models.DateTimeField()
+    id = models.CharField(max_length=50,primary_key=True,blank=False,null=False)
+    idReader_id = models.CharField(max_length=20,blank=False,null=False)
+    idVersion_id = models.CharField(max_length=50,blank=False,null=False)
+    rating = models.FloatField(max_length=11,blank=False,null=False)
+    createTime = models.DateTimeField(max_length=50,blank=False,null=False)
+    modifyTime = models.DateTimeField(max_length=50,blank=False,null=False)
 
     @classmethod
     def getValue(self, idReaderArg, idVersionArg, returnArg):
@@ -63,7 +63,7 @@ class voteChapter(models.Model):
             nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
             idVal = createId(50, idReaderArg + idVersionArg + str(ratingArg))
 
-            obj = self(id=idVal, idReader_id=idReaderArg, idVersion = idVersionArg, rating = ratingArg, createTime=nowTime, modifyTime=nowTime)
+            obj = self(id=idVal, idReader_id=idReaderArg, idVersion_id = idVersionArg, rating = ratingArg, createTime=nowTime, modifyTime=nowTime)
             obj.save()
             return True,180200, ""
         except Exception as e:

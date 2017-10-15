@@ -14,13 +14,13 @@ class version(models.Model):
         app_label = "version"
         db_table = 'version'
 
-    id = models.CharField(max_length=50,primary_key=True)
-    idChapter_id = models.CharField(max_length=30)
-    voteCount = models.FloatField(max_length=11)
-    score = models.FloatField(max_length=11)
-    idAuthor_id = models.CharField(max_length=20)  
-    createTime = models.DateTimeField(max_length=50)
-    modifyTime = models.DateTimeField(max_length=50)
+    id = models.CharField(max_length=50,primary_key=True, blank=False,null=False)
+    idChapter_id = models.CharField(max_length=30,blank=False,null=False)
+    voteCount = models.PositiveIntegerField(blank=False,null=False)
+    score = models.FloatField(max_length=11,blank=False,null=False)
+    idAuthor_id = models.CharField(max_length=20,blank=False,null=False)
+    createTime = models.DateTimeField(max_length=50,blank=False,null=False)
+    modifyTime = models.DateTimeField(max_length=50,blank=False,null=False)
 
     @classmethod
     def getValueById(self, idVersion, returnArg):
@@ -90,7 +90,7 @@ class version(models.Model):
     def add(self, idChapter, voteCount, score, idAuthor):
         try:
             nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
-            idVal = createId(50, idChapter + idAuthor) # every author writeing is a version
+            idVal = createId(50, idChapter + idAuthor) # every author writing is a version
             # idVal = createId(50, idChapter + idAuthor + nowTime) # every update is a version
             obj = self(id=idVal, idChapter_id=idChapter, voteCount = voteCount, score=score, idAuthor_id = idAuthor, createTime=nowTime, modifyTime=nowTime,)
             obj.save()

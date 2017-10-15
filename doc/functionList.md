@@ -95,10 +95,10 @@ The chapter module number is <font color=#DAA520 size=4> 14 </font>.
 
 | Order | File Name | Function Name | FucNumber | Other Intro |
 |---|---|---|---|---|---|---|  
-| 1 | model.py | getValue | 0000 | |
-| 2 | model.py | getValue | 0003 | |
-| 3 | model.py | getValue | 0004 | |
-| 4 | model.py | getValue | 0005 | |
+| 1 | model.py | getValueByIdBookAndOrder | 0000 | |
+| 2 | model.py | getValueByIdBookAndOrder | 0003 | |
+| 3 | model.py | getValueByIdBookAndOrder | 0004 | |
+| 4 | model.py | getValueByIdBookAndOrder | 0005 | |
 | 5 | model.py | getAll | 0006 | |
 | 6 | model.py | getAll | 0007 | |
 | 7 | model.py | getAll | 0008 | |

@@ -14,10 +14,10 @@ class collection(models.Model):
         app_label = "collection"
         db_table = 'collection'
 
-    id = models.CharField(max_length=30,primary_key=True)
-    idReader_id = models.CharField(max_length=20)
-    idBook_id = models.CharField(max_length=20)
-    createTime = models.DateTimeField(max_length=50)
+    id = models.CharField(max_length=30,primary_key=True,blank=False,null=False)
+    idReader_id = models.CharField(max_length=20,blank=False,null=False)
+    idBook_id = models.CharField(max_length=20,blank=False,null=False)
+    createTime = models.DateTimeField(max_length=50,blank=False,null=False)
 
     @classmethod
     def getValue(self, idReader, returnArg):

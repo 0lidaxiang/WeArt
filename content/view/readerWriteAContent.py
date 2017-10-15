@@ -138,7 +138,7 @@ def readerWriteAContent(request):
             origin.push()
 
             # step5: write data into version table
-            res, statusNumber, mes  = chapter.getValue(idBook ,"id")
+            res, statusNumber, mes  = chapter.getValueByIdBookAndOrder(idBook, userInputChpaterOrder,"id")
             idChapter = mes
             if res:
                 res, statusNumber, mes = version.add(idChapter, 0, 0, readerId)

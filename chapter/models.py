@@ -13,18 +13,18 @@ class chapter(models.Model):
         app_label = "chapter"
         db_table = 'chapter'
 
-    id = models.CharField(max_length=20,primary_key=True)
-    name = models.CharField(max_length=100)
-    fileName = models.CharField(max_length=20)
-    chapterOrder = models.CharField(max_length=20)
-    status = models.CharField(max_length=20)
-    createTime = models.DateTimeField(max_length=50)
-    idBook_id = models.CharField(max_length=20)
+    id = models.CharField(max_length=30,primary_key=True,blank=False,null=False)
+    name = models.CharField(max_length=100,blank=False,null=False)
+    fileName = models.CharField(max_length=32,blank=False,null=False)
+    chapterOrder = models.CharField(max_length=20,blank=False,null=False)
+    status = models.CharField(max_length=20,blank=False,null=False)
+    createTime = models.DateTimeField(max_length=50,blank=False,null=False)
+    idBook_id = models.CharField(max_length=20,blank=False,null=False)
 
     @classmethod
-    def getValue(self, bookIdArg, returnArg):
+    def getValueByIdBookAndOrder(self, bookIdArg, orderArg, returnArg):
         try:
-            obj = self.objects.get(idBook_id=bookIdArg)
+            obj = self.objects.get(idBook_id=bookIdArg, chapterOrder=orderArg)
             if returnArg == "id":
                 return True, 140000, obj.id
             elif returnArg == "name":
@@ -54,7 +54,7 @@ class chapter(models.Model):
 
             obj = self(id=idVal, name=name, fileName = fileName, chapterOrder=chapterOrder, status = "active", createTime=nowTime, idBook_id=idBook_id)
             obj.save()
-            return True, ""
+            return True, str(idVal)
         except Exception as e:
             return False, str(e)
 

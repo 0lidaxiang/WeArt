@@ -42,15 +42,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
     'django_extensions',
     'django-dia',
     'author',
+    'book',
     'chapter',
     'collection',
     'content',
     'home',
     'reader',
+    'recommand',
     'tool',
     'version',
     'voteChapter',
@@ -73,7 +74,7 @@ MIDDLEWARE_CLASSES = (
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 LANGUAGE_CODE = 'zh-hant'
-
+USE_I18N = True
 LANGUAGES = (
     ('en', ('English')),
     ('zh-hans', ('中文简体')),
@@ -100,15 +101,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'WeArt.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # or use ' mysql.connector.django ''
         'NAME': 'weArt',
@@ -116,18 +111,16 @@ DATABASES = {
         'PASSWORD': 'lidaxiang',
         'HOST':'localhost',
         'PORT':'3306',
+        'OPTIONS':{
+            "init_command": "SET default_storage_engine=MyISAM",
+        },
     }
 }
 
-
-TIME_ZONE = 'Asia/Shanghai'
-
-USE_I18N = True
-
-USE_L10N = True
-
 # if USE_TZ is True,the database must store the UTC time
 USE_TZ = False
+TIME_ZONE = 'Asia/Shanghai'
+USE_L10N = True # local first
 
 # ADMIN_MEDIA_PREFIX = '/static/admin/'
 
@@ -137,9 +130,6 @@ USE_TZ = False
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = '/etc/nginx/html/WeArt/djangoStatic/'
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
 STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static'), ]
 
 # session settings
@@ -161,9 +151,9 @@ GIT_SERVER_IP = "192.168.122.171"   # lab server git-server ip
 GIT_SERVER_USER = "lidaxiang"
 GIT_SERVER_USERPASSWD = "lidaxiang"
 
+# the port when user register to become reader
+REGISTER_SERVER_DOMAIN = socket.gethostbyname(socket.gethostname()) + ":8000"
+
 # script file name
 # this file is in doc/scripts and it should be moved to user home directory in git server
 SCRIPT_MKDIR = " mkdir_from_web_server.py"
-
-# the port when user register to become reader
-REGISTER_SERVER_DOMAIN = socket.gethostbyname(socket.gethostname()) + ":8000"

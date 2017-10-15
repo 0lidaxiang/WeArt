@@ -11,7 +11,7 @@ class book(models.Model):
     class Meta:
         app_label = "book"
         db_table = 'book'
-        verbose_name = "書籍表"
+        verbose_name = "書籍"
         verbose_name_plural = "書籍列表管理"
 
     STATUS_CHOICES = (
@@ -20,14 +20,15 @@ class book(models.Model):
         ("locked", 'locked'),
     )
 
-    id = models.CharField("編號", max_length=20,primary_key=True)
-    name = models.CharField("書名", max_length=100)
-    remoteIP = models.CharField("遠端倉庫IP", max_length=20)
-    location = models.CharField("存儲位置",  max_length=20)
-    chapterCount = models.IntegerField("章節數量" )
-    status = models.CharField("狀態", max_length=20, choices = STATUS_CHOICES)
-    createTime = models.DateTimeField("創建時間", max_length=50)
-    idReader_id = models.CharField("作者編號", max_length=30)
+    id = models.CharField("編號", max_length=20,primary_key=True,blank=False,null=False)
+    name = models.CharField("書名", max_length=100,blank=False,null=False)
+    # remoteIP = models.CharField("遠端倉庫IP", max_length=20)
+    remoteIP = models.GenericIPAddressField("遠端倉庫IP",default='192.168.0.1',blank=False,null=False)
+    location = models.CharField("存儲位置",  max_length=100,blank=False,null=False)
+    chapterCount = models.IntegerField("章節數量",blank=False,null=False)
+    status = models.CharField("狀態", max_length=20,blank=False,null=False, choices = STATUS_CHOICES)
+    createTime = models.DateTimeField("創建時間", max_length=50,blank=False,null=False)
+    idReader_id = models.CharField("作者編號", max_length=30,blank=False,null=False)
 
     def accountStatus(self):
         return self.status == 'active'

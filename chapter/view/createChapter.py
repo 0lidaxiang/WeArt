@@ -7,6 +7,7 @@ from django.conf import settings
 from git import Repo
 from book.models import book
 from chapter.models import chapter
+from version.models import version
 
 import paramiko
 import sys
@@ -154,11 +155,18 @@ def createAChapter(request):
         # step 8: write data into table chapter
         res, mes = chapter.add(userInputChapterName, chapterFileName, chapterNowNumber, idBook)
         if res:
-            context['status'] = "success"
-            context['message'] = "您已經成功新增章節 : " + "第" + str(chapterNowNumber) + "章，" + userInputChapterName
+            idChapter = mes
+            res, statusNumber, mes = version.add(idChapter, 0, 0, readerId)
+            if res:
+                context['status'] = "success"
+                context['message'] = '您已經成功更新 《' + userInputBookName + "》的第 " + str(chapterNowNumber) + " 章節內容。"
+            else:
+                context['status'] = "fail"
+                context['message'] = str(statusNumber) + " : " + mes
+            return JsonResponse(context)
         else:
             context['status'] = "fail"
-            context['message'] = "1 : " + mes
+            context['message'] = "createAChapter error : " + mes
         # database and file operation end
 
     except Exception as e:

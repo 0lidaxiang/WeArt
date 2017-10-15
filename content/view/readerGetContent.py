@@ -105,10 +105,12 @@ def showHistory(request):
 
         # step1: get version and score info of every author from databases
         idAuthorsAndVotes = []
-        res, statusNumber, mes  = chapter.getValue(idBook ,"id")
+        res, statusNumber, mes  = chapter.getValueByIdBookAndOrder(idBook,chapterOrder ,"id")
+
         idChapterArg = mes
         if res:
             res,statusNumber,ver = version.getVersionsByIdChapter(idChapterArg)
+
             for v in ver:
                 idAuthorAndVote = {"idVersion" : "", "voteCount": 0, "score": 0, "idAuthor": ""}
                 idAuthorAndVote["idVersion"] = v.id

@@ -123,17 +123,20 @@ def createAContent(request):
         origin.push()
 
         # step5: write data into version table
-        res, statusNumber, mes  = chapter.getValue(idBook ,"id")
+        res, statusNumber, mes  = chapter.getValueByIdBookAndOrder(idBook, userInputChpaterOrder, "id")
         idChapter = mes
         if res:
             res, statusNumber, mes = version.add(idChapter, 0, 0, readerId)
             if res:
                 context['status'] = "success"
                 context['message'] = '您已經成功更新 《' + userInputBookName + "》的第 " + userInputChpaterOrder + " 章節內容。"
-                return JsonResponse(context)
+            else:
+                context['status'] = "fail"
+                context['message'] = str(statusNumber) + " ， " + mes
+            return JsonResponse(context)
 
         context['status'] = "fail"
-        context['message'] = '錯誤： ' + str(statusNumber) + " ， " + mes
+        context['message'] = str(statusNumber) + " ， " + mes
 
     except Exception as e:
         context['status'] = "fail"

@@ -11,7 +11,7 @@ class author(models.Model):
     class Meta:
         app_label = "author"
         db_table = 'author'
-        verbose_name = "作者表"
+        verbose_name = "作者"
         verbose_name_plural = "作者列表管理"
 
     STATUS_CHOICES = (
@@ -20,10 +20,10 @@ class author(models.Model):
         ("locked", 'locked'),
     )
 
-    id = models.CharField("編號", max_length=15,primary_key=True)
-    status = models.CharField("賬號狀態", max_length=20, choices = STATUS_CHOICES)
-    createTime = models.DateTimeField("申請時間", max_length=50)
-    idReader_id = models.CharField("讀者編號", max_length=20,)
+    id = models.CharField("編號", max_length=20,primary_key=True,blank=False,null=False)
+    status = models.CharField("賬號狀態", max_length=20,blank=False,null=False, choices = STATUS_CHOICES)
+    createTime = models.DateTimeField("申請時間", max_length=50,blank=False,null=False)
+    idReader_id = models.CharField("讀者編號", max_length=20,blank=False,null=False,unique=True)
 
     def authorStatus(self):
         return self.status == 'active'
