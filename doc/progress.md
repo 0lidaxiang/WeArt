@@ -40,7 +40,7 @@ ModifyTime :  2017-07-20
 + ~~Correct the the order number of chapter list page.Limit the input of chapter number to a minimum of 1.(2017-10-15)~~
 + ~~Updates the version table when author modify and create a chapter.(2017-10-15)~~
 + ~~Change using extra bash file to using inner command string, when making the book's classied directory.(2017-10-15)~~
-+ [ ] 20. Replace some pages with new html files.(2017-10-28)
++ [ ] 20. Replace some pages with new html files.Change the static/templetesJs,templatesCss to its apps/static.(2017-10-28)
 
 ## 3. Test Phrase Plan And Editing Files
 + [ ] 1. Unit test & Fix bugs.(2017-11-10)
