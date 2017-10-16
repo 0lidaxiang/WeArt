@@ -19,8 +19,10 @@ function getRecommendArts() {
       thObj = "<tr><th>序號</th><th>書ID</th>  <th>書名</th>  <th>作者ID</th> <th>章節數量</th>  </tr>";
       obj = obj + tableObj + thObj;
 
+      var lineNumber = 0;
       for (var i in bookAll) {
-        obj = obj + "<tr><td>" + (i+1) + "</td><td><a href='/chapter/bookChapter/?idBook=" + bookAll[i].id + "&bookName=" + bookAll[i].name + "'>" + bookAll[i].id + "</a></td><td>" + bookAll[i].name + "</td><td>" + bookAll[i].idReader_id + "</td><td> " + bookAll[i].chapterCount  + "</td></tr>";
+        lineNumber = parseInt(i) + 1;
+        obj = obj + "<tr><td>" + lineNumber + "</td><td><a href='/chapter/bookChapter/?idBook=" + bookAll[i].id + "&bookName=" + bookAll[i].name + "'>" + bookAll[i].id + "</a></td><td>" + bookAll[i].name + "</td><td>" + bookAll[i].idReader_id + "</td><td> " + bookAll[i].chapterCount  + "</td></tr>";
       }
       obj = obj + "</table></div></div>";
 

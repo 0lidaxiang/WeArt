@@ -129,7 +129,7 @@ USE_L10N = True # local first
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 # STATIC_URL = '/static/'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_ROOT = '/etc/nginx/html/WeArt/djangoStatic/'
+STATIC_ROOT = '/etc/nginx/html/WeArt/djangoStatic/'   #nginx conf static is here
 STATIC_URL = '/static/'
 STATICFILES_DIRS =[ os.path.join(BASE_DIR, 'static'), ]
 

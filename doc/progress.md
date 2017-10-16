@@ -42,32 +42,32 @@ ModifyTime :  2017-07-20
 + ~~Change using extra bash file to using inner command string, when making the book's classied directory.(2017-10-15)~~
 + [ ] 20. Replace some pages with new html files.(2017-10-28)
 
-## 3. Optional Development Phrase Plan
+## 3. Test Phrase Plan And Editing Files
++ [ ] 1. Unit test & Fix bugs.(2017-11-10)
++ [ ] 2. Using Apache ab test tool for Performance Test & Optimize server.(2017-11-10)
++ Performance Test for using different value  of Concurrency Level parameter and the number of requests parameter.And analysis the result using table or graph. (2017-11-15)
++ Load Test.Test the program in overload environment and analysis the conditions when program is not working using table or graph.(2017-11-15)
++ Optimize server is mainly to optimize the conf of nginx.(2017-11-10)
++ [ ] 3. Write the documents in github and others needed by this study.(2017-11-25)     
+**This documents includes:**  
++ ~~sql files(not needed)(2017-10-15)~~
++ architecture model
++ er model(2017-11-25)
++ class diagrams(2017-11-25)
++ front_end_design files(2017-11-25)
++ --
++ ~~statusNumber list(2017-10-15)~~
++ introduction of functions(2017-11-25)
++ introduction of used frameworks and librarys(2017-11-25)
++ server enviroment building shell(2017-11-25)
++ test result analysis documents(2017-11-25)
++ --
++ gantt chart file(2017-11-25)
++ progress of project file(2017-11-25)
+
+## 4. Optional Development Phrase Plan
 + [ ] 21. [Optional] Use task queue(Celery in django) to serialize the operations operating the same file from different users, and these operations requests occuring at the same time.(2017-12-28)
 + [ ] 23. [Optional] Redis cache function.(2017-12-28)
 + [ ] 24. [Optional] Files writing error.(2017-12-28)
 + [ ] 25. [Optional] Database roolback.(2017-12-28)
 + [ ] 26. [Optional] Reader index page for showing data.(2017-12-28)
-
-## 4. Test Phrase Plan And Editing Files
-+ [ ] 1. Unit test & Fix bugs.(2017-11-01)
-+ [ ] 2. Using Apache ab test tool for Performance Test & Optimize server.(2017-11-10)
-+ Performance Test for using different value  of Concurrency Level parameter and the number of requests parameter.And analysis the result using table or graph. (2017-11-10)
-+ Load Test.Test the program in overload environment and analysis the conditions when program is not working using table or graph.(2017-11-10)
-+ Optimize server is mainly to optimize the conf of nginx.(2017-11-10)
-+ [ ] 3. Write the documents in github and others needed by this study.(2017-11-25)     
-**This documents includes:**  
-+ architecture model
-+ er model
-+ sql files
-+ class diagrams
-+ front_end_design files
-+ --
-+ introduction of functions
-+ statusNumber list
-+ introduction of used frameworks and librarys
-+ server enviroment building shell
-+ test result analysis documents
-+ --
-+ gantt chart file
-+ progress of project file
