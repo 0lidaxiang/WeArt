@@ -26,7 +26,7 @@ class book(models.Model):
     remoteIP = models.GenericIPAddressField("遠端倉庫IP",default='192.168.0.1',blank=False,null=False)
     location = models.CharField("存儲位置",  max_length=100,blank=False,null=False)
     chapterCount = models.IntegerField("章節數量",blank=False,null=False)
-    status = models.CharField("狀態", max_length=20,blank=False,null=False, choices = STATUS_CHOICES)
+    status = models.CharField("書籍狀態", max_length=20,blank=False,null=False, choices = STATUS_CHOICES)
     createTime = models.DateTimeField("創建時間", max_length=50,blank=False,null=False)
     idReader_id = models.CharField("作者編號", max_length=30,blank=False,null=False)
 
