@@ -123,6 +123,9 @@ USE_TZ = False
 TIME_ZONE = 'Asia/Shanghai'
 USE_L10N = True # local first
 
+# server model DATETIME_FORMAT and will influence the DATETIME_FORMAT of database
+DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+
 # ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Static files (CSS, JavaScript, Images)
