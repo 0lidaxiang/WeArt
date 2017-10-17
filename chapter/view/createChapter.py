@@ -199,6 +199,11 @@ def gitCommitChapter(operateDir, fileName, userName, userEmail, commitContent):
         index.add([fileName])
         # 提交修改到本地仓库
         index.commit(commitContent)
+        # 获取远程仓库
+        remote = repo.remote()
+        origin = repo.remotes.origin
+        # 推送本地修改到远程仓库
+        origin.push(refspec="master:master")
 
         return True,""
     except Exception as e:

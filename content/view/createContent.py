@@ -120,7 +120,7 @@ def createAContent(request):
         remote = repo.remote()
         origin = repo.remotes.origin
         # 推送本地修改到远程仓库
-        origin.push()
+        origin.push(refspec="master:master")
 
         # step5: write data into version table
         res, statusNumber, mes  = chapter.getValueByIdBookAndOrder(idBook, userInputChpaterOrder, "id")
