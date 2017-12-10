@@ -1,66 +1,870 @@
 <!DOCTYPE html>
-<html>
+<!--
+Theme: JANGO - Ultimate Multipurpose HTML Theme Built With Twitter Bootstrap 3.3.7
+Version: 2.0.0
+Author: Themehats
+Site: http://www.themehats.com
+Purchase: http://themeforest.net/item/jango-responsive-multipurpose-html5-template/11987314?ref=themehats
+Contact: support@themehats.com
+Follow: http://www.twitter.com/themehats
+-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
 
 <head>
-  <meta name="theme-color" content="#558b2f">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <title>WeART | 維阿文化，幻想來襲</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all' rel='stylesheet' type='text/css'>
+    <link href="/static/assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/animate/animate.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
 
-  <title> WeArt </title>
+    <!-- BEGIN: BASE PLUGINS  -->
+    <link href="/static/assets/plugins/revo-slider/css/settings.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/revo-slider/css/layers.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/revo-slider/css/navigation.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/owl-carousel/assets/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/slider-for-bootstrap/css/slider.css" rel="stylesheet" type="text/css" />
+    <!-- END: BASE PLUGINS -->
 
-  <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon" />
-  <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- <link href="/static/css/bootstrap-theme.min.css" rel="stylesheet" /> -->
-  <link rel="stylesheet" type="text/css" href="/static/templatesCss/indexBg.css" />
-  <link rel="stylesheet" type="text/css" href="/static/templatesCss/login.css" />
 
-  <style>
-    .footer {
-      position: relative;
-      top: 50px;
-      width: 100%;
-    }
-  </style>
+    <!-- BEGIN THEME STYLES -->
+    <link href="/static/assets/demos/default/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/demos/default/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/demos/default/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />
+    <link href="/static/assets/demos/default/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
 </head>
 
-<body>
-  {% include 'home/nav.html' %}
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen c-layout-header-topbar c-layout-header-topbar-collapse">
 
-  <!-- Main Content -->
-  <div id= "content" class="container">
-      <div class="col-md-12 bg123">
-        <h1>這裡是首頁</h1>
-      </div>
+    <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
+    <!-- BEGIN: HEADER -->
+    <header class="c-layout-header c-layout-header-2 c-header-transparent-dark c-layout-header-dark-mobile" data-minimize-offset="80">
+        <div class="c-topbar c-topbar-dark">
+            <div class="container">
+                <!-- BEGIN: INLINE NAV -->
+                <nav class="c-top-menu c-pull-left">
+                    <ul class="c-icons c-theme-ul">
+                        <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
+                        <li><span>電話: +0966-640-417</span></li>
+                    </ul>
+                </nav>
+                <!-- END: INLINE NAV -->
+                <!-- BEGIN: INLINE NAV -->
+                <nav class="c-top-menu c-pull-right">
+                    <ul class="c-links c-theme-ul">
+                        <li><a href="#">幫助</a></li>
+                        <li class="c-divider">|</li>
+                        <li><a href="#">聯繫</a></li>
+                        <li class="c-divider">|</li>
+                        <li><a href="#">常見問題</a></li>
+                    </ul>
+                    <ul class="c-ext c-theme-ul">
+                        <li class="c-lang dropdown c-last">
+                            <a href="#">繁體中文</a>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li class="active"><li>
+                                <a href="#">简体中文</a></li>
+                                <li><a href="#">English</a></li>
+                            </ul>
+                        </li>
+                        <li class="c-search hide">
+                            <!-- BEGIN: QUICK SEARCH -->
+                            <form action="#">
+                                <!--这边的search栏暂时先隐藏，暫時沒有她的用處-->
+                                <input type="text" name="query" placeholder="search..." value="" class="form-control" autocomplete="off">
+                                <i class="fa fa-search"></i>
+                            </form>
+                            <!-- END: QUICK SEARCH -->
+                        </li>
+                    </ul>
+                </nav>
+                <!-- END: INLINE NAV -->
+            </div>
+        </div>
+        <div class="c-navbar">
+            <div class="container">
+                <!-- BEGIN: BRAND -->
+                <div class="c-navbar-wrapper clearfix">
+                    <div class="c-brand c-pull-left">
+                        <a href="/index/">
+                            <!--<img src="/static/assets/base/img/layout/logos/logo-1.png" alt="WEART" class="c-desktop-logo">-->
+                            <h1 class="c-desktop-logo"><font color="white"><b>WEART</b></font></h1>
+                            <h1 class="c-desktop-logo-inverse"><font color="white"><b>WEART</b></font></h1>
+                            <h1 class="c-mobile-logo"><font color="white"><b>WEART</b></font></h1>
+                            <!--这个地方我需要weart图标,优化需要用到-->
+<!--
+                            <img src="/static/assets/base/img/layout/logos/logo-1.png" alt="WEART" class="c-desktop-logo-inverse">
+                            <img src="/static/assets/base/img/layout/logos/logo-1.png" alt="WEART" class="c-mobile-logo">
+-->
+                        </a>
+                        <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+					<span class="c-line"></span>
+					<span class="c-line"></span>
+					<span class="c-line"></span>
+					</button>
+                        <button class="c-topbar-toggler" type="button">
+						<i class="fa fa-ellipsis-v"></i>
+					</button>
+                        <button class="c-search-toggler" type="button">
+						<i class="fa fa-search"></i>
+					</button>
+                   <!--
+                        这边原先的手机端购物窗口被关闭
+                   -->
+                    </div>
+                    <!-- END: BRAND -->
+                    <!-- BEGIN: QUICK SEARCH -->
+                    <form class="c-quick-search" action="#">
+                        <input type="text" name="query" placeholder="請輸入搜索內容..." value="" class="form-control" autocomplete="off">
+                        <span class="c-theme-link">&times;</span>
+                    </form>
+                    <!-- END: QUICK SEARCH -->
+                    <!-- BEGIN: HOR NAV -->
+                    <!-- BEGIN: LAYOUT/HEADERS/MEGA-MENU -->
+                    <!-- BEGIN: MEGA MENU -->
+                    <!-- Dropdown menu toggle on mobile: c-toggler class can be applied to the link arrow or link itself depending on toggle mode -->
+                    <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-theme c-fonts-uppercase c-fonts-bold">
+                        <ul class="nav navbar-nav c-theme-nav">
+                            <li class="c-active">
+                                <a href="/index/" class="c-link dropdown-toggle">首頁<span class="c-arrow c-toggler"></span></a>
+                            </li>
+                            <li class="c-menu-type-classic">
+                                <a href="javascript:;" class="c-link dropdown-toggle">作家簡介<span class="c-arrow c-toggler"></span></a>
+                            </li>
+                            <li class="c-menu-type-classic">
+                                <a href="/reader/testForPageCollection/" class="c-link dropdown-toggle">作品集<span class="c-arrow c-toggler"></span></a>
 
-      <div class="col-md-12 alert alert-info">
-          <h3>聯繫我們：</h3>
-          <p><a href="mailto:0lidaxiang@gmail.com?subject=[Question]">0lidaxiang # gmail.com</a></p>
-          (Please replace # with @.)
-      </div>
 
-      <div class="col-md-12">
-        <h1>作品列表</h1>
-      </div>
+                            </li>
+                            <li>
+                                <a href="/author/testForPageWriter/" class="c-link dropdown-toggle">作家專區<span class="c-arrow c-toggler"></span></a>
 
-      <div id="bookAll" class="col-md-12 alert alert-success">
-
-      </div>
-  </div>
-
-  <!-- Main Footer -->
-  <footer class="footer text-center">
-    <strong>Copyright &copy;
-      <script type="text/javascript">document.write(new Date().getFullYear());</script>
-      <a href="#">WeArt</a>.
-    </strong>
-    All rights reserved.
-  </footer>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="c-link dropdown-toggle">關於我們<span class="c-arrow c-toggler"></span></a>
 
 
+                                <!-- BEGIN: DESKTOP VERSION OF THE TAB MEGA MENU -->
+                                <!-- BEGIN: DESKTOP VERSION OF THE TAB MEGA MENU -->
+                                <!-- BEGIN: MOBILE VERSION OF THE TAB MEGA MENU -->
+                                <!-- END: MOBILE VERSION OF THE TAB MEGA MENU -->
+
+                            </li>
+
+
+                            <li class="c-search-toggler-wrapper">
+                                <a href="#" class="c-btn-icon c-search-toggler"><i class="fa fa-search"></i></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-toggle="modal" data-target="#login-form" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold"><i class="icon-user"></i> 登錄</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- END: HEADER -->
+    <!-- END: LAYOUT/HEADERS/HEADER-1 -->
+
+    <!-- BEGIN: CONTENT/USER/FORGET-PASSWORD-FORM -->
+    <div class="modal fade c-content-login-form" id="forget-password-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">密碼恢復</h3>
+                    <p>請輸入個人電子郵箱</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="forget-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="forget-email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">提交</button>
+                            <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">返回登錄頁面</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer c-no-border">
+                    <span class="c-text-account">我要申請帳戶</span>
+                    <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">註冊</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/FORGET-PASSWORD-FORM -->
+    <!-- BEGIN: CONTENT/USER/SIGNUP-FORM -->
+    <div class="modal fade c-content-login-form" id="signup-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">創建一個帳戶</h3>
+                    <p>創建帳戶，請輸入以下信息</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="signup-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-username" class="hide">Username</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-fullname" class="hide">Fullname</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-fullname" placeholder="Fullname">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-country" class="hide">國家／地區</label>
+                            <select class="form-control input-lg c-square" id="signup-country">
+                            <option value="1">台灣</option>
+                            <option value="2">香港</option>
+                            <option value="3">澳門</option>
+                            <option value="4">中國大陸</option>
+                            <option value="5">新加坡</option>
+                            <option value="6">馬來西亞</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">註冊</button>
+                            <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">返回登錄頁面</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/SIGNUP-FORM -->
+    <!-- BEGIN: CONTENT/USER/LOGIN-FORM -->
+    <div class="modal fade c-content-login-form" id="login-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">尊敬的用戶歡迎您</h3>
+<!--                    <p></p>-->
+                    <form>
+                        <div class="form-group">
+                            <label for="login-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="login-email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password" class="hide">Password</label>
+                            <input type="password" class="form-control input-lg c-square" id="login-password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <div class="c-checkbox">
+                                <input type="checkbox" id="login-rememberme" class="c-check">
+                                <label for="login-rememberme" class="c-font-thin c-font-17">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span>
+                                記住我
+                            </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">登錄</button>
+                            <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">忘記密碼 ?</a>
+                        </div>
+                        <div class="clearfix">
+                            <div class="c-content-divider c-divider-sm c-icon-bg c-bg-grey c-margin-b-20">
+                                <span>通過以下方式登錄</span>
+                            </div>
+                            <ul class="c-content-list-adjusted">
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-twitter">
+                                        <i class="fa fa-twitter"></i> Twitter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-facebook">
+                                        <i class="fa fa-facebook"></i> Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-google">
+                                        <i class="fa fa-google"></i> Google
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer c-no-border">
+                    <span class="c-text-account"> 我想申請一個帳戶</span>
+                    <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">註冊</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/LOGIN-FORM -->
+
+    <!-- BEGIN: LAYOUT/SIDEBARS/QUICK-SIDEBAR -->
+    <nav class="c-layout-quick-sidebar">
+        <div class="c-header">
+            <button type="button" class="c-link c-close">
+		<i class="icon-login"></i>
+		</button>
+        </div>
+    </nav>
+    <!-- END: LAYOUT/SIDEBARS/QUICK-SIDEBAR -->
+
+    <!-- BEGIN: PAGE CONTAINER -->
+    <div class="c-layout-page">
+        <!-- BEGIN: PAGE CONTENT -->
+        <!-- BEGIN: LAYOUT/SLIDERS/REVO-SLIDER-1 -->
+        <!-- START REVOLUTION SLIDER 5.0 -->
+        <section class="c-layout-revo-slider c-layout-revo-slider-1" dir="ltr">
+            <div class="tp-banner-container tp-fullscreen tp-fullscreen-mobile">
+                <div class="tp-banner rev_slider" data-version="5.0">
+
+                    <ul>
+                        <!-- SLIDE #1 -->
+                        <li data-transition="fade">
+                            <!-- MAIN IMAGE -->
+                            <img src="/static/assets/base/img/content/backgrounds/bg-40.jpg" alt="">
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption customin customout" data-x="center" data-y="center" data-hoffset="" data-voffset="-30" data-start="1500" data-transform_in="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-transform_out="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="600">
+                                <h3 class="c-main-title c-font-55 c-font-bold c-font-center c-font-uppercase c-font-white c-block">
+                                    遇見維阿文化<br> 一個從未有人嘗試的小說共建平台
+                                </h3>
+                            </div>
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption randomrotateout" data-x="center" data-y="center" data-hoffset="" data-voffset="120" data-transform_in="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-transform_out="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-start="2000" data-easing="Back.easeOut">
+                                <a href="#" class="c-action-btn btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">更多</a>
+                            </div>
+                        </li>
+                        <!-- END SLIDE #1 -->
+                        <!-- SLIDE #2 -->
+                        <li data-transition="fade">
+                            <!-- MAIN IMAGE -->
+                            <img src="/static/assets/base/img/content/backgrounds/bg-18.jpg" alt="">
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption customin customout" data-x="center" data-y="center" data-hoffset="" data-voffset="-30" data-start="1500" data-transform_in="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-transform_out="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Back.easeOut;" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="600">
+                                <h3 class="c-main-title c-font-55 c-font-bold c-font-center c-font-uppercase c-font-white c-block">
+                                    包容不同的理念<br> 為每一個愛好文學的人傾力打造
+                                </h3>
+                            </div>
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption randomrotateout" data-x="center" data-y="center" data-hoffset="" data-voffset="120" data-transform_in="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-transform_out="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Back.easeOut;" data-start="2000" data-easing="Back.easeOut">
+                                <a href="#" class="c-action-btn btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">更多</a>
+                            </div>
+                        </li>
+                        <!-- END SLIDE #2 -->
+                        <!-- SLIDE #3 - VIDEO SLIDER -->
+                        <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="6000" data-thumb="">
+                            <!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
+                            <img src="/static/assets/base/img/layout/sliders/revo-slider/base/blank.png" alt="">
+                            <!-- BACKGROUND VIDEO LAYER -->
+                            <div class="rs-background-video-layer fulllscreenvideo tp-videolayer" data-forcerewind="on" data-volume="mute" data-videowidth="100%" data-videoheight="100%" data-videomp4="/static/assets/base/media/video/video-2.mp4" data-videopreload="preload" data-videoloop="loop" data-forceCover="1" data-aspectratio="16:9" data-autoplay="true" data-autoplayonlyfirsttime="false" data-nextslideatend="true"></div>
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption customin customout" data-x="center" data-y="center" data-hoffset="" data-voffset="-30" data-start="1000" data-transform_in="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-transform_out="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="600">
+                                <h3 class="c-main-title c-font-55 c-font-bold c-font-center c-font-uppercase c-font-white c-block">
+                                    隨時隨地開啟你我的心靈之窗<br>我準備好了，你呢
+                                </h3>
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption lf" data-x="center" data-y="center" data-voffset="130" data-speed="900" data-start="2000" data-transform_in="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;" data-transform_out="x:0;y:0;z:0;rX:0.5;rY:0;rZ:0;sX:0.75;sY:0.75;skX:0;skY:0;opacity:0;s:600;e:Power2.easeInOut;">
+                                <a href="http://themeforest.net/item/jango-responsive-multipurpose-html5-template/11987314" class="c-action-btn btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">更多</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END REVOLUTION SLIDER -->
+            </div>
+            <!-- END OF SLIDER WRAPPER -->
+        </section>
+        <!-- END: LAYOUT/SLIDERS/REVO-SLIDER-1 -->
+
+        <!-- BEGIN: CONTENT/BARS/BAR-2 -->
+        <div class="c-content-box c-size-md c-bg-grey-1">
+            <div class="container">
+                <div class="c-content-bar-2 c-opt-1">
+                    <div class="row" data-auto-height="true">
+                        <div class="col-md-6">
+                            <!-- Begin: Title 1 component -->
+                            <div class="c-content-title-1" data-height="height">
+                                <h3 class="c-font-uppercase c-font-bold">遇見維阿</h3>
+                                <p class="c-font-uppercase c-font-sbold">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reprehenderit perspiciatis officia autem mollitia! Commodi illum architecto voluptas a, quas, sunt odio illo blanditiis dolorem numquam perferendis quibusdam vitae molestias.
+                                </p>
+                                <a href="http://themeforest.net/item/jango-responsive-multipurpose-html5-template/11987314" class="btn btn-md c-btn-border-2x c-btn-square c-theme-btn c-btn-uppercase c-btn-bold">更多</a>
+                            </div>
+                            <!-- End-->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="c-content-v-center c-bg-red" data-height="height">
+                                <div class="c-wrapper">
+                                    <div class="c-body">
+                                        <h3 class="c-font-white c-font-bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus autem quidem libero placeat, facere, incidunt vel deserunt saepe, labore assumenda iste, consequuntur. Possimus praesentium impedit quam repellendus, quidem hic minus.</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: CONTENT/BARS/BAR-2 -->
+
+        <!-- BEGIN: CONTENT/MISC/SERVICES-1 -->
+        <div class="c-content-box c-size-md c-bg-grey-1  ">
+            <div class="container">
+                <div class="c-content-feature-2-grid" data-auto-height="true" data-mode="base-height">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="c-content-feature-2" data-height="height">
+                                <div class="c-icon-wrapper">
+                                    <div class="c-content-line-icon c-theme c-icon-screen-chart"></div>
+                                </div>
+                                <h3 class="c-font-uppercase c-font-bold c-title">維阿小說製作入門</h3>
+                                <p>Lorem ipsum consectetuer dolore elit diam</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="c-content-feature-2" data-height="height">
+                                <div class="c-icon-wrapper">
+                                    <div class="c-content-line-icon c-theme c-icon-support"></div>
+                                </div>
+                                <h3 class="c-font-uppercase c-font-bold c-title">常見小說分類</h3>
+                                <p>Lorem ipsum consectetuer dolore elit diam</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="c-content-feature-2" data-height="height">
+                                <div class="c-icon-wrapper">
+                                    <div class="c-content-line-icon c-theme c-icon-comment"></div>
+                                </div>
+                                <h3 class="c-font-uppercase c-font-bold c-title">常見討論</h3>
+                                <p>Lorem ipsum consectetuer dolore elit diam</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="c-content-feature-2" data-wow-delay1="2s" data-height="height">
+                                <div class="c-icon-wrapper">
+                                    <div class="c-content-line-icon c-theme c-icon-bulb"></div>
+                                </div>
+                                <h3 class="c-font-uppercase c-font-bold c-title">與陌生人成為緊密團隊</h3>
+                                <p>Lorem ipsum consectetuer dolore elit diam</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="c-content-v-center c-theme-bg wow bounceInUp" data-wow-delay1="2s" data-height="height">
+                                <div class="c-wrapper">
+                                    <div class="c-body c-padding-20 c-center">
+                                        <h3 class="c-font-19 c-line-height-28 c-font-uppercase c-font-white c-font-bold">
+                                            維阿魅力：讓不可能變成可能
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="c-content-feature-2" data-wow-delay1="2s" data-height="height">
+                                <div class="c-icon-wrapper">
+                                    <div class="c-content-line-icon c-theme c-icon-globe"></div>
+                                </div>
+                                <h3 class="c-font-uppercase c-font-bold c-title">掌控你的作品進度</h3>
+                                <p>Lorem ipsum consectetuer dolore elit diam</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: CONTENT/MISC/SERVICES-1 -->
+
+        <!-- BEGIN: CONTENT/PORTFOLIO/LATEST-WORKS-2 -->
+        <!-- 热门精选片段-->
+        <div class="c-content-box c-size-md c-bg-white">
+            <div class="container">
+                <div class="c-content-title-1">
+                    <h3 class="c-center c-font-uppercase c-font-bold">熱門精選</h3>
+                    <!-- 这边最新作品展示 -->
+                    <div class="c-line-center c-theme-bg"></div>
+                    <p class="c-center c-font-uppercase">八月熱門推薦</p>
+                </div>
+                <div class="cbp-panel">
+                    <!-- SEE: components.js:ContentCubeLatestPortfolio -->
+                    <div class="c-content-latest-works cbp cbp-l-grid-masonry-projects">
+                       <!--     需要改进内容，用文字文件讲explore或者zoom中的内容置换出来 -->
+                        <div class="cbp-item graphic wow animate fadeInLeft">
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="/static/assets/base/img/content/stock/06.jpg" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="c-masonry-border"></div>
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="ajax/projects/project1.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">了解更多</a>
+<!--                                            <a href="/static/assets/base/img/content/stock/08_grey.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">zoom</a>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cbp-item web-design logos wow animate fadeInLeft" data-wow-delay="0.2s">
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="/static/assets/base/img/content/stock/7.jpg" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="c-masonry-border"></div>
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="ajax/projects/project2.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">了解更多</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cbp-item graphic logos wow animate fadeInLeft" data-wow-delay="0.4s">
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="/static/assets/base/img/content/stock/09_grey.jpg" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="c-masonry-border"></div>
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="ajax/projects/project3.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">了解更多</a>
+<!--                                            <a href="http://vimeo.com/14912890" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="To-Do Dashboard<br>by Tiberiu Neamu">view video</a>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbp-item identity web-design wow animate fadeInLeft" data-wow-delay="0.6s">
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="/static/assets/base/img/content/stock/9.jpg" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="c-masonry-border"></div>
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="ajax/projects/project4.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">了解更多</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cbp-item web-design graphic wow animate fadeInLeft">
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="/static/assets/base/img/content/stock/34_grey.jpg" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="c-masonry-border"></div>
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="ajax/projects/project5.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
+                                            <a href="/static/assets/base/img/content/stock/34_grey.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Events and  More<br>by Tiberiu Neamu">zoom</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cbp-item identity web-design wow animate fadeInLeft" data-wow-delay="0.2s">
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="/static/assets/base/img/content/stock/53_grey.jpg" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="c-masonry-border"></div>
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="ajax/projects/project6.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
+                                            <a href="/static/assets/base/img/content/stock/53_grey.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Ski * Buddy<br>by Tiberiu Neamu">zoom</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cbp-item graphic logos wow animate fadeInLeft" data-wow-delay="0.4s">
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="/static/assets/base/img/content/stock/39_grey.jpg" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="c-masonry-border"></div>
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="ajax/projects/project7.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
+                                            <a href="/static/assets/base/img/content/stock/39_grey.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Seemple* Music for iPad<br>by Tiberiu Neamu">zoom</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: CONTENT/PORTFOLIO/LATEST-WORKS-2 -->
+
+        <!--這裏是評論區-->
+
+        <div class="c-content-box c-size-lg c-bg-parallax" style="background-image: url(/static/assets/base/img/content/backgrounds/bg-3.jpg)">
+            <div class="container">
+                <!-- Begin: testimonials 1 component -->
+                <div class="c-content-testimonials-1" data-slider="owl">
+                    <!-- Begin: Title 1 component -->
+                    <div class="c-content-title-1">
+                        <h3 class="c-center c-font-white c-font-uppercase c-font-bold">最新用戶體驗</h3>
+                        <div class="c-line-center c-theme-bg"></div>
+                    </div>
+                    <!-- End-->
+
+                    <!-- Begin: Owlcarousel -->
+
+                    <div class="owl-carousel owl-theme c-theme c-owl-nav-center" data-single-item="true" data-slide-speed="5000" data-rtl="false">
+                        <div class="item">
+                            <div class="c-testimonial">
+                                <p>
+                                    “一個全新的小說創建體驗是充滿壓力的，維阿給我們這些初出茅廬的年輕人一個充滿活力的開放平台。”
+                                </p>
+                                <h3>
+                                    <span class="c-name c-theme">李晴</span>, 自由撰稿人
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="c-testimonial">
+                                <p>
+                                    “不同於其他人，我自己擁有成熟的創建理念。總得來說，維阿給我很多有天賦的年輕人，在這裡我可以與他們無障礙的交流。”
+                                </p>
+                                <h3>
+                                    <span class="c-name c-theme">董萊伊</span>, CFO, 世小說
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="c-testimonial">
+                                <p>
+                                    “維阿作品的評論更新會出錯，我在讀取他人評價總會滯後，希望製作團隊可以趕緊修補一下。”
+                                </p>
+                                <h3>
+                                    <span class="c-name c-theme">鄧老頭</span>, 自由撰稿人， 常駐維阿
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End-->
+                </div>
+                <!-- End-->
+            </div>
+        </div>
+        <!-- END: CONTENT/TESTIMONIALS/TESTIMONIALS-3 -->
+
+        <!-- BEGIN: CONTENT/BARS/BAR-3 -->
+        <div class="c-content-box c-size-md c-bg-dark">
+            <div class="container">
+                <div class="c-content-bar-3">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold">This is footer</h3>
+                                <p class="c-font-uppercase">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem soluta, quasi aut alias enim eveniet, vero ex deleniti incidunt, fuga reiciendis. Facere cupiditate deleniti reprehenderit, dolores minima harum praesentium dolore!</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-md-offset-2">
+                            <div class="c-content-v-center" style="height: 90px;">
+                                <div class="c-wrapper">
+                                    <div class="c-body">
+                                        <button type="button" class="btn btn-md c-btn-square c-btn-border-2x c-theme-btn c-btn-uppercase c-btn-bold">i am a button</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: CONTENT/BARS/BAR-3 -->
+<!--        這裡需要一個contact us-->
+<!--       begin: contact us-->
+
+<!--       end: contact us-->
+        <!-- END: PAGE CONTENT -->
+
+
+    </div>
+    <!-- END: PAGE CONTAINER -->
+
+    <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-2 -->
+    <a name="footer"></a>
+    <footer class="c-layout-footer c-layout-footer-1">
+        <div class="c-postfooter">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <p class="c-copyright c-font-oswald c-font-14">
+                             &copy; WEART.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <ul class="c-socials">
+                            <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-social-youtube"></i></a></li>
+                            <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END: LAYOUT/FOOTERS/FOOTER-2 -->
+
+    <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div>
+    <!-- END: LAYOUT/FOOTERS/GO2TOP -->
+
+    <!-- BEGIN: LAYOUT/BASE/BOTTOM -->
+    <!-- BEGIN: CORE PLUGINS -->
+    <!--[if lt IE 9]>
+	<script src="/static/assets/global/plugins/excanvas.min.js"></script>
+	<![endif]-->
+    <script src="/static/assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/jquery.easing.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/reveal-animate/wow.js" type="text/javascript"></script>
+    <script src="/static/assets/demos/default/js/scripts/reveal-animate/reveal-animate.js" type="text/javascript"></script>
+
+    <!-- END: CORE PLUGINS -->
+
+    <!-- BEGIN: LAYOUT PLUGINS -->
+    <script src="/static/assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/revo-slider/js/extensions/revolution.extension.parallax.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/smooth-scroll/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/typed/typed.min.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>
+    <script src="/static/assets/plugins/js-cookie/js.cookie.js" type="text/javascript"></script>
+    <!-- END: LAYOUT PLUGINS -->
+
+    <!-- BEGIN: THEME SCRIPTS -->
+    <script src="/static/assets/base/js/components.js" type="text/javascript"></script>
+    <script src="/static/assets/base/js/components-shop.js" type="text/javascript"></script>
+    <script src="/static/assets/base/js/app.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            App.init(); // init core
+        });
+    </script>
+    <!-- END: THEME SCRIPTS -->
+
+    <!-- BEGIN: PAGE SCRIPTS -->
+    <script>
+        $(document).ready(function() {
+            var slider = $('.c-layout-revo-slider .tp-banner');
+
+            var cont = $('.c-layout-revo-slider .tp-banner-container');
+
+            var api = slider.show().revolution({
+                sliderType: "standard",
+                sliderLayout: "fullscreen",
+                responsiveLevels: [2048, 1024, 778, 480],
+                gridwidth: [1170, 1024, 778, 480],
+                gridheight: [868, 768, 960, 720],
+                delay: 15000,
+
+                navigation: {
+                    keyboardNavigation: "off",
+                    keyboard_direction: "horizontal",
+                    mouseScrollNavigation: "off",
+                    onHoverStop: "on",
+                    arrows: {
+                        style: "circle",
+                        enable: true,
+                        hide_onmobile: false,
+                        hide_onleave: false,
+                        tmp: '',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 30,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 30,
+                            v_offset: 0
+                        }
+                    }
+                },
+
+                touchenabled: "on",
+
+                spinner: "spinner2",
+
+                shadow: 0,
+
+                disableProgressBar: "on",
+
+                hideThumbsOnMobile: "on",
+                hideNavDelayOnMobile: 1500,
+                hideBulletsOnMobile: "on",
+                hideArrowsOnMobile: "on",
+                hideThumbsUnderResolution: 0
+            });
+        }); //ready
+    </script>
+    <!-- END: PAGE SCRIPTS -->
+    <!-- END: LAYOUT/BASE/BOTTOM -->
 </body>
 
 </html>
-
-<script src="/static/js/jquery-3.2.1.min.js" type="text/javascript"></script>
-<script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/static/templatesJs/reader/backgroundImg.js" type="text/javascript"></script>
-<script src="/static/templatesJs/home/index.js" type="text/javascript"></script>

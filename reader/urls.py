@@ -11,6 +11,8 @@ from author.view.artsManageView import  *
 
 urlpatterns = [
     url('^register/$', TemplateView.as_view(template_name="reader/register.html")),
+    url('^testForPageCollection/$', TemplateView.as_view(template_name="reader/testForPageCollection.html")),
+
     url('^login/', login),
     url('^logout/$', logout),
     url('^loginReader/$', loginReader),
