@@ -272,14 +272,15 @@ Follow: http://www.twitter.com/themehats
                 <div class="modal-body">
                     <h3 class="c-font-24 c-font-sbold">尊敬的用戶歡迎您</h3>
 <!--                    <p></p>-->
-                    <form>
+                    <form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="login_form" method="post">
+                      {% csrf_token%}
                         <div class="form-group">
                             <label for="login-email" class="hide">Email</label>
-                            <input type="email" class="form-control input-lg c-square" id="login-email" placeholder="Email">
+                            <input type="email" class="form-control input-lg c-square" id="userName" name="userName" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label for="login-password" class="hide">Password</label>
-                            <input type="password" class="form-control input-lg c-square" id="login-password" placeholder="Password">
+                            <input type="password" class="form-control input-lg c-square" id="passwd" name="passwd">
                         </div>
                         <div class="form-group">
                             <div class="c-checkbox">
@@ -293,7 +294,7 @@ Follow: http://www.twitter.com/themehats
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">登錄</button>
+                            <button type="button" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login" onclick="loginReader()">登錄</button>
                             <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">忘記密碼 ?</a>
                         </div>
                         <div class="clearfix">
@@ -867,4 +868,6 @@ Follow: http://www.twitter.com/themehats
     <!-- END: LAYOUT/BASE/BOTTOM -->
 </body>
 
+<script src="/static/templatesJs/reader/login.js?v=1" type="text/javascript"></script>
+<script src="/static/js/ajax-need.js" type="text/javascript"></script>
 </html>

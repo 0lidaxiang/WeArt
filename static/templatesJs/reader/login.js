@@ -20,8 +20,9 @@ function loginReader() {
     data: {"userName": userName, "passwd": passwd, "lastUrl": lastUrl}
   })
   .done(function(resp) {
-    // console.log(resp);
+    console.log(resp);
     if (resp.status == "success") {
+      console.log("success");
       window.location.href = resp.message
     }
     else if (resp.status == "fail") {
