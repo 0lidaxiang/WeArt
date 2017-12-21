@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url('^$', index),
     url('^index/$', index),
+    url('^index2/$', index2),
+    url('^aboutUs/$', aboutUs),
     url('^home/', include('home.urls')),
     url('^reader/', include('reader.urls')),
     url('^author/', include('author.urls')),

@@ -15,6 +15,8 @@ from tool.Token import *
 from tool.tools import *
 from reader.models import reader
 
+#this need catch the id
+#catch the "name"
 def registerReader(request):
     if "userName" not in request.POST:
         return render(request, 'reader/register.html')
@@ -27,7 +29,7 @@ def registerReader(request):
     password = request.POST['password']
     email = unicode(request.POST['email'])
     nowTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
-
+    print(userName,password,email)
     userName = userName.encode('utf8')
     try:
         res, statusNumber, message = reader.getValueByEmail(email, "status")

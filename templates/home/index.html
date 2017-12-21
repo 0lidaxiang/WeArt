@@ -73,6 +73,7 @@ Follow: http://www.twitter.com/themehats
                 <!-- END: INLINE NAV -->
                 <!-- BEGIN: INLINE NAV -->
                 <nav class="c-top-menu c-pull-right">
+<!--
                     <ul class="c-links c-theme-ul">
                         <li><a href="#">幫助</a></li>
                         <li class="c-divider">|</li>
@@ -80,7 +81,9 @@ Follow: http://www.twitter.com/themehats
                         <li class="c-divider">|</li>
                         <li><a href="#">常見問題</a></li>
                     </ul>
+-->
                     <ul class="c-ext c-theme-ul">
+<!--
                         <li class="c-lang dropdown c-last">
                             <a href="#">繁體中文</a>
                             <ul class="dropdown-menu pull-right" role="menu">
@@ -89,6 +92,7 @@ Follow: http://www.twitter.com/themehats
                                 <li><a href="#">English</a></li>
                             </ul>
                         </li>
+-->
                         <li class="c-search hide">
                             <!-- BEGIN: QUICK SEARCH -->
                             <form action="#">
@@ -150,20 +154,28 @@ Follow: http://www.twitter.com/themehats
                             <li class="c-active">
                                 <a href="/index/" class="c-link dropdown-toggle">首頁<span class="c-arrow c-toggler"></span></a>
                             </li>
+<!--
                             <li class="c-menu-type-classic">
                                 <a href="javascript:;" class="c-link dropdown-toggle">作家簡介<span class="c-arrow c-toggler"></span></a>
                             </li>
+-->
                             <li class="c-menu-type-classic">
                                 <a href="/reader/testForPageCollection/" class="c-link dropdown-toggle">作品集<span class="c-arrow c-toggler"></span></a>
 
 
                             </li>
+<!--
                             <li>
                                 <a href="/author/testForPageWriter/" class="c-link dropdown-toggle">作家專區<span class="c-arrow c-toggler"></span></a>
 
                             </li>
+-->
+                              <li>
+                                <a href="/author/artsManage/" class="c-link dropdown-toggle">作家專區<span class="c-arrow c-toggler"></span></a>
+
+                            </li>
                             <li>
-                                <a href="javascript:;" class="c-link dropdown-toggle">關於我們<span class="c-arrow c-toggler"></span></a>
+                                <a href="/aboutUs/" class="c-link dropdown-toggle">關於我們<span class="c-arrow c-toggler"></span></a>
 
 
                                 <!-- BEGIN: DESKTOP VERSION OF THE TAB MEGA MENU -->
@@ -228,18 +240,19 @@ Follow: http://www.twitter.com/themehats
                 <div class="modal-body">
                     <h3 class="c-font-24 c-font-sbold">創建一個帳戶</h3>
                     <p>創建帳戶，請輸入以下信息</p>
-                    <form>
+                    <form method="post" action="/reader/registerReader/">
+                       {% csrf_token %}
                         <div class="form-group">
                             <label for="signup-email" class="hide">Email</label>
-                            <input type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">
+                            <input type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email" name="email">
                         </div>
                         <div class="form-group">
                             <label for="signup-username" class="hide">Username</label>
-                            <input type="email" class="form-control input-lg c-square" id="signup-username" placeholder="Username">
+                            <input type="text" class="form-control input-lg c-square" id="signup-username" placeholder="Username" name="userName">
                         </div>
                         <div class="form-group">
-                            <label for="signup-fullname" class="hide">Fullname</label>
-                            <input type="email" class="form-control input-lg c-square" id="signup-fullname" placeholder="Fullname">
+                            <label for="signup-fullname" class="hide" type="password">password</label>
+                            <input type="password" class="form-control input-lg c-square" id="signup-fullname" placeholder="Password" name="password">
                         </div>
                         <div class="form-group">
                             <label for="signup-country" class="hide">國家／地區</label>
@@ -253,7 +266,7 @@ Follow: http://www.twitter.com/themehats
                         </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">註冊</button>
+                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login" data-target="">註冊</button>
                             <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">返回登錄頁面</a>
                         </div>
                     </form>
@@ -262,6 +275,8 @@ Follow: http://www.twitter.com/themehats
         </div>
     </div>
     <!-- END: CONTENT/USER/SIGNUP-FORM -->
+<!--    modal fade-->
+   
     <!-- BEGIN: CONTENT/USER/LOGIN-FORM -->
     <div class="modal fade c-content-login-form" id="login-form" role="dialog">
         <div class="modal-dialog">
@@ -272,7 +287,7 @@ Follow: http://www.twitter.com/themehats
                 <div class="modal-body">
                     <h3 class="c-font-24 c-font-sbold">尊敬的用戶歡迎您</h3>
 <!--                    <p></p>-->
-                    <form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="login_form" method="post">
+                    <form class="form-horizontal" id="login_form" method="post">
                       {% csrf_token%}
                         <div class="form-group">
                             <label for="login-email" class="hide">Email</label>
@@ -296,28 +311,6 @@ Follow: http://www.twitter.com/themehats
                         <div class="form-group">
                             <button type="button" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login" onclick="loginReader()">登錄</button>
                             <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">忘記密碼 ?</a>
-                        </div>
-                        <div class="clearfix">
-                            <div class="c-content-divider c-divider-sm c-icon-bg c-bg-grey c-margin-b-20">
-                                <span>通過以下方式登錄</span>
-                            </div>
-                            <ul class="c-content-list-adjusted">
-                                <li>
-                                    <a class="btn btn-block c-btn-square btn-social btn-twitter">
-                                        <i class="fa fa-twitter"></i> Twitter
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-block c-btn-square btn-social btn-facebook">
-                                        <i class="fa fa-facebook"></i> Facebook
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-block c-btn-square btn-social btn-google">
-                                        <i class="fa fa-google"></i> Google
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </form>
                 </div>
@@ -408,104 +401,6 @@ Follow: http://www.twitter.com/themehats
             <!-- END OF SLIDER WRAPPER -->
         </section>
         <!-- END: LAYOUT/SLIDERS/REVO-SLIDER-1 -->
-
-        <!-- BEGIN: CONTENT/BARS/BAR-2 -->
-        <div class="c-content-box c-size-md c-bg-grey-1">
-            <div class="container">
-                <div class="c-content-bar-2 c-opt-1">
-                    <div class="row" data-auto-height="true">
-                        <div class="col-md-6">
-                            <!-- Begin: Title 1 component -->
-                            <div class="c-content-title-1" data-height="height">
-                                <h3 class="c-font-uppercase c-font-bold">遇見維阿</h3>
-                                <p class="c-font-uppercase c-font-sbold">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic reprehenderit perspiciatis officia autem mollitia! Commodi illum architecto voluptas a, quas, sunt odio illo blanditiis dolorem numquam perferendis quibusdam vitae molestias.
-                                </p>
-                                <a href="http://themeforest.net/item/jango-responsive-multipurpose-html5-template/11987314" class="btn btn-md c-btn-border-2x c-btn-square c-theme-btn c-btn-uppercase c-btn-bold">更多</a>
-                            </div>
-                            <!-- End-->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="c-content-v-center c-bg-red" data-height="height">
-                                <div class="c-wrapper">
-                                    <div class="c-body">
-                                        <h3 class="c-font-white c-font-bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus autem quidem libero placeat, facere, incidunt vel deserunt saepe, labore assumenda iste, consequuntur. Possimus praesentium impedit quam repellendus, quidem hic minus.</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END: CONTENT/BARS/BAR-2 -->
-
-        <!-- BEGIN: CONTENT/MISC/SERVICES-1 -->
-        <div class="c-content-box c-size-md c-bg-grey-1  ">
-            <div class="container">
-                <div class="c-content-feature-2-grid" data-auto-height="true" data-mode="base-height">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <div class="c-content-feature-2" data-height="height">
-                                <div class="c-icon-wrapper">
-                                    <div class="c-content-line-icon c-theme c-icon-screen-chart"></div>
-                                </div>
-                                <h3 class="c-font-uppercase c-font-bold c-title">維阿小說製作入門</h3>
-                                <p>Lorem ipsum consectetuer dolore elit diam</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="c-content-feature-2" data-height="height">
-                                <div class="c-icon-wrapper">
-                                    <div class="c-content-line-icon c-theme c-icon-support"></div>
-                                </div>
-                                <h3 class="c-font-uppercase c-font-bold c-title">常見小說分類</h3>
-                                <p>Lorem ipsum consectetuer dolore elit diam</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="c-content-feature-2" data-height="height">
-                                <div class="c-icon-wrapper">
-                                    <div class="c-content-line-icon c-theme c-icon-comment"></div>
-                                </div>
-                                <h3 class="c-font-uppercase c-font-bold c-title">常見討論</h3>
-                                <p>Lorem ipsum consectetuer dolore elit diam</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="c-content-feature-2" data-wow-delay1="2s" data-height="height">
-                                <div class="c-icon-wrapper">
-                                    <div class="c-content-line-icon c-theme c-icon-bulb"></div>
-                                </div>
-                                <h3 class="c-font-uppercase c-font-bold c-title">與陌生人成為緊密團隊</h3>
-                                <p>Lorem ipsum consectetuer dolore elit diam</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="c-content-v-center c-theme-bg wow bounceInUp" data-wow-delay1="2s" data-height="height">
-                                <div class="c-wrapper">
-                                    <div class="c-body c-padding-20 c-center">
-                                        <h3 class="c-font-19 c-line-height-28 c-font-uppercase c-font-white c-font-bold">
-                                            維阿魅力：讓不可能變成可能
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="c-content-feature-2" data-wow-delay1="2s" data-height="height">
-                                <div class="c-icon-wrapper">
-                                    <div class="c-content-line-icon c-theme c-icon-globe"></div>
-                                </div>
-                                <h3 class="c-font-uppercase c-font-bold c-title">掌控你的作品進度</h3>
-                                <p>Lorem ipsum consectetuer dolore elit diam</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END: CONTENT/MISC/SERVICES-1 -->
 
         <!-- BEGIN: CONTENT/PORTFOLIO/LATEST-WORKS-2 -->
         <!-- 热门精选片段-->
@@ -864,6 +759,8 @@ Follow: http://www.twitter.com/themehats
             });
         }); //ready
     </script>
+<!--    this script for regesiter-->
+
     <!-- END: PAGE SCRIPTS -->
     <!-- END: LAYOUT/BASE/BOTTOM -->
 </body>
