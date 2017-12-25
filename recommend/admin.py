@@ -4,12 +4,12 @@
 from time import strftime
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from recommand.models import recommand
+from recommend.models import recommend
 from django.utils.translation import ugettext_lazy as _
 
-class recommandAdmin(admin.ModelAdmin):
+class recommendAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
-        qs = super(recommandAdmin, self).get_queryset(request)
+        qs = super(recommendAdmin, self).get_queryset(request)
         self.qs = qs
         return qs
     def ids(self, obj):
@@ -21,10 +21,10 @@ class recommandAdmin(admin.ModelAdmin):
     modifyText.short_description = "修改鏈接"
 
     list_max_show_all = 20
-    list_display = ('ids', 'idBook_id', 'status', "accountStatus", "createTime", "modifyTime", "modifyText")
+    list_display = ('ids', 'idBook_id', 'status', "accountStatus", "createTime",  "modifyText")
     search_fields = ('idBook_id', 'status')
     radio_fields = {"status": admin.VERTICAL}
-    readonly_fields = ('id', "createTime", "modifyTime")
+    readonly_fields = ('id', "createTime",)
     list_display_links = ('ids', 'modifyText')
     view_on_site = True
 
@@ -44,4 +44,4 @@ class recommandAdmin(admin.ModelAdmin):
             return True # allow visiting delete-object-page
 
 # Register your models here.
-admin.site.register(recommand, recommandAdmin)
+admin.site.register(recommend, recommendAdmin)

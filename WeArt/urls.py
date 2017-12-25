@@ -35,6 +35,7 @@ urlpatterns = [
     url('^content/', include('content.urls')),
     url('^collection/', include('collection.urls')),
     url('^voteChapter/', include('voteChapter.urls')),
+    url('^recommend/', include('recommend.urls')),
 ]
 
 admin.site.site_header = 'WeArt 後臺管理'

@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'django-dia',
 
-    'recommand',
+    'recommend',
     'author',
     'book',
     'chapter',
@@ -150,8 +150,8 @@ EMAIL_USE_TLS = True
 DOMAIN = "127.0.0.1:8000"
 
 # This is remote GIT server ip address.And it needs to be changed when changing git-server.
-GIT_SERVER_IP = "192.168.122.171"   # lab server git-server ip
-# GIT_SERVER_IP = "172.16.153.128"   # my loacl git-server ip
+# GIT_SERVER_IP = "192.168.122.171"   # lab server git-server ip
+GIT_SERVER_IP = "172.16.46.128"   # my loacl git-server ip
 GIT_SERVER_USER = "lidaxiang"
 GIT_SERVER_USERPASSWD = "lidaxiang"
 

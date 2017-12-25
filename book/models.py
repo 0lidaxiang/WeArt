@@ -68,6 +68,8 @@ class book(models.Model):
                 return True, 130000, obj.createTime
             elif returnArg == "idReader_id":
                 return True, 130000, obj.idReader_id
+            elif returnArg == "all":
+                return True, 130000, obj
             else:
                 return False, 130001, "錯誤: book 表中不存在該屬性，returnArg錯誤。"
         except self.DoesNotExist:
