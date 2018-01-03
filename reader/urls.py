@@ -20,7 +20,7 @@ urlpatterns = [
     url('^activate/(.+)/$', activeReader),
     url('^modifyReader/$', modifyReader),
 
-    url('^index/', readerIndex),
+    url('^index/', booksRecorded),
     url('^booksRecorded/$', booksRecorded),
     url('^readerSetting/$', readerSetting),
     url('^getEnableAuthorStatus/$', getEnableAuthorStatus),

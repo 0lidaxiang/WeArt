@@ -6,7 +6,7 @@ from home.view.indexView import  *
 
 urlpatterns = [
     url('^index/$', index),
-    url('^index2/$', index2),
+    # url('^index2/$', index2),
     url('^aboutUs/$', aboutUs)
-    
+
 ]

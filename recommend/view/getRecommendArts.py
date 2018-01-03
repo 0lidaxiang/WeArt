@@ -33,14 +33,12 @@ def getRecommendArts(request):
 
     response_data = []
     for rec in mes:
-        m = book.getValue(rec.idBook_id, "all")[2]
-        # print(len(m))
-        # print(m[0], m[1], m[2])
+        obj = book.getValue(rec.idBook_id, "all")[2]
         response_record = {}
-        response_record['id'] = m.id
-        response_record['name'] = m.name
-        response_record['chapterCount'] = m.chapterCount
-        response_record['idReader_id'] = m.idReader_id
+        response_record['id'] = obj.id
+        response_record['name'] = obj.name
+        response_record['chapterCount'] = obj.chapterCount
+        response_record['idReader_id'] = obj.idReader_id
         response_data.append(response_record)
 
     context["message"] = response_data

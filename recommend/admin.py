@@ -24,8 +24,8 @@ class recommendAdmin(admin.ModelAdmin):
     list_display = ('ids', 'idBook_id', 'status', "accountStatus", "createTime",  "modifyText")
     search_fields = ('idBook_id', 'status')
     radio_fields = {"status": admin.VERTICAL}
-    readonly_fields = ('id', "createTime",)
-    list_display_links = ('ids', 'modifyText')
+    readonly_fields = ("ids", "createTime", )
+    list_display_links = ('modifyText',)
     view_on_site = True
 
     # allowed adding new object

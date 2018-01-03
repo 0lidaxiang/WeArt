@@ -42,14 +42,22 @@ def getRating(request):
     return JsonResponse(context)
 
 def chapterVersionVote(request):
-    if "readerId" not in request.session:
-        return render(request, 'reader/login.html')
-    idReader = request.session["readerId"]
-    # print request.GET['idVersion']
     context = {}
+    # if "readerId" not in request.session:
+        # return render(request, 'reader/login.html')
+    if "readerId" not in request.session:
+        # lastUrl = request.GET["lastUrl"]
+
+        context['res'] = "fail1"
+        context['message'] = "/reader/login/"
+        # print(context)
+        return JsonResponse(context)
+
+    idReader = request.session["readerId"]
+
 
     if 'idVersion' not in request.GET:
-        context['status'] = "fail"
+        context['res'] = "fail"
         context['message'] = "The idVersion variable is not in request.GET."
         return JsonResponse(context)
     idVersion = request.GET['idVersion']
@@ -58,11 +66,13 @@ def chapterVersionVote(request):
         context['message'] = "投票评分为空"
         return JsonResponse(context)
 
+
     if 'rating' not in request.GET:
         context['status'] = "fail"
         context['message'] = "The rating variable is not in request.GET."
         return JsonResponse(context)
     ratingUser = request.GET['rating']
+
     if ratingUser == "":
         context['status'] = "fail"
         context['message'] = "投票评分为空"
@@ -99,7 +109,10 @@ def chapterVersionVote(request):
         # modify the voteCount and score into database
         voteCountOld = int(mes.voteCount)
         voteCountNew = voteCountOld + 1
+
+        print(float(mes.score), voteCountOld , float(ratingUser), voteCountNew)
         scoreNew = (float(mes.score)* voteCountOld + float(ratingUser)) / voteCountNew
+
 
         res, statusNumber, mes = version.modifyObj(idVersion, "voteCount", voteCountNew)
         if not res:

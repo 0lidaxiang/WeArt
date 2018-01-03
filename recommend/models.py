@@ -17,7 +17,7 @@ class recommend(models.Model):
         ("locked", 'locked'),
     )
 
-    id = models.AutoField("編號", max_length=20, primary_key=True, blank=False, null=False)
+    id = models.AutoField(primary_key=True)
     idBook_id = models.CharField("書籍Id", max_length=20,blank=False,null=False) # a book can be added much times and we can analysis this history data
     status = models.CharField("狀態", max_length=20,blank=False,null=False, choices = STATUS_CHOICES)
     createTime = models.DateTimeField("申請時間", auto_now=False, auto_now_add=True, max_length=50,blank=False,null=False)
