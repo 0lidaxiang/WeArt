@@ -5,7 +5,7 @@ $(document).ready(function() {
 function getMainContentData(idAuthor) {
   var idBook = $("#idBook").val();
   var chapterOrder = $("#chapterOrder").val();
-  
+
   if (idBook == "") {
     alert("請填寫書籍編號");
     return;
@@ -35,9 +35,10 @@ function getMainContentData(idAuthor) {
       $("#mainContent").replaceWith(objContent);
 
       var authorList = resp.authorList;
+      var authorIds = resp.authorIds;
       var objAuthor = "<div id='authorList' class='col-md-12 col-sm-12 alert alert-success'>";
       for (var i = 0; i < authorList.length; i++) {
-        objAuthor = objAuthor + "<a href='javascript:getMainContentData(" + "\"" + authorList[i]  + "\"" + ")'>" + authorList[i] + '</a><br>';
+        objAuthor = objAuthor + "<a class='alink' href='javascript:getMainContentData(" + "\"" + authorIds[i]  + "\"" + ")'>" + authorList[i] + '</a><br>';
       }
       objAuthor = objAuthor + "</div>";
       $("#authorList").replaceWith(objAuthor);

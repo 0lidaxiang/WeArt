@@ -14,15 +14,15 @@ function getRecommendArts() {
     if (resp.status == "success") {
       bookAll = resp.message
 
-      var obj = "<div id='bookAll' class='col-md-12 col-sm-12 alert alert-success'>";
+      var obj = "<div id='bookAll' class='col-md-12 col-sm-12 alert'>";
       tableObj = "<div class='table-responsive'><table class='table'>" ;
-      thObj = "<tr><th>序號</th><th>書ID</th>  <th>書名</th>  <th>作者ID</th> <th>章節數量</th>  </tr>";
+      thObj = "<tr><th>序號</th>  <th>書名</th>  <th>作者昵稱</th> <th>章節數量</th>  </tr>";
       obj = obj + tableObj + thObj;
 
       var lineNumber = 0;
       for (var i in bookAll) {
         lineNumber = parseInt(i) + 1;
-        obj = obj + "<tr><td>" + lineNumber + "</td><td><a href='/chapter/bookChapter/?idBook=" + bookAll[i].id + "&bookName=" + bookAll[i].name + "'>" + bookAll[i].id + "</a></td><td>" + bookAll[i].name + "</td><td>" + bookAll[i].idReader_id + "</td><td> " + bookAll[i].chapterCount  + "</td></tr>";
+        obj = obj + "<tr><td>" + lineNumber + "</td><td style='color: red;'><a class='alink' href='/chapter/bookChapter/?idBook=" + bookAll[i].id + "&bookName=" + bookAll[i].name + "'>" + bookAll[i].name + "</a></td>" +  "<td>" + bookAll[i].author_name + "</td><td> " + bookAll[i].chapterCount  + "</td></tr>";
       }
       obj = obj + "</table></div></div>";
 

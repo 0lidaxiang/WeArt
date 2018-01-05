@@ -11,8 +11,6 @@ Follow: http://www.twitter.com/themehats
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
 
 <head>
     <meta charset="utf-8" />
@@ -52,6 +50,13 @@ Follow: http://www.twitter.com/themehats
 
     <link rel="shortcut icon" href="favicon.ico" />
 
+    <style media="screen">
+    .alink {
+      color: blue;
+      text-decoration:underline;
+    }
+    </style>
+
 </head>
 
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen c-layout-header-topbar c-layout-header-topbar-collapse">
@@ -73,26 +78,7 @@ Follow: http://www.twitter.com/themehats
                 <!-- END: INLINE NAV -->
                 <!-- BEGIN: INLINE NAV -->
                 <nav class="c-top-menu c-pull-right">
-<!--
-                    <ul class="c-links c-theme-ul">
-                        <li><a href="#">幫助</a></li>
-                        <li class="c-divider">|</li>
-                        <li><a href="#">聯繫</a></li>
-                        <li class="c-divider">|</li>
-                        <li><a href="#">常見問題</a></li>
-                    </ul>
--->
                     <ul class="c-ext c-theme-ul">
-<!--
-                        <li class="c-lang dropdown c-last">
-                            <a href="#">繁體中文</a>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li class="active"><li>
-                                <a href="#">简体中文</a></li>
-                                <li><a href="#">English</a></li>
-                            </ul>
-                        </li>
--->
                         <li class="c-search hide">
                             <!-- BEGIN: QUICK SEARCH -->
                             <form action="#">
@@ -117,11 +103,6 @@ Follow: http://www.twitter.com/themehats
                             <h1 class="c-desktop-logo"><font color="white"><b>WEART</b></font></h1>
                             <h1 class="c-desktop-logo-inverse"><font color="white"><b>WEART</b></font></h1>
                             <h1 class="c-mobile-logo"><font color="white"><b>WEART</b></font></h1>
-                            <!--这个地方我需要weart图标,优化需要用到-->
-<!--
-                            <img src="/static/assets/base/img/layout/logos/logo-1.png" alt="WEART" class="c-desktop-logo-inverse">
-                            <img src="/static/assets/base/img/layout/logos/logo-1.png" alt="WEART" class="c-mobile-logo">
--->
                         </a>
                         <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
 					<span class="c-line"></span>
@@ -134,9 +115,6 @@ Follow: http://www.twitter.com/themehats
                         <button class="c-search-toggler" type="button">
 						<i class="fa fa-search"></i>
 					</button>
-                   <!--
-                        这边原先的手机端购物窗口被关闭
-                   -->
                     </div>
                     <!-- END: BRAND -->
                     <!-- BEGIN: QUICK SEARCH -->
@@ -154,15 +132,9 @@ Follow: http://www.twitter.com/themehats
                             <li class="c-active">
                                 <a href="/index/" class="c-link dropdown-toggle">首頁<span class="c-arrow c-toggler"></span></a>
                             </li>
-<!--
-                            <li class="c-menu-type-classic">
-                                <a href="javascript:;" class="c-link dropdown-toggle">作家簡介<span class="c-arrow c-toggler"></span></a>
-                            </li>
--->
+
                             <li class="c-menu-type-classic">
                                 <a href="/reader/testForPageCollection/" class="c-link dropdown-toggle">作品集<span class="c-arrow c-toggler"></span></a>
-
-
                             </li>
 
                               <li>
@@ -177,9 +149,7 @@ Follow: http://www.twitter.com/themehats
                                 <!-- BEGIN: DESKTOP VERSION OF THE TAB MEGA MENU -->
                                 <!-- BEGIN: MOBILE VERSION OF THE TAB MEGA MENU -->
                                 <!-- END: MOBILE VERSION OF THE TAB MEGA MENU -->
-
                             </li>
-
 
                             <li class="c-search-toggler-wrapper">
                                 <a href="#" class="c-btn-icon c-search-toggler"><i class="fa fa-search"></i></a>
@@ -294,7 +264,7 @@ Follow: http://www.twitter.com/themehats
                         </div>
                         <div class="form-group">
                             <button type="button" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login" onclick="loginReader()">登錄</button>
-                            <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">忘記密碼 ?</a>
+                            <!-- <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">忘記密碼 ?</a> -->
                         </div>
                     </form>
                 </div>
@@ -445,59 +415,41 @@ Follow: http://www.twitter.com/themehats
         </div>
         <!-- END: CONTENT/TESTIMONIALS/TESTIMONIALS-3 -->
 
-        <!-- BEGIN: CONTENT/BARS/BAR-3 -->
-        <div class="c-content-box c-size-md c-bg-dark">
-            <div class="container">
-                <div class="c-content-bar-3">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="c-content-title-1">
-                                <h3 class="c-font-uppercase c-font-bold">This is footer</h3>
-                                <p class="c-font-uppercase">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem soluta, quasi aut alias enim eveniet, vero ex deleniti incidunt, fuga reiciendis. Facere cupiditate deleniti reprehenderit, dolores minima harum praesentium dolore!</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-md-offset-2">
-                            <div class="c-content-v-center" style="height: 90px;">
-                                <div class="c-wrapper">
-                                    <div class="c-body">
-                                        <button type="button" class="btn btn-md c-btn-square c-btn-border-2x c-theme-btn c-btn-uppercase c-btn-bold">i am a button</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END: CONTENT/BARS/BAR-3 -->
-<!--        這裡需要一個contact us-->
-<!--       begin: contact us-->
-
-<!--       end: contact us-->
-        <!-- END: PAGE CONTENT -->
-
 
     </div>
     <!-- END: PAGE CONTAINER -->
 
     <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-2 -->
-    <a name="footer"></a>
-    <footer class="c-layout-footer c-layout-footer-1">
-        <div class="c-postfooter">
-            <div class="container-fluid">
+    <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-5 -->
+    <!-- <a name="footer"></a> -->
+    <footer class="c-layout-footer c-layout-footer-3 c-bg-dark">
+        <div class="c-prefooter">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <p class="c-copyright c-font-oswald c-font-14">
-                             &copy; WEART.
-                        </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="c-postfooter">
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-3">
+                      <i class="icon-pointer c-theme-font"></i> 台灣 台北市大安區，基隆路
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        <ul class="c-socials">
-                            <li><a href="#"><i class="icon-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-social-youtube"></i></a></li>
-                            <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
-                        </ul>
+
+                    <div class="col-md-2">
+                        <i class="icon-call-end c-theme-font"></i> +886 0966-640 417
+                    </div>
+
+                    <div class="col-md-3">
+                        <i class="icon-envelope c-theme-font"></i> 0lidaxiang@gmail.com
+                    </div>
+                  </div>
+
+                    <div class="col-md-3  c-col">
+                        <p class="c-copyright c-font-grey">2017 &copy; WEART
+                            <span class="c-font-grey-3">擁有最終解釋權。</span>
+                        </p>
                     </div>
                 </div>
             </div>

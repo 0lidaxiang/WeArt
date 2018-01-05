@@ -9,6 +9,7 @@ from git import Repo
 from book.models import book
 from chapter.models import chapter
 from version.models import version
+from reader.models import reader
 
 import paramiko
 import sys
@@ -101,7 +102,15 @@ def showHistory(request):
         cmd = cmd1 + cmd2
         p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
         authors = p.stdout.readlines()
-        context['authorList'] = authors
+        authorNames = []
+        authorIds = []
+        for authorId in authors:
+            authorNames.append(reader.getValueById(authorId.rstrip("\n"), "name")[2])
+        context['authorList'] = authorNames
+
+        for authorId in authors:
+            authorIds.append(authorId)
+        context['authorIds'] = authorIds
 
         # step1: get version and score info of every author from databases
         idAuthorsAndVotes = []

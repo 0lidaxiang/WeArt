@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from book.models import book
 from recommend.models import recommend
+from reader.models import reader
 
 def getRecommendArts(request):
     context = {}
@@ -38,7 +39,7 @@ def getRecommendArts(request):
         response_record['id'] = obj.id
         response_record['name'] = obj.name
         response_record['chapterCount'] = obj.chapterCount
-        response_record['idReader_id'] = obj.idReader_id
+        response_record['author_name'] =  reader.getValueById(obj.idReader_id, "name")[2]
         response_data.append(response_record)
 
     context["message"] = response_data

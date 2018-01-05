@@ -60,7 +60,7 @@ def getChapter(request):
         response_record['id'] = m.id
         response_record['name'] = m.name
         response_record['chapterOrder'] = m.chapterOrder
-        response_record['idBook_id'] = m.idBook_id
+        response_record['book_name'] = book.getValue(m.idBook_id, "name")[2] 
         response_data.append(response_record)
 
     context["message"] = response_data

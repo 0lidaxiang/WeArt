@@ -19,12 +19,12 @@ function getChapterData() {
 
       var obj = "<div id='allChapter' class='col-md-12 col-sm-12 alert alert-success'>";
       tableObj = "<div class='table-responsive'><table class='table'>" ;
-      thObj = "<tr><th>序號</th><th>章節ID</th>  <th>章節名稱</th>  <th>章節序號</th> <th>書ID</th>  </tr>";
+      thObj = "<tr>  <th>章節序號</th> <th>章節名稱</th>  <th>書名</th>  </tr>";
       obj = obj + tableObj + thObj;
 
       for (var i in allChapter) {
         lineNumber = parseInt(i) + 1
-        obj = obj + "<tr><td>" + lineNumber + "</td><td><a href='/content/chapterContent/?idBook=" + idBook + "&chapterOrder=" + allChapter[i].chapterOrder + "&chapterName=" + allChapter[i].name + "&bookName=" + bookName + "'>" + allChapter[i].id + "</a></td><td>" + allChapter[i].name + "</td><td>" + allChapter[i].chapterOrder + "</td><td>" + allChapter[i].idBook_id + "</td></tr>";
+        obj = obj + "<tr>" +  "<td>" + allChapter[i].chapterOrder + "</td>"  + "<td><a class='alink'  href='/content/chapterContent/?idBook=" + idBook + "&chapterOrder=" + allChapter[i].chapterOrder + "&chapterName=" + allChapter[i].name + "&bookName=" + bookName + "'>" + allChapter[i].name + "</a></td><td>" +  allChapter[i].book_name + "</td></tr>";
       }
       obj = obj + "</table></div></div>";
 
